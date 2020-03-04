@@ -10,16 +10,14 @@ public class Book {
     private List<String> authors;
     private String category;
     private String isbn;
-    private String id;
     private LocalDateTime inputDate;
 
-    public Book(String title, String name, List<String> authors, String category, String isbn, String id, LocalDateTime inputDate) {
+    public Book(String title, String name, List<String> authors, String category, String isbn, LocalDateTime inputDate) {
         this.title = title;
         this.name = name;
         this.authors = authors;
         this.category = category;
         this.isbn = isbn;
-        this.id = id;
         this.inputDate = inputDate;
     }
 
@@ -61,10 +59,6 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public LocalDateTime getInputDate() {

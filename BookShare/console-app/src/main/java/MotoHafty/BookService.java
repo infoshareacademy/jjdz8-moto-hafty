@@ -1,16 +1,13 @@
 package MotoHafty;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BookService {
 
-    public String generateId() {
-        return UUID.randomUUID().toString().replace("-", "");
-    }
-
-    public LocalDateTime generateTime() {
-        return LocalDateTime.now();
+    public String dateStringNow() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(new Date());
     }
 
 }

@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public Menu() {
-    }
+    //Do zrobienia: osobne klasy dla każdej z opcji w menu, tak aby dało się zrobić ładnego switcha w metodzie start.
 
     public void start() {
         System.out.println("########################################################");
@@ -47,7 +46,6 @@ public class Menu {
                 System.out.println("Spróbuj jeszcze raz:");
                 printMainMenuOptions();
                 isNumberPicked = false;
-
             }
         }
         return number;
