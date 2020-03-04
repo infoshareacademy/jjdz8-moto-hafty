@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class Library {
 
-    //jeszcze tu podziubie
+    //jeszcze tu podziubie, mapa ma przechowywać in narastające o 1 z każdą książką, i książkę jako wartość.
+    // id właściwie tylko dla nas do testów na później, użytkownik nie widzi tej wartości
 
     private Integer id;
     private Map<Integer, Book> books = new LinkedHashMap<>();

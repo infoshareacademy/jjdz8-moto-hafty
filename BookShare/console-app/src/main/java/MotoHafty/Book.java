@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Book {
 
+    //do obgadania czy inputDate w stringu czy w LDT
+
     private String title;
     private String name;
     private List<String> authors;
