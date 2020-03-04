@@ -13,14 +13,18 @@ public class Book {
     private String category;
     private String isbn;
     private LocalDateTime inputDate;
+    private Boolean isRead;
+    private String description;
 
-    public Book(String title, String name, List<String> authors, String category, String isbn, LocalDateTime inputDate) {
+    public Book(String title, String name, List<String> authors, String category, String isbn, LocalDateTime inputDate, Boolean isRead, String description) {
         this.title = title;
         this.name = name;
         this.authors = authors;
         this.category = category;
         this.isbn = isbn;
         this.inputDate = inputDate;
+        this.isRead = isRead;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -67,4 +71,23 @@ public class Book {
         return inputDate;
     }
 
+    public void setInputDate(LocalDateTime inputDate) {
+        this.inputDate = inputDate;
+    }
+
+    public Boolean getRead() {
+        return isRead;
+    }
+
+    public void setRead(Boolean read) {
+        isRead = read;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
