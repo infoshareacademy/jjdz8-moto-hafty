@@ -6,9 +6,10 @@ import java.io.IOException;
 
 public class JsonConverter {
 
+    Library library = new Library();
+    ObjectMapper mapper = new ObjectMapper();
+
     public void convertLibraryToJsonFile() {
-        Library library = new Library();
-        ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File("booksInJson.json"), library.getBooks());
         } catch (IOException e) {
@@ -17,6 +18,5 @@ public class JsonConverter {
         System.out.println("Szczegółowe informacje o wszystkich książkach zostały zapisane do pliku");
         System.out.println("Plik o nazwie booksInJson.json znajduje się w folderze programu ");
     }
-
 
 }
