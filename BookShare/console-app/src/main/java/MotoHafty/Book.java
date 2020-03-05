@@ -1,6 +1,5 @@
 package MotoHafty;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class Book {
@@ -8,7 +7,7 @@ public class Book {
     //do obgadania czy inputDate w stringu czy w LDT
 
     private String title;
-    private String name;
+    private String mainAuthorName;
     private List<String> authors;
     private String category;
     private String isbn;
@@ -16,9 +15,11 @@ public class Book {
     private Boolean isRead;
     private String description;
 
-    public Book(String title, String name, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description) {
+    public Book(){};
+
+    public Book(String title, String mainAuthorName, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description) {
         this.title = title;
-        this.name = name;
+        this.mainAuthorName = mainAuthorName;
         this.authors = authors;
         this.category = category;
         this.isbn = isbn;
@@ -35,12 +36,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getName() {
-        return name;
+    public String getMainAuthorName() {
+        return mainAuthorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMainAuthorName(String mainAuthorName) {
+        this.mainAuthorName = mainAuthorName;
     }
 
     public List<String> getAuthors() {

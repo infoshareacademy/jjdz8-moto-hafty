@@ -3,7 +3,7 @@ package MotoHafty;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AddNewBook {
+public class AddNewBook1 {
 
     Scanner scanner = new Scanner(System.in);
     List<String> authors = new LinkedList<>();
@@ -52,6 +52,7 @@ public class AddNewBook {
                             isNameOK = true;
                             allAuthorsAdded = true;
                         }
+                        name = authors.get(0);
                         System.out.println("Głównym autorem jest: " + authors.get(0));
                         System.out.println("Wszyscy autorzy: " + Arrays.toString(authors.toArray()));
                     }
@@ -304,8 +305,8 @@ public class AddNewBook {
                 (askForTitle(), askForName(), authors,
                         askForCategory(), askForISBN(),
                         generateDateInStringNow(), askIsRead(), askForDescription());
-        Library library= new Library();
         Integer id = book.hashCode();
+        Library library = new Library();
         library.getBooks().put(id,book);
         return book;
     }

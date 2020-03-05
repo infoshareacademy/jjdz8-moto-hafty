@@ -5,14 +5,26 @@ import java.util.Scanner;
 
 public class Menu {
 
-    //Do zrobienia: osobne klasy dla każdej z opcji w menu, tak aby dało się zrobić ładnego switcha w metodzie start.
+    //Do zrobienia: osobne klasy dla każdej z opcji w menu, tak aby dało się zrobić ładnego switcha w metodzie start
 
     public void start() {
         System.out.println("########################################################");
         System.out.println("Cześć, jestem BookShare. ");
         System.out.println("Daj znać co chcesz zrobić, wybierając odpowiednią cyfrę:");
         printMainMenuOptions();
-        askUserForNumber();
+        Integer number = askUserForNumber();
+        switch (number) {
+
+
+
+
+
+
+        }
+
+
+
+
     }
 
     public void printMainMenuOptions() {
