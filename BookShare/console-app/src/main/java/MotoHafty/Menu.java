@@ -14,17 +14,11 @@ public class Menu {
         printMainMenuOptions();
         Integer number = askUserForNumber();
         switch (number) {
-
-
-
-
-
-
+            case 1:{
+                System.out.println("Aby dodać nową książkę, podążaj za moimi poleceniami");
+                new AddNewBook1().addNewBook();
+            }
         }
-
-
-
-
     }
 
     public void printMainMenuOptions() {

@@ -14,6 +14,9 @@ public class JsonConverter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Szczegółowe informacje o wszystkich książkach zostały zapisane do pliku");
+        System.out.println("Plik o nazwie booksInJson.json znajduje się w folderze programu ");
     }
+
 
 }
