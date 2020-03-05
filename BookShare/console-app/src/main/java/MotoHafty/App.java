@@ -5,6 +5,7 @@ public class App {
 //        new Menu().start();
 //        new AddNewBook().askForTitle();
 //        new AddNewBook().askForName();
-        new AddNewBook().askForCategory();
+//        new AddNewBook().askForCategory();
+        new AddNewBook().askForISBN();
     }
 }

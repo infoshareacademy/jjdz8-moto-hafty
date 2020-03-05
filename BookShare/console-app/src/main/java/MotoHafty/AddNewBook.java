@@ -241,6 +241,27 @@ public class AddNewBook {
         }
         return category;
     }
+
+    public String askForISBN(){
+        boolean isIsbnOk = false;
+        String isbn = "";
+        while (!isIsbnOk){
+            try {
+                System.out.println("_________________________________");
+                System.out.println("Wprowadź ISBN książki: ");
+                isbn = scanner.nextLine();
+                if (isbn.matches("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")){
+                    System.out.println("Wprowadzony ISBN to: " + isbn);
+                    isIsbnOk = true;
+                    break;
+                }else {
+                    System.out.println("wprowadzony ISBN jest niepoprawny, spróbuj jeszcze raz:");
+                }
+            }catch (InputMismatchException e ) {
+                System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
+        }
+    }return isbn;
+    }
 }
 
 
