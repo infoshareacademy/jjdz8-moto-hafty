@@ -2,14 +2,10 @@ package MotoHafty;
 
 public class App {
     public static void main(String[] args) {
-//        new Menu().start();
-//        new AddNewBook().askForTitle();
-//        new AddNewBook().askForName();
-//        new AddNewBook().askForCategory();
-//        new AddNewBook().askForISBN();
-//        new AddNewBook().generateDateInStringNow();
-//        new AddNewBook().askIsRead();
-        new AddNewBook().askForDescription();
+        new AddNewBook().addNewBook();
+        Library library = new Library();
+        System.out.println(library.getBooks().values().toString());
     }
+
 
 }

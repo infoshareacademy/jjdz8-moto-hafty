@@ -152,7 +152,8 @@ public class AddNewBook {
                                 default: {
                                     System.out.println("wybrano nieodpowiednią wartość, spróbuj jeszcze raz");
                                 }
-                            } break;
+                            }
+                            break;
                         } catch (InputMismatchException e) {
                             System.out.println("Wprowadzono niepoprawne dane, spróbuj jeszcze raz");
                         }
@@ -239,29 +240,31 @@ public class AddNewBook {
             } catch (InputMismatchException e) {
                 System.out.println("Wprowadzono niepoprawne dane, spróbuj jeszcze raz");
             }
+            break;
         }
         return category;
     }
 
-    public String askForISBN(){
+    public String askForISBN() {
         boolean isIsbnOk = false;
         String isbn = "";
-        while (!isIsbnOk){
+        while (!isIsbnOk) {
             try {
                 System.out.println("_________________________________");
                 System.out.println("Wprowadź ISBN książki: ");
                 isbn = scanner.nextLine();
-                if (isbn.matches("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")){
+                if (isbn.matches("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")) {
                     System.out.println("Wprowadzony ISBN to: " + isbn);
                     isIsbnOk = true;
                     break;
-                }else {
+                } else {
                     System.out.println("wprowadzony ISBN jest niepoprawny, spróbuj jeszcze raz:");
                 }
-            }catch (InputMismatchException e ) {
+            } catch (InputMismatchException e) {
                 System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
+            }
         }
-    }return isbn;
+        return isbn;
     }
 
     public String generateDateInStringNow() {
@@ -269,23 +272,23 @@ public class AddNewBook {
         return sdf.format(new Date());
     }
 
-    public Boolean askIsRead(){
+    public Boolean askIsRead() {
         Boolean isRead;
         System.out.println("_________________________________");
         System.out.println("Jeśli książka jest już przez Ciebie przeczytana - wprowadź \"+\",");
         System.out.println("jeśli nie - naciśnij Enter lub wprowadź dowolny inny klawisz");
         String answer = scanner.nextLine();
-        if (answer.trim().equalsIgnoreCase("+")){
+        if (answer.trim().equalsIgnoreCase("+")) {
             System.out.println("Ksiązka została oznaczona jako przeczytana");
             isRead = true;
-        }else {
+        } else {
             System.out.println("Książka została oznaczona jako nieprzeczytana");
             isRead = false;
         }
         return isRead;
     }
 
-    public String askForDescription(){
+    public String askForDescription() {
         String description = "";
         System.out.println("_________________________________");
         System.out.println("Jeśli chcesz wprowadzić krótki opis książki, wpisz go poniżej");
@@ -294,6 +297,17 @@ public class AddNewBook {
         System.out.println("Wprowadzono opis książki: ");
         System.out.println(description);
         return description;
+    }
+
+    public Book addNewBook() {
+        Book book = new Book
+                (askForTitle(), askForName(), authors,
+                        askForCategory(), askForISBN(),
+                        generateDateInStringNow(), askIsRead(), askForDescription());
+        Library library= new Library();
+        Integer id = book.hashCode();
+        library.getBooks().put(id,book);
+        return book;
     }
 
 }
