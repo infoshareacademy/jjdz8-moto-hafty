@@ -12,11 +12,11 @@ public class Book {
     private List<String> authors;
     private String category;
     private String isbn;
-    private LocalDateTime inputDate;
+    private String inputDate;
     private Boolean isRead;
     private String description;
 
-    public Book(String title, String name, List<String> authors, String category, String isbn, LocalDateTime inputDate, Boolean isRead, String description) {
+    public Book(String title, String name, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description) {
         this.title = title;
         this.name = name;
         this.authors = authors;
@@ -67,11 +67,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public LocalDateTime getInputDate() {
+    public String getInputDate() {
         return inputDate;
     }
 
-    public void setInputDate(LocalDateTime inputDate) {
+    public void setInputDate(String inputDate) {
         this.inputDate = inputDate;
     }
 

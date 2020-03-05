@@ -1,5 +1,6 @@
 package MotoHafty;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class AddNewBook {
@@ -262,6 +263,13 @@ public class AddNewBook {
         }
     }return isbn;
     }
+
+    public String generateDateInStringNow() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(new Date());
+    }
+
+
 }
 
 
