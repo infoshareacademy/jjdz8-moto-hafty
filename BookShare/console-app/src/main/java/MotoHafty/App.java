@@ -7,6 +7,9 @@ public class App {
 //        new AddNewBook().askForName();
 //        new AddNewBook().askForCategory();
 //        new AddNewBook().askForISBN();
-        new AddNewBook().generateDateInStringNow();
+//        new AddNewBook().generateDateInStringNow();
+//        new AddNewBook().askIsRead();
+        new AddNewBook().askForDescription();
     }
+
 }

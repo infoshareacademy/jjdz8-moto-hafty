@@ -269,6 +269,32 @@ public class AddNewBook {
         return sdf.format(new Date());
     }
 
+    public Boolean askIsRead(){
+        Boolean isRead;
+        System.out.println("_________________________________");
+        System.out.println("Jeśli książka jest już przez Ciebie przeczytana - wprowadź \"+\",");
+        System.out.println("jeśli nie - naciśnij Enter lub wprowadź dowolny inny klawisz");
+        String answer = scanner.nextLine();
+        if (answer.trim().equalsIgnoreCase("+")){
+            System.out.println("Ksiązka została oznaczona jako przeczytana");
+            isRead = true;
+        }else {
+            System.out.println("Książka została oznaczona jako nieprzeczytana");
+            isRead = false;
+        }
+        return isRead;
+    }
+
+    public String askForDescription(){
+        String description = "";
+        System.out.println("_________________________________");
+        System.out.println("Jeśli chcesz wprowadzić krótki opis książki, wpisz go poniżej");
+        System.out.println("Jeśli nie chcesz wprowadzać opisu - naciśnij enter");
+        description = scanner.nextLine();
+        System.out.println("Wprowadzono opis książki: ");
+        System.out.println(description);
+        return description;
+    }
 
 }
 
