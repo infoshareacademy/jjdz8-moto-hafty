@@ -1,9 +1,10 @@
 package MotoHafty;
 
 public class  BookDetailsUpdate3 extends AddNewBook1 {
-    public  Book askUserForBookId (){
+
+    public Integer askUserForBookId (){
         Library library = new Library();
-        Book book = new Book();
+//        Book book = new Book();
         System.out.println("_________________________________");
         System.out.println("Wprowadź Id ksiązki, której dane chcesz zaktualizować: ");
         Integer pickedId = scanner.nextInt();
@@ -15,10 +16,13 @@ public class  BookDetailsUpdate3 extends AddNewBook1 {
                 System.out.println("Tytuł: " + library.getBooks().get(pickedId).getTitle());
                 System.out.println("Główny autor: " + library.getBooks().get(pickedId).getMainAuthorName());
 
-                book = library.getBooks().get(pickedId);
-                return book;
+
+                return pickedId;
             }
-        }return book;
+        }return pickedId;
     }
 
+    public Book updateBookDetails (Integer bookId) {
+        return null;
+    }
 }
