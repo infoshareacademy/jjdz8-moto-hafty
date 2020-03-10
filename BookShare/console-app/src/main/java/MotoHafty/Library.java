@@ -35,7 +35,16 @@ public class Library extends Book {
             System.out.println("Status książki: " + (entry.getValue().getRead() ? "Przeczytana": "Nieprzeczytana"));
             System.out.println("Opis: " + entry.getValue().getDescription()); }
 
-
+    }
+    public void printAllBooksOnlyAuthorsIdTitle () {
+        System.out.println("_________________________________");
+        System.out.println("Skrócone dane wszystkich książek:");
+        for (Map.Entry<Integer, Book> entry : books.entrySet()) {
+            System.out.println("#########################################");
+            System.out.println("ID: " + entry.getKey());
+            System.out.println("Tytuł: " + entry.getValue().getTitle());
+            System.out.println("Główny autor: " + entry.getValue().getMainAuthorName());
+        }
     }
     public void addTestBooksToLibrary(){
 
