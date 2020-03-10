@@ -7,5 +7,6 @@ public class App {
 //        new Library().printAllBooks();
 //        new JsonConverter().convertLibraryToJsonFile();
         new Library().printAllBooksOnlyAuthorsIdTitle();
+        new BookDetailsUpdate3().askUserForBookId();
     }
 }
