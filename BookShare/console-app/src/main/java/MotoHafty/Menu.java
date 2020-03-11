@@ -13,11 +13,22 @@ public class Menu {
         System.out.println("Cześć, jestem BookShare. ");
         System.out.println("Daj znać co chcesz zrobić, wybierając odpowiednią cyfrę:");
         printMainMenuOptions();
-        Integer number = askUserForNumber();
-        switch (number) {
-            case 1:{
-                System.out.println("Aby dodać nową książkę, podążaj za moimi poleceniami");
-                new AddNewBook1().addNewBook();
+        String number = askUserForNumber();
+        Boolean isFinished = false;
+        while (!isFinished) {
+            switch (number) {
+                case "1": {
+                    System.out.println("Aby dodać nową książkę, podążaj za moimi poleceniami");
+                    new AddNewBook1().addNewBook();
+                    isFinished = true;
+                    break;
+                }
+                case "3": {
+                    System.out.println("Aby zmienić dane dotyczące konkretnej ksiązki, podążaj za moimi poleceniami");
+                    new BookDetailsUpdate3().updateBookDetails();
+                }
+                default:
+                    System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
             }
         }
     }
@@ -32,30 +43,22 @@ public class Menu {
         System.out.println("########################################################");
     }
 
-    public Integer askUserForNumber() {
+    public String askUserForNumber() {
         boolean isNumberPicked = false;
-        Integer number = null;
+        String number = "";
         while (!isNumberPicked) {
-            try {
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Wybierz odpowiednią cyfrę:");
-                number = scanner.nextInt();
-                if (number >= 1 && number <= 6) {
-                    System.out.println("Wybrano opcję nr " + number);
-                    isNumberPicked = true;
-                } else {
-                    System.out.println("Wybrano nieodpowiednią cyfrę, spróbuj jeszcze raz:");
-                    printMainMenuOptions();
-                    isNumberPicked = false;
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Wprowadzono błędną wartość");
-                System.out.println("Spróbuj jeszcze raz:");
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Wybierz odpowiednią cyfrę:");
+            number = scanner.nextLine();
+            if (number.equals("1") || number.equals("2") || number.equals("3") || number.equals("4") || number.equals("5") || number.equals("6")) {
+                System.out.println("Wybrano opcję nr " + number);
+                isNumberPicked = true;
+            } else {
+                System.out.println("Wybrano nieodpowiednią cyfrę, spróbuj jeszcze raz:");
                 printMainMenuOptions();
                 isNumberPicked = false;
             }
         }
         return number;
-
     }
 }
