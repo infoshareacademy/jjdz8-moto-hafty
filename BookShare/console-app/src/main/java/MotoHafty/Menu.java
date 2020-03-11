@@ -9,24 +9,26 @@ public class Menu {
     //Sugeruję, aby każda klasa z opcją miała na końcu nazwy numerek (ten który trzeba wcisnąć w menu)
 
     public void start() {
+        Library library = new Library();
+        library.addTestBooksToLibrary();
         System.out.println("########################################################");
         System.out.println("Cześć, jestem BookShare. ");
-        System.out.println("Daj znać co chcesz zrobić, wybierając odpowiednią cyfrę:");
-        printMainMenuOptions();
-        String number = askUserForNumber();
         Boolean isFinished = false;
         while (!isFinished) {
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            System.out.println("Daj znać co chcesz zrobić, wybierając odpowiednią cyfrę:");
+            printMainMenuOptions();
+            String number = askUserForNumber();
             switch (number) {
                 case "1": {
                     System.out.println("Aby dodać nową książkę, podążaj za moimi poleceniami");
                     new AddNewBook1().addNewBook();
-                    isFinished = true;
-                    break;
+                    continue;
                 }
                 case "3": {
                     System.out.println("Aby zmienić dane dotyczące konkretnej ksiązki, podążaj za moimi poleceniami");
                     new BookDetailsUpdate3().updateBookDetails();
-                    break;
+                    continue;
                 }
                 case "6": {
                     System.out.println("Program zostanie zamknięty");
@@ -37,7 +39,8 @@ public class Menu {
                 default:
                     System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
                     break;
-            }break;
+            }
+            break;
         }
     }
 

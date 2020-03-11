@@ -49,8 +49,22 @@ public class Library extends Book {
         }
     }
 
+    public void printOneBookDetails(Integer id){
+        System.out.println("_________________________________");
+        System.out.println("###############################################################################");
+        System.out.println("ID: " + id);
+        System.out.println("Tytuł: " + books.get(id).getTitle());
+        System.out.println("Główny autor: " + books.get(id).getMainAuthorName());
+        System.out.println("Wszyscy autorzy: " + Arrays.toString(books.get(id).getAuthors().toArray()));
+        System.out.println("Kategoria: " + books.get(id).getCategory());
+        System.out.println("ISBN: " + books.get(id).getIsbn());
+        System.out.println("Data dodania: " + books.get(id).getInputDate());
+        System.out.println("Status książki: " + (books.get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
+        System.out.println("Opis: " + books.get(id).getDescription());
+    }
+
     public void addTestBooksToLibrary() {
-        //metoda uruchamia się z każdorazowym startem programu - mozesz sobie edytować dowolną książkę,
+        //metoda uruchamia się z każdorazowym startem programu - mozesz sobie edytować/dodać dowolną książkę,
         // jeśli chcesz przetestować jakiś przypadek (jakiś null, lub przydługa nazwa - cokolwiek)
 
         List<String> authorsTestList = new ArrayList<>();
