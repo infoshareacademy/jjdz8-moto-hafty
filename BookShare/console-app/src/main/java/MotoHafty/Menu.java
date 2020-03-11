@@ -27,8 +27,15 @@ public class Menu {
                     System.out.println("Aby zmienić dane dotyczące konkretnej ksiązki, podążaj za moimi poleceniami");
                     new BookDetailsUpdate3().updateBookDetails();
                 }
+                case "6": {
+                    System.out.println("Program zostanie zamknięty");
+                    System.out.println("Miłego dnia");
+                    isFinished = true;
+                    break;
+                }
                 default:
                     System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
+                    break;
             }
         }
     }
