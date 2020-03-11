@@ -8,7 +8,7 @@ public class Library extends Book {
     //książka dodaje do mapy się w momencie utworzenia (metoda addNewBook)
 
     private static Map<Integer, Book> books = new LinkedHashMap<>();
-    AddNewBook1 addNewBook1 = new AddNewBook1();
+    public Integer id = 0;
 
     public Map<Integer, Book> getBooks() {
         return books;
@@ -59,20 +59,20 @@ public class Library extends Book {
         authorsTestList.add("test autor 3");
 
         List<Book> bookList = new ArrayList<>();
-        bookList.add(new Book("Wrócę, gdy będziesz spała", "Patrycja Dołowy", new ArrayList<>(), "Literatura Piękna | Biografia/Pamiętniki", "978-83-8049-830-3", addNewBook1.generateDateInStringNow(), true, "Książka o dzieciach z holokaustu"));
-        bookList.add(new Book("Polskie badania nad myślą pedagogiczną w latach 1900-1939", "Sławomir Sztobryn", authorsTestList, "Literatura Użytkowa | Naukowe/Specjalistyczne", "83-89574-24-1", addNewBook1.generateDateInStringNow(), false, "Nudna ksiązka xD"));
-        bookList.add(new Book("Współczesny behawioryzm - analiza zachowania od A do Z", "Przemysław Bąbel", new ArrayList<>(), "Literatura Użytkowa | Naukowe/Specjalistyczne", "9788374892674", addNewBook1.generateDateInStringNow(), true, "gfhg"));
-        bookList.add(new Book("Jekyll i Hyde", "John Rowan", new ArrayList<>(), "Literatura Użytkowa | Popularnonaukowe", "ISBN: 9788389574961", addNewBook1.generateDateInStringNow(), true, "a"));
-        bookList.add(new Book("People as care catalysts", "Richard Normann", new ArrayList<>(), "Literatura Użytkowa | Popularnonaukowe", "isbn0-470-01778-3", addNewBook1.generateDateInStringNow(), true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus elit et dapibus dictum. Cras consequat volutpat erat, eget rhoncus enim. Cras faucibus finibus lectus id pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget neque ac tellus fermentum vulputate eu et augue. Pellentesque iaculis velit a ornare gravida. Nunc tincidunt imperdiet nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Cras massa magna, egestas vel feugiat eget, ultricies at ex. "));
-        bookList.add(new Book("Viral - jak zarażać ideami i tworzyć wirusowe treści tytuł tej ksiązki już się zakończył, ale chcę mieć długo do testów", "Piotr Bucki", getAuthors(), "Literatura Użytkowa | Popularnonaukowe", "9788301204631", addNewBook1.generateDateInStringNow(), true, "Super Ksiązka polecam serdecznie "));
-        bookList.add(new Book("Drucker o marketingu", "William A. Cohem", authorsTestList, "Literatura użytkowa | Podręczniki", "978-83-63566-24-1", addNewBook1.generateDateInStringNow(), true, "książka o czymś"));
-        bookList.add(new Book("Wywieranie wpływu na ludzi", "Robert B.", new ArrayList<>(), "Literatura użytkowa | bleble", "978-83-7489-250-6", addNewBook1.generateDateInStringNow(), true, "książka o czymś"));
-        bookList.add(new Book("Błyskawiczne wywieranie wpływu", "Michael V. Pantalon", new ArrayList<>(), "Literatura użytkowa | Podręczniki", "9788374893466", addNewBook1.generateDateInStringNow(), false, "książka o czymś"));
-
+        bookList.add(new Book("Wrócę, gdy będziesz spała", "Patrycja Dołowy", new ArrayList<>(), "Literatura Piękna | Biografia/Pamiętniki", "978-83-8049-830-3", AddNewBook1.generateDateInStringNow(), true, "Książka o dzieciach z holokaustu"));
+        bookList.add(new Book("Polskie badania nad myślą pedagogiczną w latach 1900-1939", "Sławomir Sztobryn", authorsTestList, "Literatura Użytkowa | Naukowe/Specjalistyczne", "83-89574-24-1", AddNewBook1.generateDateInStringNow(), false, "Nudna ksiązka xD"));
+        bookList.add(new Book("Współczesny behawioryzm - analiza zachowania od A do Z", "Przemysław Bąbel", new ArrayList<>(), "Literatura Użytkowa | Naukowe/Specjalistyczne", "9788374892674", AddNewBook1.generateDateInStringNow(), true, "gfhg"));
+        bookList.add(new Book("Jekyll i Hyde", "John Rowan", new ArrayList<>(), "Literatura Użytkowa | Popularnonaukowe", "ISBN: 9788389574961", AddNewBook1.generateDateInStringNow(), true, "a"));
+        bookList.add(new Book("People as care catalysts", "Richard Normann", new ArrayList<>(), "Literatura Użytkowa | Popularnonaukowe", "isbn0-470-01778-3", AddNewBook1.generateDateInStringNow(), true, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus elit et dapibus dictum. Cras consequat volutpat erat, eget rhoncus enim. Cras faucibus finibus lectus id pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget neque ac tellus fermentum vulputate eu et augue. Pellentesque iaculis velit a ornare gravida. Nunc tincidunt imperdiet nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Cras massa magna, egestas vel feugiat eget, ultricies at ex. "));
+        bookList.add(new Book("Viral - jak zarażać ideami i tworzyć wirusowe treści tytuł tej ksiązki już się zakończył, ale chcę mieć długo do testów", "Piotr Bucki", getAuthors(), "Literatura Użytkowa | Popularnonaukowe", "9788301204631", AddNewBook1.generateDateInStringNow(), true, "Super Ksiązka polecam serdecznie "));
+        bookList.add(new Book("Drucker o marketingu", "William A. Cohem", authorsTestList, "Literatura użytkowa | Podręczniki", "978-83-63566-24-1", AddNewBook1.generateDateInStringNow(), true, "książka o czymś"));
+        bookList.add(new Book("Wywieranie wpływu na ludzi", "Robert B.", new ArrayList<>(), "Literatura użytkowa | bleble", "978-83-7489-250-6", AddNewBook1.generateDateInStringNow(), true, "książka o czymś"));
+        bookList.add(new Book("Błyskawiczne wywieranie wpływu", "Michael V. Pantalon", new ArrayList<>(), "Literatura użytkowa | Podręczniki", "9788374893466", AddNewBook1.generateDateInStringNow(), false, "książka o czymś"));
         for (Book book : bookList) {
             if (book.getAuthors().isEmpty())
             book.getAuthors().add(book.getMainAuthorName());
-            books.put(book.hashCode(),book);
+            books.put(id,book);
+            id++;
         }
     }
 }

@@ -3,7 +3,7 @@ package MotoHafty;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class AddNewBook1 extends Book {
+public class AddNewBook1 extends Library {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -240,7 +240,7 @@ public class AddNewBook1 extends Book {
         return isbn;
     }
 
-    public String generateDateInStringNow() {
+    public static String generateDateInStringNow() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         return sdf.format(new Date());
     }
@@ -277,9 +277,9 @@ public class AddNewBook1 extends Book {
                 (askForTitle(), askForName(), getAuthors(),
                         askForCategory(), askForISBN(),
                         generateDateInStringNow(), askIsRead(), askForDescription());
-        Integer id = book.hashCode();
         Library library = new Library();
         library.getBooks().put(id, book);
+        id++;
         return book;
     }
 }
