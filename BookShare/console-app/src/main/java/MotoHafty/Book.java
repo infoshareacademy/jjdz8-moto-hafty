@@ -1,5 +1,7 @@
 package MotoHafty;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Book {
@@ -8,7 +10,7 @@ public class Book {
 
     private String title;
     private String mainAuthorName;
-    private List<String> authors;
+    private List<String> authors = new LinkedList<>();
     private String category;
     private String isbn;
     private String inputDate;
