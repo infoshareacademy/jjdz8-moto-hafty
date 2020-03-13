@@ -1,7 +1,5 @@
 package MotoHafty;
 
-import java.util.InputMismatchException;
-
 public class BookDetailsUpdate3 extends AddNewBook1 {
 
     public Integer askUserForBookId() {
@@ -49,7 +47,8 @@ public class BookDetailsUpdate3 extends AddNewBook1 {
     public Book updateBookDetails() {
         boolean isUpdated = false;
         while (!isUpdated) {
-            printAllBooksOnlyAuthorsIdTitle();
+            System.out.println("Skrócone dane wszystkich książek znajdujacych się w Biblioteczce");
+            printShortInfoAboutAllBooksFromMap(getBooks());
             Integer id = askUserForBookId();
             askforBookDetailsUpdate(id);
             System.out.println("Zaktualizowano książkę:");

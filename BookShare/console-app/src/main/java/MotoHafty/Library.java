@@ -35,10 +35,9 @@ public class Library extends Book {
         }
     }
 
-    public void printAllBooksOnlyAuthorsIdTitle() {
+    public void printShortInfoAboutAllBooksFromMap(Map<Integer, Book> libraryOrShelf) {
         System.out.println("_________________________________");
-        System.out.println("Skrócone dane wszystkich książek:");
-        for (Map.Entry<Integer, Book> entry : books.entrySet()) {
+        for (Map.Entry<Integer, Book> entry : libraryOrShelf.entrySet()) {
             System.out.println("#########################################");
             System.out.println("ID: " + entry.getKey());
             System.out.println("Tytuł: " + entry.getValue().getTitle());

@@ -29,6 +29,12 @@ public class Menu {
                     new BookDetailsUpdate3().updateBookDetails();
                     continue;
                 }
+                case "4": {
+                    System.out.println("Aby zarządzać półką do wypożyczania, podążaj za moimi poleceniami");
+                    new Shelf().shelfMenu();
+                    continue;
+
+                }
                 case "6": {
                     System.out.println("Program zostanie zamknięty");
                     System.out.println("Miłego dnia");
