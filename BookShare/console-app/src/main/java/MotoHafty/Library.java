@@ -4,9 +4,6 @@ import java.util.*;
 
 public class Library extends Book {
 
-    //narazie zrobiłem że jako id w mapie przypisuje się hashcode nowo utworzonej książki.
-    //książka dodaje do mapy się w momencie utworzenia (metoda addNewBook)
-
     private static Map<Integer, Book> books = new LinkedHashMap<>();
     public Integer id = 0;
 

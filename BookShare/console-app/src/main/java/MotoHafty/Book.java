@@ -1,8 +1,8 @@
 package MotoHafty;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Book {
 
@@ -29,6 +29,8 @@ public class Book {
         this.isRead = isRead;
         this.description = description;
     }
+
+    Scanner scanner = new Scanner(System.in);
 
     public String getTitle() {
         return title;

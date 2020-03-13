@@ -5,7 +5,6 @@ import java.util.*;
 
 public class AddNewBook1 extends Library {
 
-    Scanner scanner = new Scanner(System.in);
 
     public String askForTitle() {
         boolean isTitleOK = false;
