@@ -13,7 +13,7 @@ public class AddNewBook1 extends Library {
             System.out.println("_________________________________");
             System.out.println("Wprowadź tytuł książki: ");
             title = scanner.nextLine();
-            if (title.equalsIgnoreCase("") || title.trim().equalsIgnoreCase("")) {
+            if (title.isBlank()) {
                 System.out.println("!!!Nazwa nie może być pusta");
             } else {
                 System.out.println("Wprowadzony tytuł to: " + title);
@@ -31,27 +31,54 @@ public class AddNewBook1 extends Library {
             System.out.println("_________________________________");
             System.out.println("Wprowadź imię i nazwisko autora: ");
             name = scanner.nextLine();
-            if (name.equalsIgnoreCase("") || name.trim().equalsIgnoreCase("")) {
-                System.out.println("!!!Imię i nazwisko autora nie moogą być puste");
+            if (name.isBlank()) {
+                System.out.println("!!!Imię i nazwisko autora nie mogą być puste");
             } else {
                 System.out.println("Wprowadzone dane autora to: " + name);
                 System.out.println("Wpisz \"+\", aby dodać kolejnego autora. Jeśli nie chcesz - naciśnij enter");
-                super.getAuthors().add(name);
+                getAuthors().add(name);
                 while (!allAuthorsAdded) {
                     String answer = scanner.nextLine();
-                    if (answer.equalsIgnoreCase("+")) {
+                    if (answer.equals("+")) {
                         break;
                     } else {
                         isNameOK = true;
                         allAuthorsAdded = true;
                     }
-                    name = super.getAuthors().get(0);
-                    System.out.println("Głównym autorem jest: " + super.getAuthors().get(0));
-                    System.out.println("Wszyscy autorzy: " + Arrays.toString(super.getAuthors().toArray()));
+                    name = getAuthors().get(0);
+                    System.out.println("Głównym autorem jest: " + getAuthors().get(0));
+                    System.out.println("Wszyscy autorzy: " + Arrays.toString(getAuthors().toArray()));
                 }
             }
         }
         return name;
+    }
+
+    public void printCategories1() {
+        System.out.println("Wybierz kategorię książki");
+        System.out.println("Możesz skorzystać z proponowanych opcji, lub wpisać samodzielnie: ");
+        System.out.println("1 - Poezja/Wiersze");
+        System.out.println("2 - Fantastyka/Science Fiction");
+        System.out.println("3 - Kryminał");
+        System.out.println("4 - Powieść");
+        System.out.println("5 - Dramat");
+        System.out.println("6 - Biografia/Pamiętniki");
+        System.out.println("7 - Bajki/Baśnie/Dla dzieci");
+        System.out.println("8 - Reportaże/Wywiady/Eseje");
+        System.out.println("9 - Wpisz swoją kategorię");
+    }
+
+    public void printCategories2() {
+        System.out.println("Wybierz kategorię książki");
+        System.out.println("Możesz skorzystać z proponowanych opcji, lub wpisać samodzielnie: ");
+        System.out.println("1 - Słowniki");
+        System.out.println("2 - Hobbystyczne/Poradniki");
+        System.out.println("3 - Podręczniki");
+        System.out.println("4 - Encyklopedie");
+        System.out.println("5 - Naukowe/Specjalistyczne");
+        System.out.println("6 - Przewodniki/Mapy/Atlasy");
+        System.out.println("7 - Popularnonaukowe");
+        System.out.println("8 - Wpisz swoją kategorię");
     }
 
     public String askForCategory() {
@@ -67,18 +94,7 @@ public class AddNewBook1 extends Library {
                 case "1": {
                     System.out.println("Wybrano Literaturę Piękną");
                     category = category.concat("Literatura piękna | ");
-                    System.out.println("Wybierz kategorię książki");
-                    System.out.println("Możesz skorzystać z proponowanych opcji, lub wpisać samodzielnie: ");
-                    System.out.println("1 - Poezja/Wiersze");
-                    System.out.println("2 - Fantastyka/Science Fiction");
-                    System.out.println("3 - Kryminał");
-                    System.out.println("4 - Powieść");
-                    System.out.println("5 - Dramat");
-                    System.out.println("6 - Biografia/Pamiętniki");
-                    System.out.println("7 - Bajki/Baśnie/Dla dzieci");
-                    System.out.println("8 - Reportaże/Wywiady/Eseje");
-                    System.out.println("9 - Wpisz swoją kategorię");
-
+                    printCategories1();
                     String categoryNumber1 = scanner.nextLine();
                     switch (categoryNumber1) {
                         case "1": {
@@ -146,17 +162,7 @@ public class AddNewBook1 extends Library {
                 case "2": {
                     System.out.println("Wybrano Literature Użytkową");
                     category = category.concat("Literatura użytkowa | ");
-                    System.out.println("Wybierz kategorię książki");
-                    System.out.println("Możesz skorzystać z proponowanych opcji, lub wpisać samodzielnie: ");
-                    System.out.println("1 - Słowniki");
-                    System.out.println("2 - Hobbystyczne/Poradniki");
-                    System.out.println("3 - Podręczniki");
-                    System.out.println("4 - Encyklopedie");
-                    System.out.println("5 - Naukowe/Specjalistyczne");
-                    System.out.println("6 - Przewodniki/Mapy/Atlasy");
-                    System.out.println("7 - Popularnonaukowe");
-                    System.out.println("8 - Wpisz swoją kategorię");
-
+                    printCategories2();
                     String categoryNumber2 = scanner.nextLine();
                     switch (categoryNumber2) {
                         case "1": {
@@ -224,15 +230,13 @@ public class AddNewBook1 extends Library {
     }
 
     public String askForISBN() {
-        boolean isIsbnOk = false;
         String isbn = "";
-        while (!isIsbnOk) {
+        while (true) {
             System.out.println("_________________________________");
             System.out.println("Wprowadź ISBN książki: ");
             isbn = scanner.nextLine();
             if (isbn.matches("^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")) {
                 System.out.println("Wprowadzony ISBN to: " + isbn);
-                isIsbnOk = true;
                 break;
             } else {
                 System.out.println("!!!wprowadzony ISBN jest niepoprawny, spróbuj jeszcze raz:");
@@ -252,7 +256,7 @@ public class AddNewBook1 extends Library {
         System.out.println("Jeśli książka jest już przez Ciebie przeczytana - wprowadź \"+\",");
         System.out.println("jeśli nie - naciśnij Enter lub wprowadź dowolny inny klawisz");
         String answer = scanner.nextLine();
-        if (answer.trim().equalsIgnoreCase("+")) {
+        if (answer.trim().equals("+")) {
             System.out.println("Ksiązka została oznaczona jako przeczytana");
             isRead = true;
         } else {
@@ -263,37 +267,32 @@ public class AddNewBook1 extends Library {
     }
 
     public String askForDescription() {
-        String description = "";
         System.out.println("_________________________________");
         System.out.println("Jeśli chcesz wprowadzić krótki opis książki, wpisz go poniżej");
         System.out.println("Jeśli nie chcesz wprowadzać opisu - naciśnij enter");
-        description = scanner.nextLine();
-        if (!description.equals("")){
-        System.out.println("Wprowadzono opis książki: ");
-        System.out.println(description);}
-        else {
+        String description = scanner.nextLine();
+        if (!description.equals("")) {
+            System.out.println("Wprowadzono opis książki: ");
+            System.out.println(description);
+        } else {
             System.out.println("!!!Nie wprowadzono opisu ksiażki");
         }
         return description;
     }
 
     public Book addNewBook() {
-        boolean isAdded = false;
         Book book = new Book
                 (askForTitle(), askForName(), getAuthors(),
                         askForCategory(), askForISBN(),
                         generateDateInStringNow(), askIsRead(), askForDescription());
-        Library library = new Library();
-        while (!isAdded) {
+        while (true) {
             if (getAllBooks().containsKey(id)) {
                 id++;
             } else {
-                library.getAllBooks().putIfAbsent(id, book);
-                isAdded = true;
+                getAllBooks().putIfAbsent(id, book);
                 return book;
             }
         }
-        return book;
     }
 }
 

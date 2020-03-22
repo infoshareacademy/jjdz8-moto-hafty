@@ -5,17 +5,13 @@ import java.util.Map;
 
 public class Shelf extends BooksOnShelf4 {
 
-    private Boolean isOnShelf;
-    private String shelfAddDate;
+    private static Map<Integer, Book> shelf = new LinkedHashMap<>();
 
-    public static Map<Integer, Book> shelf = new LinkedHashMap<>();
+    public Shelf() {
+    }
 
     public static Map<Integer, Book> getShelf() {
         return shelf;
-    }
-
-    public static void setShelf(Map<Integer, Book> shelf) {
-        Shelf.shelf = shelf;
     }
 
     public void printShelfMenuOptions() {
@@ -25,6 +21,15 @@ public class Shelf extends BooksOnShelf4 {
         System.out.println("3: Usunięcie książki z półki");
         System.out.println("4: Usunięcie wszystkich książek z półki");
         System.out.println("5: Powrót do menu głównego");
+    }
+
+    public void printShelfBooks() {
+        System.out.println("Skrócone dane książek znajdujących się na półce:");
+        if (getShelf().isEmpty()) {
+            System.out.println("!!!Półka jest pusta");
+        } else {
+            printShortInfoAboutAllBooksFromMap(getShelf());
+        }
     }
 
     public void shelfMenu() {
@@ -38,13 +43,7 @@ public class Shelf extends BooksOnShelf4 {
             number = scanner.nextLine();
             switch (number) {
                 case "1": {
-                    System.out.println("Skrócone dane książek znajdujących się na półce:");
-                    if (shelf.isEmpty()) {
-                        System.out.println("!!!Półka jest pusta");
-                    } else {
-                        printShortInfoAboutAllBooksFromMap(shelf);
-                        break;
-                    }
+                    printShelfBooks();
                     continue;
                 }
                 case "2": {
@@ -67,9 +66,6 @@ public class Shelf extends BooksOnShelf4 {
                     System.out.println("!!!Wybrano nieodpowiednią opcję, spróbuj jeszcze raz");
                 }
             }
-
-
         }
     }
-
 }

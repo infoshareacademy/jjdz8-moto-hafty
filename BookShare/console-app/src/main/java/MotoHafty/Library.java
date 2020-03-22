@@ -14,14 +14,10 @@ public class Library extends Book {
     public Library() {
     }
 
-    public void setBooks(Map<Integer, Book> books) {
-        Library.allBooks = books;
-    }
-
     public void printAllBooks() {
         System.out.println("_________________________________");
         System.out.println("W Biblioteczce znajdują się następujące ksiązki:");
-        for (Map.Entry<Integer, Book> entry : allBooks.entrySet()) {
+        for (Map.Entry<Integer, Book> entry : getAllBooks().entrySet()) {
             System.out.println("###############################################################################");
             System.out.println("ID: " + entry.getKey());
             System.out.println("Tytuł: " + entry.getValue().getTitle());
@@ -47,25 +43,39 @@ public class Library extends Book {
 
     public void printOneBookShortDetails(Integer id) {
         System.out.println("ID: " + id);
-        System.out.println("Tytuł: " + allBooks.get(id).getTitle());
-        System.out.println("Główny autor: " + allBooks.get(id).getMainAuthorName());
+        System.out.println("Tytuł: " + getAllBooks().get(id).getTitle());
+        System.out.println("Główny autor: " + getAllBooks().get(id).getMainAuthorName());
     }
 
     public void printOneBookDetails(Integer id){
-        System.out.println("ID: " + id);
-        System.out.println("Tytuł: " + allBooks.get(id).getTitle());
-        System.out.println("Główny autor: " + allBooks.get(id).getMainAuthorName());
-        System.out.println("Wszyscy autorzy: " + Arrays.toString(allBooks.get(id).getAuthors().toArray()));
-        System.out.println("Kategoria: " + allBooks.get(id).getCategory());
-        System.out.println("ISBN: " + allBooks.get(id).getIsbn());
-        System.out.println("Data dodania: " + allBooks.get(id).getInputDate());
-        System.out.println("Status książki: " + (allBooks.get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
-        System.out.println("Opis: " + allBooks.get(id).getDescription());
+        printOneBookShortDetails(id);
+        System.out.println("Wszyscy autorzy: " + Arrays.toString(getAllBooks().get(id).getAuthors().toArray()));
+        System.out.println("Kategoria: " + getAllBooks().get(id).getCategory());
+        System.out.println("ISBN: " + getAllBooks().get(id).getIsbn());
+        System.out.println("Data dodania: " + getAllBooks().get(id).getInputDate());
+        System.out.println("Status książki: " + (getAllBooks().get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
+        System.out.println("Opis: " + getAllBooks().get(id).getDescription());
+    }
+
+    public Boolean checkIsBookInLibrary(Integer id) {
+        return getAllBooks().containsKey((id));
+    }
+
+    public Integer checkIsNumber(String inputId) {
+        if (inputId.matches("[0-9]+")) {
+            return Integer.parseInt(inputId);
+        } else {
+            return -1;
+        }
+    }
+
+    public String askForBookId() {
+        System.out.println("_________________________________");
+        System.out.println("Wprowadź ID Książki: ");
+        return scanner.nextLine();
     }
 
     public void addTestBooksToLibrary() {
-        //metoda uruchamia się z każdorazowym startem programu - mozesz sobie edytować/dodać dowolną książkę,
-        // jeśli chcesz przetestować jakiś przypadek (jakiś null, lub przydługa nazwa - cokolwiek)
 
         List<String> authorsTestList = new ArrayList<>();
         authorsTestList.add("test autor 1");
@@ -85,7 +95,7 @@ public class Library extends Book {
         for (Book book : bookList) {
             if (book.getAuthors().isEmpty())
             book.getAuthors().add(book.getMainAuthorName());
-            allBooks.put(id,book);
+            getAllBooks().put(id,book);
             id++;
         }
     }

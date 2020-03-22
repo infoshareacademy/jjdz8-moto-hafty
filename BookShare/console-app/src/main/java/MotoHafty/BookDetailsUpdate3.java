@@ -2,37 +2,6 @@ package MotoHafty;
 
 public class BookDetailsUpdate3 extends AddNewBook1 {
 
-    public Integer askUserForBookId() {
-        Library library = new Library();
-        Integer pickedIdInt = -1;
-        Boolean ispicked = false;
-        while (!ispicked) {
-            System.out.println("_________________________________");
-            System.out.println("Wprowadź Id ksiązki, której dane chcesz zaktualizować: ");
-            String pickedId = scanner.nextLine();
-            if (pickedId.matches("\\d+")) {
-                pickedIdInt = Integer.parseInt(pickedId);
-                for (Integer i : library.getAllBooks().keySet()) {
-                    if (library.getAllBooks().containsKey(pickedIdInt)) {
-                        System.out.println("Wybrano książkę do edycji: ");
-                        System.out.println("#########################################");
-                        System.out.println("ID: " + pickedIdInt);
-                        System.out.println("Tytuł: " + library.getAllBooks().get(pickedIdInt).getTitle());
-                        System.out.println("Główny autor: " + library.getAllBooks().get(pickedIdInt).getMainAuthorName());
-                        ispicked = true;
-                        return pickedIdInt;
-                    } else {
-                        System.out.println("!!!Ksiązka o podanym ID nie widnieje w biblioteczce");
-                    }
-                    break;
-                }
-            } else {
-                System.out.println("!!!Wprowadzono błędną wartość");
-            }
-        }
-        return pickedIdInt;
-    }
-
     public void askforBookDetailsUpdate(Integer id) {
         getAllBooks().get(id).setTitle(askForTitle());
         getAllBooks().get(id).setMainAuthorName(askForName());
@@ -44,19 +13,23 @@ public class BookDetailsUpdate3 extends AddNewBook1 {
         getAllBooks().get(id).setDescription(askForDescription());
     }
 
-    public Book updateBookDetails() {
+    public void updateBookDetails() {
         boolean isUpdated = false;
         while (!isUpdated) {
-            System.out.println("Skrócone dane wszystkich książek znajdujacych się w Biblioteczce");
+            System.out.println("Skrócone dane wszystkich książek znajdujacych się w Biblioteczce:");
             printShortInfoAboutAllBooksFromMap(getAllBooks());
-            Integer id = askUserForBookId();
-            askforBookDetailsUpdate(id);
-            System.out.println("Zaktualizowano książkę:");
-            printOneBookDetails(id);
-            isUpdated = true;
+            Integer id = checkIsNumber(askForBookId());
+            if (checkIsBookInLibrary(id)) {
+                printOneBookDetails(id);
+                askforBookDetailsUpdate(id);
+                System.out.println("_________________________________");
+                System.out.println("Zaktualizowane dane książki: ");
+                printOneBookDetails(id);
+                System.out.println("Zmiany zostały zapisane");
+                System.out.println("_________________________________");
+                isUpdated = true;
+            } else System.out.println("!!!Ksiązka o podanym ID nie widnieje w biblioteczce");
         }
-        return null;
     }
-
 }
 

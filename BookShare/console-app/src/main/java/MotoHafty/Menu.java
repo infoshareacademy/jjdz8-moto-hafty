@@ -2,18 +2,13 @@ package MotoHafty;
 
 import java.util.Scanner;
 
-public class Menu {
-
-    //Do zrobienia: osobne klasy dla każdej z opcji w menu, tak aby dało się uzupełnić switcha w metodzie start
-    //Sugeruję, aby każda klasa z opcją miała na końcu nazwy numerek (ten który trzeba wcisnąć w menu)
+public class Menu extends Library {
 
     public void start() {
-        Library library = new Library();
-        library.addTestBooksToLibrary();
+        addTestBooksToLibrary();
         System.out.println("########################################################");
         System.out.println("Cześć, jestem BookShare. ");
-        Boolean isFinished = false;
-        while (!isFinished) {
+        while (true) {
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println("Daj znać co chcesz zrobić, wybierając odpowiednią cyfrę:");
             printMainMenuOptions();
@@ -33,17 +28,12 @@ public class Menu {
                     System.out.println("Aby zarządzać półką do wypożyczania, podążaj za moimi poleceniami");
                     new Shelf().shelfMenu();
                     continue;
-
                 }
                 case "6": {
                     System.out.println("Program zostanie zamknięty");
                     System.out.println("Miłego dnia");
-                    isFinished = true;
                     break;
                 }
-                default:
-                    System.out.println("!!!Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
-                    break;
             }
             break;
         }
