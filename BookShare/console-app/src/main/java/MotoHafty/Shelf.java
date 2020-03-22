@@ -5,15 +5,13 @@ import java.util.Map;
 
 public class Shelf extends BooksOnShelf4 {
 
+    private static Map<Integer, Book> shelf = new LinkedHashMap<>();
 
-    public static Map<Integer, Book> shelf = new LinkedHashMap<>();
+    public Shelf() {
+    }
 
     public static Map<Integer, Book> getShelf() {
         return shelf;
-    }
-
-    public static void setShelf(Map<Integer, Book> shelf) {
-        Shelf.shelf = shelf;
     }
 
     public void printShelfMenuOptions() {
@@ -37,10 +35,10 @@ public class Shelf extends BooksOnShelf4 {
             switch (number) {
                 case "1": {
                     System.out.println("Skrócone dane książek znajdujących się na półce:");
-                    if (shelf.isEmpty()) {
+                    if (getShelf().isEmpty()) {
                         System.out.println("!!!Półka jest pusta");
                     } else {
-                        printShortInfoAboutAllBooksFromMap(shelf);
+                        printShortInfoAboutAllBooksFromMap(getShelf());
                         break;
                     }
                     continue;
@@ -65,9 +63,6 @@ public class Shelf extends BooksOnShelf4 {
                     System.out.println("!!!Wybrano nieodpowiednią opcję, spróbuj jeszcze raz");
                 }
             }
-
-
         }
     }
-
 }

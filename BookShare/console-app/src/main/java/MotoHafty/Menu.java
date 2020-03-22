@@ -2,7 +2,7 @@ package MotoHafty;
 
 import java.util.Scanner;
 
-public class Menu {
+public class Menu  {
 
     public void start() {
         Library library = new Library();
