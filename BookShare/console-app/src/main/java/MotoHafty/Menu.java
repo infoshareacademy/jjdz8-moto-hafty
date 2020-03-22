@@ -4,9 +4,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    //Do zrobienia: osobne klasy dla każdej z opcji w menu, tak aby dało się uzupełnić switcha w metodzie start
-    //Sugeruję, aby każda klasa z opcją miała na końcu nazwy numerek (ten który trzeba wcisnąć w menu)
-
     public void start() {
         Library library = new Library();
         library.addTestBooksToLibrary();

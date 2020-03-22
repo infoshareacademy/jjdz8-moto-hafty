@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class Book {
 
-    //do obgadania czy inputDate w stringu czy w LDT
-
     private String title;
     private String mainAuthorName;
     private List<String> authors = new LinkedList<>();

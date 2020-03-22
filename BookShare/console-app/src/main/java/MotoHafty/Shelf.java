@@ -5,8 +5,6 @@ import java.util.Map;
 
 public class Shelf extends BooksOnShelf4 {
 
-    private Boolean isOnShelf;
-    private String shelfAddDate;
 
     public static Map<Integer, Book> shelf = new LinkedHashMap<>();
 

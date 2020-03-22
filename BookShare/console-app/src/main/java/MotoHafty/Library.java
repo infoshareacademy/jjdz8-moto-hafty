@@ -64,8 +64,6 @@ public class Library extends Book {
     }
 
     public void addTestBooksToLibrary() {
-        //metoda uruchamia się z każdorazowym startem programu - mozesz sobie edytować/dodać dowolną książkę,
-        // jeśli chcesz przetestować jakiś przypadek (jakiś null, lub przydługa nazwa - cokolwiek)
 
         List<String> authorsTestList = new ArrayList<>();
         authorsTestList.add("test autor 1");
