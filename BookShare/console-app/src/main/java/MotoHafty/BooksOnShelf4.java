@@ -5,7 +5,7 @@ public class BooksOnShelf4 extends Library {
 
     public String askForBookId() {
         System.out.println("_________________________________");
-        System.out.println("Wprowadź ID Książki, którą chcesz umieścić na półce: ");
+        System.out.println("Wprowadź ID Książki: ");
         return scanner.nextLine();
     }
 
@@ -17,32 +17,62 @@ public class BooksOnShelf4 extends Library {
         }
     }
 
-    public Boolean checkIsBookInLibrary(Integer convertedToIntegerID) {
-        return getAllBooks().containsKey((convertedToIntegerID));
+    public Boolean checkIsBookInLibrary(Integer id) {
+        return getAllBooks().containsKey((id));
     }
 
     public void putBookOnShelf() {
         printShortInfoAboutAllBooksFromMap(getAllBooks());
         String inputID = askForBookId();
         Integer inputIdInteger = checkIsNumber(inputID);
-        if (checkIsBookInLibrary(inputIdInteger)){
-            Shelf.getShelf().put(inputIdInteger,getAllBooks().get(inputIdInteger));
+        if (checkIsBookInLibrary(inputIdInteger)) {
+            Shelf.getShelf().put(inputIdInteger, getAllBooks().get(inputIdInteger));
             System.out.println("Do biblioteczki wprowadzono książkę: ");
             printOneBookShortDetails(inputIdInteger);
-        }else {
+        } else {
             System.out.println("!!!Książka o podanym ID nie znajduje się w biblioteczce");
         }
     }
 
+    public Boolean checkIsBookOnShelf(Integer id) {
+        return Shelf.getShelf().containsKey(id);
+    }
 
     public void removeBookFromShelf() {
-        //TODO
+        if (!checkIsShelfEmpty()) {
+            printShortInfoAboutAllBooksFromMap(Shelf.shelf);
+            String inputId = askForBookId();
+            Integer inputInInteger = checkIsNumber(inputId);
+            if (checkIsBookOnShelf(inputInInteger)) {
+                Shelf.getShelf().remove(inputInInteger);
+                System.out.println("_________________________________");
+                System.out.println("Z półki usunieto książkę: ");
+                printOneBookShortDetails(inputInInteger);
+            } else {
+                System.out.println("!!!Książka o podanym ID nie znajduje się na półce");
+            }
+        }
+    }
+
+    public Boolean checkIsShelfEmpty() {
+        if (Shelf.getShelf().isEmpty()) {
+            System.out.println("!!!Półka jest pusta");
+            return true;
+        } else
+            return false;
     }
 
     public void clearShelf() {
-        //TODO
-        //pamietaj o zapytaniu czy na pewno wszystkie
+        if (!checkIsShelfEmpty()) {
+            System.out.println("_________________________________");
+            System.out.println("Ilość książek na półce: " + Shelf.getShelf().size() + " książek");
+            System.out.println("Aby zatwierdzić usunięcie wszystkich książek z półki, naciśnij + ");
+            System.out.println("Aby zrezygnować, naciśnij inny dowolny klawisz");
+            String decision = scanner.nextLine();
+            if (decision.equalsIgnoreCase("+")){
+                Shelf.getShelf().clear();
+                System.out.println("Wszystkie książki zostały usunięte z półki.");
+            }
+        }
     }
-
-
 }

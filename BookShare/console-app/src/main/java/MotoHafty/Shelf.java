@@ -18,7 +18,7 @@ public class Shelf extends BooksOnShelf4 {
         Shelf.shelf = shelf;
     }
 
-    public void printShelfMenuOptions(){
+    public void printShelfMenuOptions() {
 
         System.out.println("1: Podgląd książek znajdujących się na półce");
         System.out.println("2: Umieszczenie jednej książki na półce");
@@ -38,23 +38,26 @@ public class Shelf extends BooksOnShelf4 {
             number = scanner.nextLine();
             switch (number) {
                 case "1": {
-                    System.out.println("Skrócone dane książek znajdujących się na półce");
-                    if (shelf.isEmpty()){
+                    System.out.println("Skrócone dane książek znajdujących się na półce:");
+                    if (shelf.isEmpty()) {
                         System.out.println("!!!Półka jest pusta");
-                    }else {
+                    } else {
                         printShortInfoAboutAllBooksFromMap(shelf);
                         break;
                     }
-                continue;
+                    continue;
                 }
                 case "2": {
                     putBookOnShelf();
                     continue;
-
                 }
                 case "3": {
+                    removeBookFromShelf();
+                    continue;
                 }
                 case "4": {
+                    clearShelf();
+                    continue;
                 }
                 case "5": {
                     isFinishedShelf = true;
