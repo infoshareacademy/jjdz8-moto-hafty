@@ -3,13 +3,12 @@ package MotoHafty;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Shelf extends Library {
+public class Shelf extends BooksOnShelf4 {
 
     private Boolean isOnShelf;
     private String shelfAddDate;
 
-
-    private static Map<Integer, Book> shelf = new LinkedHashMap<>();
+    public static Map<Integer, Book> shelf = new LinkedHashMap<>();
 
     public static Map<Integer, Book> getShelf() {
         return shelf;
@@ -41,7 +40,7 @@ public class Shelf extends Library {
                 case "1": {
                     System.out.println("Skrócone dane książek znajdujących się na półce");
                     if (shelf.isEmpty()){
-                        System.out.println("Półka jest pusta");
+                        System.out.println("!!!Półka jest pusta");
                     }else {
                         printShortInfoAboutAllBooksFromMap(shelf);
                         break;
@@ -49,6 +48,9 @@ public class Shelf extends Library {
                 continue;
                 }
                 case "2": {
+                    putBookOnShelf();
+                    continue;
+
                 }
                 case "3": {
                 }
@@ -59,7 +61,7 @@ public class Shelf extends Library {
                     break;
                 }
                 default: {
-                    System.out.println("Wybrano nieodpowiednią opcję, spróbuj jeszcze raz");
+                    System.out.println("!!!Wybrano nieodpowiednią opcję, spróbuj jeszcze raz");
                 }
             }
 

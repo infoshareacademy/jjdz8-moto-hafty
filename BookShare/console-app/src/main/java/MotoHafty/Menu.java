@@ -42,7 +42,7 @@ public class Menu {
                     break;
                 }
                 default:
-                    System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
+                    System.out.println("!!!Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
                     break;
             }
             break;
@@ -70,7 +70,7 @@ public class Menu {
                 System.out.println("Wybrano opcję nr " + number);
                 isNumberPicked = true;
             } else {
-                System.out.println("Wybrano nieodpowiednią cyfrę, spróbuj jeszcze raz:");
+                System.out.println("!!!Wybrano nieodpowiednią cyfrę, spróbuj jeszcze raz:");
                 printMainMenuOptions();
                 isNumberPicked = false;
             }
