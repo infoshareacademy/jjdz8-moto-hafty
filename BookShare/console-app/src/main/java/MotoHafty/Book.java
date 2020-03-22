@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Book  extends Menu{
+public class Book {
 
     private String title;
     private String mainAuthorName;
@@ -15,7 +15,7 @@ public class Book  extends Menu{
     private Boolean isRead;
     private String description;
 
-    public Book(){};
+    public Book(){}
 
     public Book(String title, String mainAuthorName, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description) {
         this.title = title;

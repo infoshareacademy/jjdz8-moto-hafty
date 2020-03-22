@@ -48,15 +48,31 @@ public class Library extends Book {
     }
 
     public void printOneBookDetails(Integer id){
-        System.out.println("ID: " + id);
-        System.out.println("Tytuł: " + getAllBooks().get(id).getTitle());
-        System.out.println("Główny autor: " + getAllBooks().get(id).getMainAuthorName());
+        printOneBookShortDetails(id);
         System.out.println("Wszyscy autorzy: " + Arrays.toString(getAllBooks().get(id).getAuthors().toArray()));
         System.out.println("Kategoria: " + getAllBooks().get(id).getCategory());
         System.out.println("ISBN: " + getAllBooks().get(id).getIsbn());
         System.out.println("Data dodania: " + getAllBooks().get(id).getInputDate());
         System.out.println("Status książki: " + (getAllBooks().get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
         System.out.println("Opis: " + getAllBooks().get(id).getDescription());
+    }
+
+    public Boolean checkIsBookInLibrary(Integer id) {
+        return getAllBooks().containsKey((id));
+    }
+
+    public Integer checkIsNumber(String inputId) {
+        if (inputId.matches("[0-9]+")) {
+            return Integer.parseInt(inputId);
+        } else {
+            return -1;
+        }
+    }
+
+    public String askForBookId() {
+        System.out.println("_________________________________");
+        System.out.println("Wprowadź ID Książki: ");
+        return scanner.nextLine();
     }
 
     public void addTestBooksToLibrary() {

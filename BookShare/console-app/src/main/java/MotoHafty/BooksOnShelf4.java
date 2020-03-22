@@ -4,25 +4,6 @@ import static MotoHafty.Shelf.getShelf;
 
 public class BooksOnShelf4 extends Library {
 
-
-    public String askForBookId() {
-        System.out.println("_________________________________");
-        System.out.println("Wprowadź ID Książki: ");
-        return scanner.nextLine();
-    }
-
-    public Integer checkIsNumber(String inputId) {
-        if (inputId.matches("[0-9]+")) {
-            return Integer.parseInt(inputId);
-        } else {
-            return -1;
-        }
-    }
-
-    public Boolean checkIsBookInLibrary(Integer id) {
-        return getAllBooks().containsKey((id));
-    }
-
     public void putBookOnShelf() {
         printShortInfoAboutAllBooksFromMap(getAllBooks());
         String inputID = askForBookId();
@@ -71,10 +52,10 @@ public class BooksOnShelf4 extends Library {
             System.out.println("Aby zatwierdzić usunięcie wszystkich książek z półki, naciśnij + ");
             System.out.println("Aby zrezygnować, naciśnij inny dowolny klawisz");
             String decision = scanner.nextLine();
-            if (decision.equalsIgnoreCase("+")){
+            if (decision.equalsIgnoreCase("+")) {
                 getShelf().clear();
                 System.out.println("Wszystkie książki zostały usunięte z półki.");
-            }
+            } else System.out.println("Półka nie została wyczyszczona");
         }
     }
 }
