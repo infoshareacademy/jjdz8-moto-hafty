@@ -5,7 +5,6 @@ import java.util.*;
 
 public class AddNewBook1 extends Library {
 
-    Scanner scanner = new Scanner(System.in);
 
     public String askForTitle() {
         boolean isTitleOK = false;
@@ -15,7 +14,7 @@ public class AddNewBook1 extends Library {
             System.out.println("Wprowadź tytuł książki: ");
             title = scanner.nextLine();
             if (title.equalsIgnoreCase("") || title.trim().equalsIgnoreCase("")) {
-                System.out.println("Nazwa nie może być pusta");
+                System.out.println("!!!Nazwa nie może być pusta");
             } else {
                 System.out.println("Wprowadzony tytuł to: " + title);
                 isTitleOK = true;
@@ -33,7 +32,7 @@ public class AddNewBook1 extends Library {
             System.out.println("Wprowadź imię i nazwisko autora: ");
             name = scanner.nextLine();
             if (name.equalsIgnoreCase("") || name.trim().equalsIgnoreCase("")) {
-                System.out.println("Imię i nazwisko autora nie moogą być puste");
+                System.out.println("!!!Imię i nazwisko autora nie moogą być puste");
             } else {
                 System.out.println("Wprowadzone dane autora to: " + name);
                 System.out.println("Wpisz \"+\", aby dodać kolejnego autora. Jeśli nie chcesz - naciśnij enter");
@@ -139,7 +138,7 @@ public class AddNewBook1 extends Library {
                             break;
                         }
                         default: {
-                            System.out.println("wybrano nieodpowiednią wartość, spróbuj jeszcze raz");
+                            System.out.println("!!!wybrano nieodpowiednią wartość, spróbuj jeszcze raz");
                         }
                     }
                     break;
@@ -211,13 +210,13 @@ public class AddNewBook1 extends Library {
                             break;
                         }
                         default: {
-                            System.out.println("wybrano nieodpowiednią wartość, spróbuj jeszcze raz");
+                            System.out.println("!!!wybrano nieodpowiednią wartość, spróbuj jeszcze raz");
                         }
                     }
                 }
                 break;
                 default:
-                    System.out.println("Wprowadzono nieodpowiednią wartość, spróbuj jeszcze raz");
+                    System.out.println("!!!Wprowadzono nieodpowiednią wartość, spróbuj jeszcze raz");
                     break;
             }
         }
@@ -236,7 +235,7 @@ public class AddNewBook1 extends Library {
                 isIsbnOk = true;
                 break;
             } else {
-                System.out.println("wprowadzony ISBN jest niepoprawny, spróbuj jeszcze raz:");
+                System.out.println("!!!wprowadzony ISBN jest niepoprawny, spróbuj jeszcze raz:");
             }
         }
         return isbn;
@@ -273,7 +272,7 @@ public class AddNewBook1 extends Library {
         System.out.println("Wprowadzono opis książki: ");
         System.out.println(description);}
         else {
-            System.out.println("Nie wprowadzono opisu ksiażki");
+            System.out.println("!!!Nie wprowadzono opisu ksiażki");
         }
         return description;
     }
@@ -286,10 +285,10 @@ public class AddNewBook1 extends Library {
                         generateDateInStringNow(), askIsRead(), askForDescription());
         Library library = new Library();
         while (!isAdded) {
-            if (getBooks().containsKey(id)) {
+            if (getAllBooks().containsKey(id)) {
                 id++;
             } else {
-                library.getBooks().putIfAbsent(id, book);
+                library.getAllBooks().putIfAbsent(id, book);
                 isAdded = true;
                 return book;
             }

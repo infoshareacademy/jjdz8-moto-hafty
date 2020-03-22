@@ -4,27 +4,24 @@ import java.util.*;
 
 public class Library extends Book {
 
-    //narazie zrobiłem że jako id w mapie przypisuje się hashcode nowo utworzonej książki.
-    //książka dodaje do mapy się w momencie utworzenia (metoda addNewBook)
-
-    private static Map<Integer, Book> books = new LinkedHashMap<>();
+    private static Map<Integer, Book> allBooks = new LinkedHashMap<>();
     public Integer id = 0;
 
-    public Map<Integer, Book> getBooks() {
-        return books;
+    public Map<Integer, Book> getAllBooks() {
+        return allBooks;
     }
 
     public Library() {
     }
 
     public void setBooks(Map<Integer, Book> books) {
-        Library.books = books;
+        Library.allBooks = books;
     }
 
     public void printAllBooks() {
         System.out.println("_________________________________");
         System.out.println("W Biblioteczce znajdują się następujące ksiązki:");
-        for (Map.Entry<Integer, Book> entry : books.entrySet()) {
+        for (Map.Entry<Integer, Book> entry : allBooks.entrySet()) {
             System.out.println("###############################################################################");
             System.out.println("ID: " + entry.getKey());
             System.out.println("Tytuł: " + entry.getValue().getTitle());
@@ -38,10 +35,9 @@ public class Library extends Book {
         }
     }
 
-    public void printAllBooksOnlyAuthorsIdTitle() {
+    public void printShortInfoAboutAllBooksFromMap(Map<Integer, Book> libraryOrShelf) {
         System.out.println("_________________________________");
-        System.out.println("Skrócone dane wszystkich książek:");
-        for (Map.Entry<Integer, Book> entry : books.entrySet()) {
+        for (Map.Entry<Integer, Book> entry : libraryOrShelf.entrySet()) {
             System.out.println("#########################################");
             System.out.println("ID: " + entry.getKey());
             System.out.println("Tytuł: " + entry.getValue().getTitle());
@@ -49,18 +45,22 @@ public class Library extends Book {
         }
     }
 
-    public void printOneBookDetails(Integer id){
-        System.out.println("_________________________________");
-        System.out.println("###############################################################################");
+    public void printOneBookShortDetails(Integer id) {
         System.out.println("ID: " + id);
-        System.out.println("Tytuł: " + books.get(id).getTitle());
-        System.out.println("Główny autor: " + books.get(id).getMainAuthorName());
-        System.out.println("Wszyscy autorzy: " + Arrays.toString(books.get(id).getAuthors().toArray()));
-        System.out.println("Kategoria: " + books.get(id).getCategory());
-        System.out.println("ISBN: " + books.get(id).getIsbn());
-        System.out.println("Data dodania: " + books.get(id).getInputDate());
-        System.out.println("Status książki: " + (books.get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
-        System.out.println("Opis: " + books.get(id).getDescription());
+        System.out.println("Tytuł: " + allBooks.get(id).getTitle());
+        System.out.println("Główny autor: " + allBooks.get(id).getMainAuthorName());
+    }
+
+    public void printOneBookDetails(Integer id){
+        System.out.println("ID: " + id);
+        System.out.println("Tytuł: " + allBooks.get(id).getTitle());
+        System.out.println("Główny autor: " + allBooks.get(id).getMainAuthorName());
+        System.out.println("Wszyscy autorzy: " + Arrays.toString(allBooks.get(id).getAuthors().toArray()));
+        System.out.println("Kategoria: " + allBooks.get(id).getCategory());
+        System.out.println("ISBN: " + allBooks.get(id).getIsbn());
+        System.out.println("Data dodania: " + allBooks.get(id).getInputDate());
+        System.out.println("Status książki: " + (allBooks.get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
+        System.out.println("Opis: " + allBooks.get(id).getDescription());
     }
 
     public void addTestBooksToLibrary() {
@@ -85,7 +85,7 @@ public class Library extends Book {
         for (Book book : bookList) {
             if (book.getAuthors().isEmpty())
             book.getAuthors().add(book.getMainAuthorName());
-            books.put(id,book);
+            allBooks.put(id,book);
             id++;
         }
     }

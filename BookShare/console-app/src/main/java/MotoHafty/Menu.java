@@ -1,6 +1,5 @@
 package MotoHafty;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -30,6 +29,12 @@ public class Menu {
                     new BookDetailsUpdate3().updateBookDetails();
                     continue;
                 }
+                case "4": {
+                    System.out.println("Aby zarządzać półką do wypożyczania, podążaj za moimi poleceniami");
+                    new Shelf().shelfMenu();
+                    continue;
+
+                }
                 case "6": {
                     System.out.println("Program zostanie zamknięty");
                     System.out.println("Miłego dnia");
@@ -37,7 +42,7 @@ public class Menu {
                     break;
                 }
                 default:
-                    System.out.println("Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
+                    System.out.println("!!!Wprowadzone dane są nieprawidłowe, spróbuj jeszcze raz");
                     break;
             }
             break;
@@ -65,7 +70,7 @@ public class Menu {
                 System.out.println("Wybrano opcję nr " + number);
                 isNumberPicked = true;
             } else {
-                System.out.println("Wybrano nieodpowiednią cyfrę, spróbuj jeszcze raz:");
+                System.out.println("!!!Wybrano nieodpowiednią cyfrę, spróbuj jeszcze raz:");
                 printMainMenuOptions();
                 isNumberPicked = false;
             }

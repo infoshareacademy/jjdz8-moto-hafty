@@ -11,7 +11,7 @@ public class JsonConverter {
 
     public void convertLibraryToJsonFile() {
         try {
-            mapper.writeValue(new File("booksInJson.json"), library.getBooks());
+            mapper.writeValue(new File("booksInJson.json"), library.getAllBooks());
         } catch (IOException e) {
             e.printStackTrace();
         }
