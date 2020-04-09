@@ -1,5 +1,11 @@
 package MotoHafty;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class JsonConverter extends Library {
 
     public Integer id = 9;
@@ -15,6 +21,7 @@ public class JsonConverter extends Library {
             number = scanner.nextLine();
             switch (number) {
                 case "1": {
+                    importUserJsonFileToLibrary();
                     continue;
                 }
                 case "2": {
@@ -37,5 +44,28 @@ public class JsonConverter extends Library {
         System.out.println("3: Powrót do menu głównego");
     }
 
+    public void importUserJsonFileToLibrary() {
+        boolean isUserJsonFileAddedToLIbrary = false;
+        String fileName;
+        while(!isUserJsonFileAddedToLIbrary) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Na początku umieść plik ze swoją biblioteczką w katalogu aplikacji,\na następnie " +
+                    "podaj nazwę Twojego pliku, aby program zaimportował Twoje książki do biblioteczki.");
+            fileName = scanner.nextLine();
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                Book[] books = mapper.readValue(new File(fileName), Book[].class);
+                for (Book book : books) {
+                    getAllBooks().put(id, book);
+                    id++;
+                }
+                System.out.println("Twoja biblioteczka została dodana do aplikacji.");
+                isUserJsonFileAddedToLIbrary = true;
+            } catch (IOException e) {
+                System.out.println("Nazwa pliku, którą wpisałeś, nie odpowiada nazwie pliku załadowanego przez Ciebie" +
+                        " do folderu BookShare.\nSpróbuj jeszcze raz, uważnie podążając za moimi poleceniami: ");
+            }
+        }
+    }
 }
 
