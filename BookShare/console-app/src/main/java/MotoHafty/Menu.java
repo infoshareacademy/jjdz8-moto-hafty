@@ -29,6 +29,11 @@ public class Menu extends Library {
                     new Shelf().shelfMenu();
                     continue;
                 }
+                case "5": {
+                    System.out.println("Aby importować/eksportować biblioteczkę do pliku, podążaj za moimi poleceniami");
+                    new JsonConverter().jsonConverterMenu();
+                    continue;
+                }
                 case "6": {
                     System.out.println("Program zostanie zamknięty");
                     System.out.println("Miłego dnia");
