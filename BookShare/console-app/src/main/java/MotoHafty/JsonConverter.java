@@ -25,6 +25,7 @@ public class JsonConverter extends Library {
                     continue;
                 }
                 case "2": {
+                    exportUserLibraryToJsonFile();
                     continue;
                 }
                 case "3": {
@@ -67,5 +68,36 @@ public class JsonConverter extends Library {
             }
         }
     }
+
+    public void exportUserLibraryToJsonFile() {
+        String fileName;
+        boolean isUserLibraryExportedToJsonFile = false;
+        while (!isUserLibraryExportedToJsonFile) {
+            ObjectMapper mapper = new ObjectMapper();
+            System.out.println("Podaj nazwę pliku do jakiego chcesz zapisać całą zaktualizowaną biblioteczkę.\n" +
+                    "Pamiętaj, że aplikacja zapisuje biblioteczkę do pliku z rozszerzeniem .json, więc podany " +
+                    "przez Ciebie plik musi mieć takie rozszerzenie");
+            fileName = scanner.nextLine();
+            if (fileMatches(fileName) == true) {
+                System.out.println("Plik o nazwie " + fileName + " został zapisany. Po zakończeniu działania " +
+                        "programu plik " + fileName + " będzie znajdował się w folderze BookShare");
+                try {
+                    mapper.writeValue(new File(fileName), getAllBooks());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                isUserLibraryExportedToJsonFile = true;
+            }
+            else {
+                System.out.println("Podałeś nieprawidłową nazwę pliku.\nSpróbuj jeszcze raz, uważnie podążając " +
+                        "za moimi poleceniami: ");
+            }
+        }
+    }
+
+    public boolean fileMatches(String cos) {
+        return cos.matches("(.*\\.json$)");
+    }
 }
+
 
