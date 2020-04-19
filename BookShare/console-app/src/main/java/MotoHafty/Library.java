@@ -1,6 +1,7 @@
 package MotoHafty;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Library extends Book {
 
@@ -47,7 +48,7 @@ public class Library extends Book {
         System.out.println("Główny autor: " + getAllBooks().get(id).getMainAuthorName());
     }
 
-    public void printOneBookDetails(Integer id){
+    public void printOneBookDetails(Integer id) {
         printOneBookShortDetails(id);
         System.out.println("Wszyscy autorzy: " + Arrays.toString(getAllBooks().get(id).getAuthors().toArray()));
         System.out.println("Kategoria: " + getAllBooks().get(id).getCategory());
@@ -94,9 +95,99 @@ public class Library extends Book {
         bookList.add(new Book("Błyskawiczne wywieranie wpływu", "Michael V. Pantalon", new ArrayList<>(), "Literatura użytkowa | Podręczniki", "9788374893466", AddNewBook1.generateDateInStringNow(), false, "książka o czymś"));
         for (Book book : bookList) {
             if (book.getAuthors().isEmpty())
-            book.getAuthors().add(book.getMainAuthorName());
-            getAllBooks().put(id,book);
+                book.getAuthors().add(book.getMainAuthorName());
+            getAllBooks().put(id, book);
             id++;
+        }
+    }
+
+    public void printTableOfBooksByListOfId(List<Integer> idList) {
+        Integer MaxFieldIDLenght = 6;
+        Integer MaxFieldTitleLenght = 41;
+        Integer MaxFieldMainAuthorLenght = 24;
+        Integer MaxFieldCategoryLenght = 21;
+        Integer MaxFieldIsbnLenght = 13;
+        Integer MaxFieldDateOfAddLenght = 12;
+        Integer MaxFieldBookStatusLenght = 13;
+        Integer MaxFieldDescriptionLenght = 10;
+// Head line printing
+        System.out.print("|  ID  |");
+        System.out.print("                  Tytuł                  |");
+        System.out.print("      Główny autor      |");
+        System.out.print("      Kategoria      |");
+        System.out.print("    ISBN     |");
+        System.out.print("Data dodania|");
+        System.out.print(" Przeczytana |");
+        System.out.println("   Opis   |");
+        if (idList.size() == 0) {
+            System.out.println("|                                                                 Nie znalazłem takich książek                                                                 |");
+            return;
+        }
+        for (Integer entry : idList) {
+            Book entryBook = getAllBooks().get(entry);
+            System.out.print("|");
+            if (entry.toString().length() > MaxFieldIDLenght) {
+                System.out.print(entry.toString().substring(0, (MaxFieldIDLenght - 3)) + "...");
+            } else {
+                System.out.print(entry);
+                for (int i = 0; i < (MaxFieldIDLenght - entry.toString().length()); i++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("|");
+            if (entryBook.getTitle().length() > MaxFieldTitleLenght) {
+                System.out.print(entryBook.getTitle().substring(0, (MaxFieldTitleLenght - 3)) + "...");
+            } else {
+                System.out.print(entryBook.getTitle());
+                for (int i = 0; i < (MaxFieldTitleLenght - entryBook.getTitle().length()); i++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("|");
+            if (entryBook.getMainAuthorName().length() > MaxFieldMainAuthorLenght) {
+                System.out.print(entryBook.getMainAuthorName().substring(0, (MaxFieldMainAuthorLenght - 3)) + "...");
+            } else {
+                System.out.print(entryBook.getMainAuthorName());
+                for (int i = 0; i < (MaxFieldMainAuthorLenght - entryBook.getMainAuthorName().length()); i++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("|");
+            if (entryBook.getCategory().length() > MaxFieldCategoryLenght) {
+                System.out.print(entryBook.getCategory().substring(0, (MaxFieldCategoryLenght - 3)) + "...");
+            } else {
+                System.out.print(entryBook.getCategory());
+                for (int i = 0; i < (MaxFieldCategoryLenght - entryBook.getCategory().length()); i++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("|");
+            String isbnNumbersOnly = entryBook.getIsbn().replaceAll("[^0-9]","");
+            System.out.print(isbnNumbersOnly);
+                for (int i = 0; i < (MaxFieldIsbnLenght - isbnNumbersOnly.length()); i++) {
+                    System.out.print(" ");
+                }
+            System.out.print("|");
+            if (entryBook.getInputDate().length() > MaxFieldDateOfAddLenght) {
+                System.out.print(entryBook.getInputDate().substring(0, (MaxFieldDateOfAddLenght - 3)) + "...");
+            } else {
+                System.out.print(entryBook.getInputDate());
+                for (int i = 0; i < (MaxFieldDateOfAddLenght - entryBook.getInputDate().length()); i++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.print("|");
+            System.out.print(entryBook.getRead() ? "     TAK     " : "     NIE     ");
+            System.out.print("|");
+            if (entryBook.getDescription().length() > MaxFieldDescriptionLenght) {
+                System.out.print(entryBook.getDescription().substring(0, (MaxFieldDescriptionLenght - 3)) + "...");
+            } else {
+                System.out.print(entryBook.getDescription());
+                for (int i = 0; i < (MaxFieldDescriptionLenght - entryBook.getDescription().length()); i++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("|");
         }
     }
 }

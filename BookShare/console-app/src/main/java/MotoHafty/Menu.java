@@ -19,6 +19,11 @@ public class Menu extends Library {
                     new AddNewBook1().addNewBook();
                     continue;
                 }
+                case "2": {
+                    System.out.println("Aby wyszukać książkę, wpisz fragment tytułu");
+                    new Finder().finderMenu();
+                    continue;
+                }
                 case "3": {
                     System.out.println("Aby zmienić dane dotyczące konkretnej ksiązki, podążaj za moimi poleceniami");
                     new BookDetailsUpdate3().updateBookDetails();
