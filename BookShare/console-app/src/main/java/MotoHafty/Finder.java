@@ -9,22 +9,29 @@ public class Finder extends Library {
 
     public void printFinderMenuOptions() {
 
-        System.out.println("1: wybranych polach");
+        System.out.println("1: po wybranych polach");
         System.out.println("2: gdziekolwiek");
-        System.out.println("3: Powrót do menu głównego");
+        System.out.println("3: po ID");
+        System.out.println("4: Powrót do menu głównego");
+    }
+
+    public void printFinderByFieldsOption() {
+
     }
 
     public void finderMenu () {
         Boolean isFinishedFinder = false;
         String number = "";
         while (!isFinishedFinder) {
-            System.out.println("_________________________________");
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println("Wyszukiwanie: ");
             printFinderMenuOptions();
             number = scanner.nextLine();
             switch (number) {
                 case "1": {
+                    clearScreen();
+                    System.out.println("Wybrano opcję nr 1");
+                    System.out.println("Wyszukiwanie po wybranych polach");
+                    printLineOfChars('-', true);
                     System.out.println("Wpisz fragment tekstu w poniższych polach do wyszukania (pola sa nieobowiązkowe)");
                     System.out.print("autor: ");
                     String searchAuthor = scanner.nextLine();
@@ -34,26 +41,76 @@ public class Finder extends Library {
                     String searchIsbn = scanner.nextLine();
                     System.out.print("kategoria: ");
                     String searchCategory = scanner.nextLine();
-                    System.out.print("przeczytane (t/n): ");
-                    String searchReadString = scanner.nextLine().toLowerCase();
-                    if (searchAuthor.trim().equals("") && searchTitle.trim().equals("") && searchIsbn.trim().equals("") && searchCategory.trim().equals("") && searchReadString.trim().equals("")) {
-                        System.out.println("Nie wpisałeś nic do żadnego pola!");
+                    System.out.print("przeczytana (tak/nie): ");
+                    String searchReadString = "";
+                    while (true) {
+                        searchReadString = scanner.nextLine();
+                        if (searchReadString.toLowerCase().trim().equals("tak")
+                                || searchReadString.toLowerCase().trim().equals("t")
+                                || searchReadString.toLowerCase().trim().equals("nie")
+                                || searchReadString.toLowerCase().trim().equals("n")
+                                || searchReadString.toLowerCase().trim().equals("")
+                                || searchReadString.toLowerCase().trim().equals("+")) {
+                            break;
+                        } else {
+                            System.out.print("Musisz wprowadzić tak/nie lub zostawić puste. Przeczytana (tak/nie):");
+                        }
+                    }
+
+                    printLineOfChars('-', true);
+                    if (searchAuthor.trim().equals("") && searchTitle.trim().equals("") && searchIsbn.trim().equals("")
+                            && searchCategory.trim().equals("") && searchReadString.trim().equals("")) {
+                        System.out.println("Nie wpisałeś nic do żadnego pola. Musisz uzupełnić conajmniej jedno pole.");
+                        break;
                     }
                     System.out.println("Znalazłem dla Ciebie takie książki:");
                     printTableOfBooksByListOfId(findBookByFields(searchAuthor, searchTitle, searchIsbn, searchCategory, searchReadString));
                     continue;
                 }
                 case "2": {
-                    System.out.println("Wpisz fragment tekstu do wyszukania: ");
+                    clearScreen();
+                    System.out.println("Wybrano opcję nr 2");
+                    System.out.println("Wyszukiwanie gdziekolwiek");
+                    printLineOfChars('-', true);
+                    System.out.print("Wpisz fragment tekstu do wyszukania: ");
                     String searchAny = scanner.nextLine();
+                    printLineOfChars('-', true);
+                    System.out.println("Znalazłem dla Ciebie takie książki:");
                     printTableOfBooksByListOfId(findBookByAny(searchAny));
                     continue;
                 }
                 case "3": {
+                    clearScreen();
+                    System.out.println("Wybrano opcję nr 3");
+                    System.out.println("Wyszukiwanie po ID");
+                    printLineOfChars('-', true);
+                    System.out.print("Wpisz numer ID książki do wyszukania: ");
+                    String searchId = "";
+                    while (true) {
+                        searchId = scanner.nextLine();
+                        if (searchId.trim().matches("\\d+")) {
+                            break;
+                        } else {
+                            System.out.print("Musisz wprowadzić liczbę dodatnią. Wpisz numer ID książki do wyszukania: ");
+                        }
+                    }
+                    printLineOfChars('-', true);
+                    if (checkIsBookInLibrary(Integer.valueOf(searchId))) {
+                        System.out.println("Poniżej szczegółowe informacje o książce:");
+                        printLineOfChars('-', true);
+                        printOneBookDetails(Integer.valueOf(searchId));
+                    } else {
+                        System.out.println("Nie znalazłem książki o takim ID");
+                        printLineOfChars('-', true);
+                    }
+                    continue;
+                }
+                case "4": {
                     isFinishedFinder = true;
+                    break;
                 }
                 default: {
-                    System.out.println("!!!Wybrano nieodpowiednią opcję, spróbuj jeszcze raz");
+                    System.out.println("!!!Wybrano nieodpowiednią opcję, spróbuj jeszcze raz:");
                 }
             }
         }
@@ -62,7 +119,8 @@ public class Finder extends Library {
     public List<Integer> findBookByFields(String searchAuthor, String searchTitle, String searchIsbn, String searchCategory, String searchReadString) {
         boolean isReadSelected = false;
         boolean searchRead = false;
-        if (searchReadString.equals("t") || searchReadString.equals("tak")) {
+        if (searchReadString.toLowerCase().trim().equals("t") || searchReadString.toLowerCase().trim().equals("tak")
+                || searchReadString.toLowerCase().trim().equals("+")) {
             searchRead = true;
             isReadSelected = true;
         } else if (searchReadString.equals("n") || searchReadString.equals("nie")) {
@@ -95,35 +153,4 @@ public class Finder extends Library {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
-
-    public List<Integer> findBookByAuthor(String searchExpression) {
-            Library finderLibrary = new Library();
-            return finderLibrary.getAllBooks().entrySet().stream()
-                .filter(e -> e.getValue().getMainAuthorName().toLowerCase().contains(searchExpression.toLowerCase()) || e.getValue().getAuthors().toString().contains(searchExpression.toLowerCase()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-    }
-
-    public List<Integer> findBookByTitle(String searchExpression) {
-        Library finderLibrary = new Library();
-        return finderLibrary.getAllBooks().entrySet().stream()
-                .filter(e -> e.getValue().getTitle().toLowerCase().contains(searchExpression.toLowerCase()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-    }
-    public List<Integer> findBookByISBN(String searchExpression) {
-        Library finderLibrary = new Library();
-        return finderLibrary.getAllBooks().entrySet().stream()
-                .filter(e -> e.getValue().getIsbn().toLowerCase().replaceAll("-","").contains(searchExpression.toLowerCase()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-    }
-    public List<Integer> findBookByCategory(String searchExpression) {
-        Library finderLibrary = new Library();
-        return finderLibrary.getAllBooks().entrySet().stream()
-                .filter(e -> e.getValue().getCategory().toLowerCase().contains(searchExpression.toLowerCase()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-    }
-
 }
