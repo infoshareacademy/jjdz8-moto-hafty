@@ -1,17 +1,24 @@
 package MotoHafty;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Library extends Book {
 
     private static Map<Integer, Book> allBooks = new LinkedHashMap<>();
     public Integer id = 0;
+    public static int CONSOLEWIDTH = 166;
 
     public Map<Integer, Book> getAllBooks() {
         return allBooks;
     }
 
     public Library() {
+    }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     public void printAllBooks() {
@@ -32,29 +39,46 @@ public class Library extends Book {
     }
 
     public void printShortInfoAboutAllBooksFromMap(Map<Integer, Book> libraryOrShelf) {
-        System.out.println("_________________________________");
-        for (Map.Entry<Integer, Book> entry : libraryOrShelf.entrySet()) {
-            System.out.println("#########################################");
-            System.out.println("ID: " + entry.getKey());
-            System.out.println("Tytuł: " + entry.getValue().getTitle());
-            System.out.println("Główny autor: " + entry.getValue().getMainAuthorName());
+        Integer MaxFieldIdLenght = 6;
+        Integer MaxFieldTitleLenght = 60;
+        Integer MaxFieldMainAuthorLenght = 30;
+        Integer MaxLineLenght = MaxFieldIdLenght + MaxFieldTitleLenght + MaxFieldMainAuthorLenght;
+        printLineOfChars('-', true);
+        System.out.print("|");
+        printFieldLineForTable("ID", MaxFieldIdLenght);
+        printFieldLineForTable("Tytuł", MaxFieldTitleLenght);
+        printFieldLineForTable("Główny autor", MaxFieldMainAuthorLenght);
+        System.out.println();
+        printLineOfChars('-', false);
+        if (libraryOrShelf.size() == 0) {
+            printFieldLineForTable("  Nie znalazłem książek spełniających wymagania", MaxLineLenght);
+            return;
         }
+        for (Map.Entry<Integer, Book> entry : libraryOrShelf.entrySet()) {
+            System.out.print("\n|");
+            printFieldLineForTable(entry.getKey().toString(), MaxFieldIdLenght);
+            printFieldLineForTable(entry.getValue().getTitle(), MaxFieldTitleLenght);
+            printFieldLineForTable(entry.getValue().getMainAuthorName(), MaxFieldMainAuthorLenght);
+        }
+        System.out.println();
+        printLineOfChars('-', true);
     }
 
     public void printOneBookShortDetails(Integer id) {
-        System.out.println("ID: " + id);
-        System.out.println("Tytuł: " + getAllBooks().get(id).getTitle());
-        System.out.println("Główny autor: " + getAllBooks().get(id).getMainAuthorName());
+        System.out.println("ID:              | " + id);
+        System.out.println("Tytuł:           | " + getAllBooks().get(id).getTitle());
+        System.out.println("Główny autor:    | " + getAllBooks().get(id).getMainAuthorName());
     }
 
-    public void printOneBookDetails(Integer id){
+    public void printOneBookDetails(Integer id) {
         printOneBookShortDetails(id);
-        System.out.println("Wszyscy autorzy: " + Arrays.toString(getAllBooks().get(id).getAuthors().toArray()));
-        System.out.println("Kategoria: " + getAllBooks().get(id).getCategory());
-        System.out.println("ISBN: " + getAllBooks().get(id).getIsbn());
-        System.out.println("Data dodania: " + getAllBooks().get(id).getInputDate());
-        System.out.println("Status książki: " + (getAllBooks().get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
-        System.out.println("Opis: " + getAllBooks().get(id).getDescription());
+        System.out.println("Wszyscy autorzy: | " + Arrays.toString(getAllBooks().get(id).getAuthors().toArray()));
+        System.out.println("Kategoria:       | " + getAllBooks().get(id).getCategory());
+        System.out.println("ISBN:            | " + getAllBooks().get(id).getIsbn());
+        System.out.println("Data dodania:    | " + getAllBooks().get(id).getInputDate());
+        System.out.println("Status książki:  | " + (getAllBooks().get(id).getRead() ? "Przeczytana" : "Nieprzeczytana"));
+        System.out.println("Opis:\n" + getAllBooks().get(id).getDescription());
+        printLineOfChars('-', true);
     }
 
     public Boolean checkIsBookInLibrary(Integer id) {
@@ -70,8 +94,7 @@ public class Library extends Book {
     }
 
     public String askForBookId() {
-        System.out.println("_________________________________");
-        System.out.println("Wprowadź ID Książki: ");
+        System.out.print("Wprowadź ID Książki: ");
         return scanner.nextLine();
     }
 
@@ -94,9 +117,75 @@ public class Library extends Book {
         bookList.add(new Book("Błyskawiczne wywieranie wpływu", "Michael V. Pantalon", new ArrayList<>(), "Literatura użytkowa | Podręczniki", "9788374893466", AddNewBook1.generateDateInStringNow(), false, "książka o czymś"));
         for (Book book : bookList) {
             if (book.getAuthors().isEmpty())
-            book.getAuthors().add(book.getMainAuthorName());
-            getAllBooks().put(id,book);
+                book.getAuthors().add(book.getMainAuthorName());
+            getAllBooks().put(id, book);
             id++;
+        }
+    }
+
+    public void printFieldLineForTable(String text, Integer maxLenght) {
+        if (text.length() > maxLenght) {
+            System.out.print(" " + text.substring(0, (maxLenght - 3)) + "...");
+        } else {
+            System.out.print(" " + text);
+            for (int i = 0; i < (maxLenght - text.length()); i++) {
+                System.out.print(" ");
+            }
+        }
+        System.out.print("|");
+    }
+
+    public void printTableOfBooksByListOfId(List<Integer> idList) {
+//        Definition of width of table columns
+        Integer MaxFieldIdLenght = 6;
+        Integer MaxFieldTitleLenght = 41;
+        Integer MaxFieldMainAuthorLenght = 20;
+        Integer MaxFieldCategoryLenght = 20;
+        Integer MaxFieldIsbnLenght = 14;
+        Integer MaxFieldInputDateLenght = 12;
+        Integer MaxFieldBookStatusLenght = 11;
+        Integer MaxFieldDescriptionLenght = 25;
+        Integer MaxLineLenght = MaxFieldIdLenght + MaxFieldTitleLenght + MaxFieldMainAuthorLenght
+                + MaxFieldCategoryLenght + MaxFieldIsbnLenght + MaxFieldInputDateLenght + MaxFieldBookStatusLenght
+                + MaxFieldDescriptionLenght;
+//        Head line printing
+        printLineOfChars('-', true);
+        System.out.print("|");
+        printFieldLineForTable("ID", MaxFieldIdLenght);
+        printFieldLineForTable("Tytuł", MaxFieldTitleLenght);
+        printFieldLineForTable("Główny autor", MaxFieldMainAuthorLenght);
+        printFieldLineForTable("Kategoria", MaxFieldCategoryLenght);
+        printFieldLineForTable("Isbn", MaxFieldIsbnLenght);
+        printFieldLineForTable("Data dodania", MaxFieldInputDateLenght);
+        printFieldLineForTable("Przeczytana", MaxFieldBookStatusLenght);
+        printFieldLineForTable("Opis", MaxFieldDescriptionLenght);
+        System.out.println();
+        printLineOfChars('-', false);
+        if (idList.size() == 0) {
+            printFieldLineForTable("  Nie znalazłem książek spełniających wymagania", MaxLineLenght);
+            return;
+        }
+        for (Integer entry : idList) {
+            Book entryBook = getAllBooks().get(entry);
+            System.out.print("\n|");
+            printFieldLineForTable(entry.toString(), MaxFieldIdLenght);
+            printFieldLineForTable(entryBook.getTitle(), MaxFieldTitleLenght);
+            printFieldLineForTable(entryBook.getMainAuthorName(), MaxFieldMainAuthorLenght);
+            printFieldLineForTable(entryBook.getCategory(), MaxFieldCategoryLenght);
+            printFieldLineForTable(entryBook.getIsbn().replaceAll("[^0-9]","").trim(), MaxFieldIsbnLenght);
+            printFieldLineForTable(entryBook.getInputDate(), MaxFieldInputDateLenght);
+            printFieldLineForTable(entryBook.getRead() ? "TAK" : "NIE", MaxFieldBookStatusLenght);
+            printFieldLineForTable(entryBook.getDescription(), MaxFieldDescriptionLenght);
+        }
+        printLineOfChars('-', true);
+    }
+
+    public void printLineOfChars(char character, boolean putNewLineOnEnd) {
+        for (int i = 0; i < (CONSOLEWIDTH - 1); i++) {
+            System.out.print(character);
+        }
+        if (putNewLineOnEnd) {
+            System.out.println(character);
         }
     }
 }

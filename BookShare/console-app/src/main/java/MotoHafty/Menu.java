@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class Menu extends Library {
 
     public void start() {
+
         addTestBooksToLibrary();
         System.out.println("########################################################");
         System.out.println("Cześć, jestem BookShare. ");
         while (true) {
+            clearScreen();
             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             System.out.println("Daj znać co chcesz zrobić, wybierając odpowiednią cyfrę:");
             printMainMenuOptions();
@@ -19,6 +21,12 @@ public class Menu extends Library {
                     new AddNewBook1().addNewBook();
                     continue;
                 }
+                case "2": {
+                    System.out.println("Aby wyszukać książkę, wybierz jedną z poniższych opcji");
+                    printLineOfChars('-', true);
+                    new Finder().finderMenu();
+                    continue;
+                }
                 case "3": {
                     System.out.println("Aby zmienić dane dotyczące konkretnej ksiązki, podążaj za moimi poleceniami");
                     new BookDetailsUpdate3().updateBookDetails();
@@ -26,6 +34,7 @@ public class Menu extends Library {
                 }
                 case "4": {
                     System.out.println("Aby zarządzać półką do wypożyczania, podążaj za moimi poleceniami");
+                    printLineOfChars('-', true);
                     new Shelf().shelfMenu();
                     continue;
                 }
@@ -57,6 +66,7 @@ public class Menu extends Library {
             System.out.println("Wybierz odpowiednią cyfrę:");
             number = scanner.nextLine();
             if (number.equals("1") || number.equals("2") || number.equals("3") || number.equals("4") || number.equals("5") || number.equals("6")) {
+                clearScreen();
                 System.out.println("Wybrano opcję nr " + number);
                 isNumberPicked = true;
             } else {
