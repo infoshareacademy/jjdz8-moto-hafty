@@ -72,9 +72,7 @@ public class JsonConverter extends Library {
         boolean isUserLibraryExportedToJsonFile = false;
         while (!isUserLibraryExportedToJsonFile) {
 
-            System.out.println("Podaj nazwę pliku do jakiego chcesz zapisać całą zaktualizowaną biblioteczkę.\n" +
-                    "Pamiętaj, że aplikacja zapisuje biblioteczkę do pliku z rozszerzeniem .json, więc podany " +
-                    "przez Ciebie plik musi mieć takie rozszerzenie");
+            System.out.println("Podaj nazwę pliku do jakiego chcesz zapisać całą zaktualizowaną biblioteczkę");
             fileName = scanner.nextLine();
             System.out.println("Plik o nazwie " + fileName + ".json został zapisany. Po zakończeniu działania " +
                     "programu plik " + fileName + ".json będzie znajdował się w folderze BookShare");
