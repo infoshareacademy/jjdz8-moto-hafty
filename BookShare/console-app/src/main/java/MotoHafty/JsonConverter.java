@@ -4,11 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class JsonConverter extends Library {
 
-    public Integer id = 9;
+    ObjectMapper mapper = new ObjectMapper();
 
     public void jsonConverterMenu() {
         Boolean isJsonConverterMenuDone = false;
@@ -48,12 +47,10 @@ public class JsonConverter extends Library {
     public void importUserJsonFileToLibrary() {
         boolean isUserJsonFileAddedToLIbrary = false;
         String fileName;
-        while(!isUserJsonFileAddedToLIbrary) {
-            Scanner scanner = new Scanner(System.in);
+        while (!isUserJsonFileAddedToLIbrary) {
             System.out.println("Na początku umieść plik ze swoją biblioteczką w katalogu aplikacji,\na następnie " +
                     "podaj nazwę Twojego pliku, aby program zaimportował Twoje książki do biblioteczki.");
             fileName = scanner.nextLine();
-            ObjectMapper mapper = new ObjectMapper();
             try {
                 Book[] books = mapper.readValue(new File(fileName), Book[].class);
                 for (Book book : books) {
@@ -63,8 +60,9 @@ public class JsonConverter extends Library {
                 System.out.println("Twoja biblioteczka została dodana do aplikacji.");
                 isUserJsonFileAddedToLIbrary = true;
             } catch (IOException e) {
-                System.out.println("Nazwa pliku, którą wpisałeś, nie odpowiada nazwie pliku załadowanego przez Ciebie" +
-                        " do folderu BookShare.\nSpróbuj jeszcze raz, uważnie podążając za moimi poleceniami: ");
+                System.out.println("Nazwa pliku, którą wpisałeś, nie odpowiada nazwie pliku załadowanego przez " +
+                        "Ciebie do folderu BookShare.\nSpróbuj jeszcze raz, uważnie podążając za moimi " +
+                        "poleceniami: ");
             }
         }
     }
@@ -73,31 +71,19 @@ public class JsonConverter extends Library {
         String fileName;
         boolean isUserLibraryExportedToJsonFile = false;
         while (!isUserLibraryExportedToJsonFile) {
-            ObjectMapper mapper = new ObjectMapper();
+
             System.out.println("Podaj nazwę pliku do jakiego chcesz zapisać całą zaktualizowaną biblioteczkę.\n" +
                     "Pamiętaj, że aplikacja zapisuje biblioteczkę do pliku z rozszerzeniem .json, więc podany " +
                     "przez Ciebie plik musi mieć takie rozszerzenie");
             fileName = scanner.nextLine();
-            if (fileMatches(fileName) == true) {
-                System.out.println("Plik o nazwie " + fileName + " został zapisany. Po zakończeniu działania " +
-                        "programu plik " + fileName + " będzie znajdował się w folderze BookShare");
-                try {
-                    mapper.writeValue(new File(fileName), getAllBooks());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                isUserLibraryExportedToJsonFile = true;
+            System.out.println("Plik o nazwie " + fileName + ".json został zapisany. Po zakończeniu działania " +
+                    "programu plik " + fileName + ".json będzie znajdował się w folderze BookShare");
+            try {
+                mapper.writeValue(new File(fileName + ".json"), getAllBooks());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else {
-                System.out.println("Podałeś nieprawidłową nazwę pliku.\nSpróbuj jeszcze raz, uważnie podążając " +
-                        "za moimi poleceniami: ");
-            }
+            isUserLibraryExportedToJsonFile = true;
         }
     }
-
-    public boolean fileMatches(String cos) {
-        return cos.matches("(.*\\.json$)");
-    }
 }
-
-
