@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/start")
+@WebServlet("/")
 public class StartServlet extends HttpServlet {
 
     @Override
