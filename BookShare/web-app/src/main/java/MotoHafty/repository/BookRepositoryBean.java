@@ -2,31 +2,30 @@ package MotoHafty.repository;
 
 import MotoHafty.domain.Book;
 import MotoHafty.storage.BookDb;
-import MotoHafty.storage.BookFromJsonDb;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.Collections;
 import java.util.Map;
 
 @Stateless
 public class BookRepositoryBean implements BookRepository {
 
     @Inject
-    private BookFromJsonDb bookFromJsonDb;
+    private BookDb bookDb;
 
     @Override
     public void addNewBooK(Book book) {
-        bookFromJsonDb.addBook(book);
+        bookDb.addBook(book);
     }
 
     @Override
     public void updateBook(Integer id, Book editedBook) {
-        bookFromJsonDb.getAllBooks().put(id, editedBook);
+        bookDb.getAllBooks()
+              .put(id, editedBook);
     }
 
     @Override
     public Map<Integer, Book> readBooks() {
-        return bookFromJsonDb.getAllBooks();
+        return bookDb.getAllBooks();
     }
 }

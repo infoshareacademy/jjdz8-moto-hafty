@@ -6,28 +6,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.ejb.Stateful;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Stateful
 public class JsonService {
-    Map<Integer, Book> booksMap = new LinkedHashMap<>();
+
     public Map<Integer, Book> importUserJsonFileBooks(String fileName) {
-
-        boolean isUserJsonFileAdded = false;
-        while (!isUserJsonFileAdded) {
-            try {
-                ObjectMapper mapper = new ObjectMapper();
-                Book[] books = mapper.readValue(new File(fileName), Book[].class);
-                Integer id = 0;
-                for (Book book : books) {
-                    booksMap.put(id, book);
-                    id++;
-                }
-                isUserJsonFileAdded = true;
-            } catch (IOException e) {
-
+        Map<Integer, Book> booksMap = new LinkedHashMap<>();
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            File file = new File(fileName);
+            Book[] books = mapper.readValue(file, Book[].class);
+            Integer id = 0;
+            for (Book book : books) {
+                booksMap.put(id, book);
+                id++;
             }
+        } catch (IOException e) {
+            System.out.println("File not found or broken: " + e.getMessage()); // ToDo replace with logger
+            return Collections.emptyMap();
         }
         return booksMap;
     }
