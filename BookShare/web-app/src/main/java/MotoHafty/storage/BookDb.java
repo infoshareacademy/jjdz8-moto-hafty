@@ -8,4 +8,5 @@ public interface BookDb {
 
     Map<Integer, Book> getAllBooks();
 
+    void addBook(Book book);
 }

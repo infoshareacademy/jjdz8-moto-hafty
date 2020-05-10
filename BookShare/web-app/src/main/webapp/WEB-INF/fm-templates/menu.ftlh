@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/shelf">Półka do wypożyczeń</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/books">Wszystkie książki</a>
+            </li>
         </ul>
     </div>
 </nav>

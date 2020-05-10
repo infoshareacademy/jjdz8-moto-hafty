@@ -6,7 +6,7 @@ import javax.ejb.Stateful;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Stateful
+
 public class BookInMemoryDb implements BookDb {
 
     private Integer id = 1;
@@ -19,6 +19,11 @@ public class BookInMemoryDb implements BookDb {
     @Override
     public Map<Integer, Book> getAllBooks() {
         return books;
+    }
+
+    @Override
+    public void addBook(Book book) {
+
     }
 
     //FIXME
