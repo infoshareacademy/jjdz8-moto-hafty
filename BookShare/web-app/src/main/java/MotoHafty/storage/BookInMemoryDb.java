@@ -2,10 +2,8 @@ package MotoHafty.storage;
 
 import MotoHafty.domain.Book;
 
-import javax.ejb.Stateful;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
 
 public class BookInMemoryDb implements BookDb {
 

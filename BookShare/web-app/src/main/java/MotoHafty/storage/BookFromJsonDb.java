@@ -4,35 +4,32 @@ import MotoHafty.domain.Book;
 import MotoHafty.service.JsonService;
 
 import javax.ejb.Stateful;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.Map;
+import java.util.Objects;
 
-@Default
 @Stateful
 public class BookFromJsonDb implements BookDb {
 
     @Inject
     private JsonService jsonService;
-    private Integer id = 1;
-    private Map<Integer, Book> books = new LinkedHashMap<>();
+    private static final String BOOKS_JSON = "Books.json";
 
     @Override
     public Map<Integer, Book> getAllBooks() {
-        return jsonService.importUserJsonFileBooks(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath());
-//        return new HashMap<>();
+        String path = Objects.requireNonNull(getClass().getClassLoader().getResource(BOOKS_JSON)).getPath();
+        return jsonService.importUserJsonFileBooks(path);
     }
 
     @Override
-    public void addBook(Book book) { }
+    public void addBook(Book book) {
+    }
 
     //FIXME
     private String generateDateInStringNow() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         return sdf.format(new Date());
     }
-
-
-
 }

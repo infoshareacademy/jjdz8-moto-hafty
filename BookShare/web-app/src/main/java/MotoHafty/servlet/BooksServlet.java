@@ -25,15 +25,16 @@ public class BooksServlet extends HttpServlet {
     private BookRepository bookRepository;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         resp.setContentType("text/html;charset=UTF-8");
+
         Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("pageDescription","Wszystkie książki w BookShare");
-        dataModel.put("pageTitle","BookShare Lista książek");
+        dataModel.put("pageDescription", "Wszystkie książki w BookShare");
+        dataModel.put("pageTitle", "BookShare Lista książek");
         dataModel.put("books", bookRepository.readBooks());
 
-        Template template = templateProvider.getTemplate(getServletContext(),"books.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "books.ftlh");
 
         PrintWriter printWriter = resp.getWriter();
         try {
@@ -41,7 +42,5 @@ public class BooksServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-
     }
-
 }
