@@ -2,12 +2,9 @@ package MotoHafty.repository;
 
 import MotoHafty.domain.Book;
 import MotoHafty.storage.BookDb;
-import MotoHafty.storage.BookFromJsonDb;
-import MotoHafty.storage.BookInMemoryDb;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import java.util.*;
 
 @Stateless

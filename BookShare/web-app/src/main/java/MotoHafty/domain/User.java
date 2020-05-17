@@ -14,9 +14,6 @@ public class User {
     private Set<Integer> userLibrary;
     private Set<Integer> userShelf;
 
-    //FIXME gettery itd
-
-
     public User(String login, String name, String surname, String email, String password, Adress adress, boolean isActive, Set<Integer> userLibrary, Set<Integer> userShelf) {
         this.login = login;
         this.name = name;
