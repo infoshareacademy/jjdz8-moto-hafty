@@ -11,16 +11,17 @@
 
 <main role="main">
     <div class="container">
-        <ul>
-            <li></li>
-        <#list books?keys as key>
-                   <li>
-                       <p>Tytuł: ${books[key].title}</p>
-                       <p>ISBN: ${books[key].isbn}</p>
-                       <p></p>
-                   </li>
+        <#list books>
+            <ul>
+                <#items as bookKey, bookValue>
+                    <li>
+                        <p>${bookKey}</p>
+                        <p>Tytuł: ${bookValue.title}</p>
+                        <p>ISBN: ${bookValue.isbn}</p>
+                    </li>
+                </#items>
+            </ul>
         </#list>
-           </ul>
     </div>
 </main>
 <#include "footer.ftlh">
