@@ -3,12 +3,14 @@ package MotoHafty.service;
 import MotoHafty.domain.Book;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@LocalBean
 @Stateful
 public class JsonService {
     Map<Integer, Book> booksMap = new LinkedHashMap<>();

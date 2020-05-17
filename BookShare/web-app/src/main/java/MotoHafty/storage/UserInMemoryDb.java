@@ -4,9 +4,10 @@ import MotoHafty.domain.Adress;
 import MotoHafty.domain.User;
 
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import java.util.*;
 
-@Stateful
+@Stateless
 public class UserInMemoryDb implements UserDb {
 
     private Integer id = 1;

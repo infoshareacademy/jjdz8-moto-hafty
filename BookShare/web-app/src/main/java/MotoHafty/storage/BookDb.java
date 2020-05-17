@@ -2,8 +2,10 @@ package MotoHafty.storage;
 
 import MotoHafty.domain.Book;
 
+import javax.ejb.Local;
 import java.util.Map;
 
+@Local
 public interface BookDb {
 
     Map<Integer, Book> getAllBooks();

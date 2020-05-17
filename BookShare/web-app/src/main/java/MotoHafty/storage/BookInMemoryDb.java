@@ -6,7 +6,7 @@ import javax.ejb.Stateful;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
+@Stateful
 public class BookInMemoryDb implements BookDb {
 
     private Integer id = 1;

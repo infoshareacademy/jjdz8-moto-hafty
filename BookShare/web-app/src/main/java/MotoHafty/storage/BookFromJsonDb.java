@@ -3,17 +3,16 @@ package MotoHafty.storage;
 import MotoHafty.domain.Book;
 import MotoHafty.service.JsonService;
 
-import javax.ejb.Stateful;
-import javax.enterprise.inject.Default;
-import javax.inject.Inject;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Default
-@Stateful
+
+@Stateless
 public class BookFromJsonDb implements BookDb {
 
-    @Inject
+    @EJB
     private JsonService jsonService;
     private Integer id = 1;
     private Map<Integer, Book> books = new LinkedHashMap<>();
@@ -21,7 +20,7 @@ public class BookFromJsonDb implements BookDb {
     @Override
     public Map<Integer, Book> getAllBooks() {
         return jsonService.importUserJsonFileBooks(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath());
-//        return new HashMap<>();
+//        return new HashMap<Integer, Book>();
     }
 
     @Override
