@@ -4,10 +4,10 @@ public class Adress {
 
     private String streetAddress;
     private String city;
-    private String province;
+    private Enum<Province> province;
     private String zipCode;
 
-    public Adress(String streetAddress, String city, String province, String zipCode) {
+    public Adress(String streetAddress, String city, Enum<Province>  province, String zipCode) {
         this.streetAddress = streetAddress;
         this.city = city;
         this.province = province;
@@ -30,11 +30,11 @@ public class Adress {
         this.city = city;
     }
 
-    public String getProvince() {
+    public Enum<Province>  getProvince() {
         return province;
     }
 
-    public void setProvince(String province) {
+    public void setProvince(Enum<Province>  province) {
         this.province = province;
     }
 
