@@ -21,7 +21,7 @@ public class JsonService {
             ObjectMapper mapper = new ObjectMapper();
             File file = new File(fileName);
             Book[] books = mapper.readValue(file, Book[].class);
-            Integer id = 0;
+            Integer id = 1;
             for (Book book : books) {
                 booksMap.put(id, book);
                 id++;
