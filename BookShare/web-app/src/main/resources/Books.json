@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Wrócę, gdy będziesz spała",
+    "mainAuthorName": "Patrycja Dołowy",
+    "authors": [
+      "Patrycja Dołowy"
+    ],
+    "category": "Literatura Piękna | Biografia/Pamiętniki",
+    "isbn": "978-83-8049-830-3",
+    "inputDate": "10-05-2020",
+    "description": "Książka o dzieciach z holokaustu",
+    "read": true
+  },
+  {
+    "title": "Polskie badania nad myślą pedagogiczną w latach 1900-1939",
+    "mainAuthorName": "Sławomir Sztobryn",
+    "authors": [
+      "test autor 1",
+      "test autor 2",
+      "test autor 3"
+    ],
+    "category": "Literatura Użytkowa | Naukowe/Specjalistyczne",
+    "isbn": "83-89574-24-1",
+    "inputDate": "10-05-2020",
+    "description": "Nudna ksiązka xD",
+    "read": false
+  },
+  {
+    "title": "Współczesny behawioryzm - analiza zachowania od A do Z",
+    "mainAuthorName": "Przemysław Bąbel",
+    "authors": [
+      "Przemysław Bąbel"
+    ],
+    "category": "Literatura Użytkowa | Naukowe/Specjalistyczne",
+    "isbn": "9788374892674",
+    "inputDate": "10-05-2020",
+    "description": "gfhg",
+    "read": true
+  },
+  {
+    "title": "Jekyll i Hyde",
+    "mainAuthorName": "John Rowan",
+    "authors": [
+      "John Rowan"
+    ],
+    "category": "Literatura Użytkowa | Popularnonaukowe",
+    "isbn": "ISBN: 9788389574961",
+    "inputDate": "10-05-2020",
+    "description": "a",
+    "read": true
+  },
+  {
+    "title": "People as care catalysts",
+    "mainAuthorName": "Richard Normann",
+    "authors": [
+      "Richard Normann"
+    ],
+    "category": "Literatura Użytkowa | Popularnonaukowe",
+    "isbn": "isbn0-470-01778-3",
+    "inputDate": "10-05-2020",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus elit et dapibus dictum. Cras consequat volutpat erat, eget rhoncus enim. Cras faucibus finibus lectus id pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget neque ac tellus fermentum vulputate eu et augue. Pellentesque iaculis velit a ornare gravida. Nunc tincidunt imperdiet nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Cras massa magna, egestas vel feugiat eget, ultricies at ex. ",
+    "read": true
+  },
+  {
+    "title": "Viral - jak zarażać ideami i tworzyć wirusowe treści tytuł tej ksiązki już się zakończył, ale chcę mieć długo do testów",
+    "mainAuthorName": "Piotr Bucki",
+    "authors": [
+      "Piotr Bucki"
+    ],
+    "category": "Literatura Użytkowa | Popularnonaukowe",
+    "isbn": "9788301204631",
+    "inputDate": "10-05-2020",
+    "description": "Super Ksiązka polecam serdecznie ",
+    "read": true
+  },
+  {
+    "title": "Drucker o marketingu",
+    "mainAuthorName": "William A. Cohem",
+    "authors": [
+      "test autor 1",
+      "test autor 2",
+      "test autor 3"
+    ],
+    "category": "Literatura użytkowa | Podręczniki",
+    "isbn": "978-83-63566-24-1",
+    "inputDate": "10-05-2020",
+    "description": "książka o czymś",
+    "read": true
+  },
+  {
+    "title": "Wywieranie wpływu na ludzi",
+    "mainAuthorName": "Robert B.",
+    "authors": [
+      "Robert B."
+    ],
+    "category": "Literatura użytkowa | bleble",
+    "isbn": "978-83-7489-250-6",
+    "inputDate": "10-05-2020",
+    "description": "książka o czymś",
+    "read": true
+  },
+  {
+    "title": "Błyskawiczne wywieranie wpływu",
+    "mainAuthorName": "Michael V. Pantalon",
+    "authors": [
+      "Michael V. Pantalon"
+    ],
+    "category": "Literatura użytkowa | Podręczniki",
+    "isbn": "9788374893466",
+    "inputDate": "10-05-2020",
+    "description": "książka o czymś",
+    "read": false
+  }
+]
