@@ -25,9 +25,5 @@ public class BookFromJsonDb implements BookDb {
     @Override
     public void addBook(Book book) { }
 
-    private String generateDateInStringNow() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        return sdf.format(new Date());
-    }
 
 }
