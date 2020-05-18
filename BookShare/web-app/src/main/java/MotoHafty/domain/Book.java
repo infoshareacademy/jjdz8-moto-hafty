@@ -9,7 +9,7 @@ public class Book {
     private String title;
     private String mainAuthorName;
     private List<String> authors = new LinkedList<>();
-    private String category;
+    private Enum<Category> category;
     private String isbn;
     private String inputDate;
     private Boolean isRead;
@@ -17,7 +17,7 @@ public class Book {
 
     public Book(){}
 
-    public Book(String title, String mainAuthorName, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description) {
+    public Book(String title, String mainAuthorName, List<String> authors, Enum<Category> category, String isbn, String inputDate, Boolean isRead, String description) {
         this.title = title;
         this.mainAuthorName = mainAuthorName;
         this.authors = authors;
@@ -54,11 +54,11 @@ public class Book {
         this.authors = authors;
     }
 
-    public String getCategory() {
+    public Enum<Category> getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Enum<Category> category) {
         this.category = category;
     }
 

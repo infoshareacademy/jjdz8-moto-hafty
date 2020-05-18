@@ -26,7 +26,6 @@ public class BookRepositoryBean implements BookRepository {
     @Override
     public Map<Integer, Book> readBooks() {
         return bookFromJsonDb.getAllBooks();
-//        return new HashMap<Integer, Book>();
 
         }
     }

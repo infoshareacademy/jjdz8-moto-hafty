@@ -20,18 +20,14 @@ public class BookFromJsonDb implements BookDb {
     @Override
     public Map<Integer, Book> getAllBooks() {
         return jsonService.importUserJsonFileBooks(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath());
-//        return new HashMap<Integer, Book>();
     }
 
     @Override
     public void addBook(Book book) { }
 
-    //FIXME
     private String generateDateInStringNow() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         return sdf.format(new Date());
     }
-
-
 
 }
