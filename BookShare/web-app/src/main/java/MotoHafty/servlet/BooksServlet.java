@@ -1,5 +1,6 @@
 package MotoHafty.servlet;
 
+import MotoHafty.domain.Book;
 import MotoHafty.freemarker.TemplateProvider;
 import MotoHafty.repository.BookRepository;
 import freemarker.template.Template;
@@ -23,6 +24,21 @@ public class BooksServlet extends HttpServlet {
 
     @Inject
     private BookRepository bookRepository;
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+
+        Book book = new Book();
+        book.setTitle(req.getParameter("title"));
+        book.setMainAuthorName(req.getParameter("mainAuthorName"));
+        book.setCategory(req.getParameter("category"));
+        book.setIsbn(req.getParameter("isbn"));
+        book.setDescription(req.getParameter("descritpion"));
+        book.setRead(Boolean.valueOf(req.getParameter("isRead")));
+        bookRepository.addNewBooK(book);
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
