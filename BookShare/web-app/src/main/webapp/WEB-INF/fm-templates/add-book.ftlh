@@ -6,7 +6,7 @@
         <p>
             Wprowadź dane swojej książki!
         </p>
-        <form method="post" action="/add-book">
+        <form method="post" action="/books">
             Tytuł: <input type="text" name="title"/><br/><br/>
             Autor: <input type="text" name="mainAuthorName"/><br/><br/>
             Kategoria: <input type="text" name="category"/><br/><br/>
