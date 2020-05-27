@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="display-3">BookShare</h1>
         <p>
-            Tutaj możesz zarządzać książkami przekazanymi do wypożyczenia
+            Tutaj możesz dodać nową książkę
         </p>
     </div>
 </header>

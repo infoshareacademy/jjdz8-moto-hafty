@@ -14,8 +14,8 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/shelf")
-public class ShelfServlet extends HttpServlet {
+@WebServlet("/book-add")
+public class BookAddServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
@@ -25,10 +25,10 @@ public class ShelfServlet extends HttpServlet {
 
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
-        dataModel.put("pageDescription","To jest strona półki do wypożyczeń");
-        dataModel.put("pageTitle","Półka do wypożyczeń");
+        dataModel.put("pageDescription","To jest strona dodawania nowej ksiażki");
+        dataModel.put("pageTitle","Dodawanie nowej książki");
 
-        Template template = templateProvider.getTemplate(getServletContext(),"shelf.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(),"book-add.ftlh");
 
         PrintWriter printWriter = resp.getWriter();
         try {
