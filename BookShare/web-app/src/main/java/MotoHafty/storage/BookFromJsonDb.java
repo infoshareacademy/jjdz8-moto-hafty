@@ -26,6 +26,8 @@ public class BookFromJsonDb implements BookDb {
 
     @Override
     public void addBook(Book book) {
+        books.put(++id, book);
+        jsonService.exportBooksToJsonFile(books);
     }
 
 
