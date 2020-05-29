@@ -9,7 +9,8 @@
     "isbn": "978-83-8049-830-3",
     "inputDate": "10-05-2020",
     "description": "Książka o dzieciach z holokaustu",
-    "read": true
+    "read": true,
+    "imgUrl" : "https://czarne.com.pl/uploads/catalog/product/cover/1374/large_WROCE_poprawiona_www.jpg"
   },
   {
     "title": "Polskie badania nad myślą pedagogiczną w latach 1900-1939",
@@ -23,7 +24,8 @@
     "isbn": "83-89574-24-1",
     "inputDate": "10-05-2020",
     "description": "Nudna ksiązka xD",
-    "read": false
+    "read": false,
+    "imgUrl" : "https://www.swiatksiazki.pl/media/catalog/product/cache/a946e6dbdb55333e1c3d566a3e38b923/9/9/99900061313.jpg"
   },
   {
     "title": "Współczesny behawioryzm - analiza zachowania od A do Z",
@@ -35,7 +37,8 @@
     "isbn": "9788374892674",
     "inputDate": "10-05-2020",
     "description": "gfhg",
-    "read": true
+    "read": true,
+    "imgUrl" : "https://ecsmedia.pl/c/analiza-zachowania-od-a-do-z-wspolczesny-behawioryzm-b-iext34660622.jpg"
   },
   {
     "title": "Jekyll i Hyde",
@@ -47,7 +50,8 @@
     "isbn": "ISBN: 9788389574961",
     "inputDate": "10-05-2020",
     "description": "a",
-    "read": true
+    "read": true,
+    "imgUrl" :"https://s.lubimyczytac.pl/upload/books/79000/79775/352x500.jpg"
   },
   {
     "title": "People as care catalysts",
@@ -59,7 +63,8 @@
     "isbn": "isbn0-470-01778-3",
     "inputDate": "10-05-2020",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus elit et dapibus dictum. Cras consequat volutpat erat, eget rhoncus enim. Cras faucibus finibus lectus id pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eget neque ac tellus fermentum vulputate eu et augue. Pellentesque iaculis velit a ornare gravida. Nunc tincidunt imperdiet nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Cras massa magna, egestas vel feugiat eget, ultricies at ex. ",
-    "read": true
+    "read": true,
+    "imgUrl" :"https://s2.adlibris.com/images/5426969/people-as-care-catalysts---from-being-patient-to-becoming-healthy.jpg"
   },
   {
     "title": "Viral - jak zarażać ideami i tworzyć wirusowe treści tytuł tej ksiązki już się zakończył, ale chcę mieć długo do testów",
@@ -71,7 +76,8 @@
     "isbn": "9788301204631",
     "inputDate": "10-05-2020",
     "description": "Super Ksiązka polecam serdecznie ",
-    "read": true
+    "read": true,
+    "imgUrl" : "https://s.lubimyczytac.pl/upload/books/4886000/4886526/734416-352x500.jpg"
   },
   {
     "title": "Drucker o marketingu",
@@ -85,7 +91,8 @@
     "isbn": "978-83-63566-24-1",
     "inputDate": "10-05-2020",
     "description": "książka o czymś",
-    "read": true
+    "read": true,
+    "imgUrl" :"https://s.lubimyczytac.pl/upload/books/222000/222929/278948-352x500.jpg"
   },
   {
     "title": "Wywieranie wpływu na ludzi",
@@ -97,7 +104,8 @@
     "isbn": "978-83-7489-250-6",
     "inputDate": "10-05-2020",
     "description": "książka o czymś",
-    "read": true
+    "read": true,
+    "imgUrl" : ""
   },
   {
     "title": "Błyskawiczne wywieranie wpływu",
@@ -109,6 +117,7 @@
     "isbn": "9788374893466",
     "inputDate": "10-05-2020",
     "description": "książka o czymś",
-    "read": false
+    "read": false,
+    "imgUrl" : ""
   }
 ]
