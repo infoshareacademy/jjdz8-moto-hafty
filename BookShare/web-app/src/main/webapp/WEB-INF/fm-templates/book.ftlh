@@ -9,5 +9,14 @@
     </div>
 </header>
 <main role="main">
+    <div class="container book">
+        <div id="book-info" class="col-md-12">
+            <div class="title-container relative" title="${book.title}">
+                <h1 class="book_title js-book-title-scale">
+                    ${book.title}
+                </h1>
+            </div>
+        </div>
+    </div>
 </main>
 <#include "footer.ftlh">

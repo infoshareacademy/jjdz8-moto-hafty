@@ -31,7 +31,9 @@
                         <div class="mainAuthorName table-data">${bookValue.mainAuthorName}</div>
                         <div class="title table-data">${bookValue.title}</div>
                         <div class="options table-data">
-                            <a href="/book-edit?book=${bookKey}">Edytuj</a> <a href="/book-delete?book=${bookKey}">Usuń</a>
+                            <a href="/book?id=${bookKey}">Szczegóły</a>
+                            <a href="/book-edit?book=${bookKey}">Edytuj</a>
+                            <a href="/book-delete?book=${bookKey}">Usuń</a>
                         </div>
                     </div>
                     </#items>
