@@ -6,6 +6,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import javax.inject.Inject;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,5 +44,12 @@ public class ShelfServlet extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String idParameter = req.getParameter("id");
+        bookRepository.removeBookFromShelf(Integer.valueOf(idParameter));
+    }
+
 
 }
