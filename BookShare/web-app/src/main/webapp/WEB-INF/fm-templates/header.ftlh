@@ -35,6 +35,8 @@
         }
 
         .table-header {
+            font-weight:  bold;
+            font-size:130%;
             display:flex;
             width:100%;
             background:#000;
@@ -78,7 +80,8 @@
 
     </style>
 <#--    <link-->
-<#--            rel="stylesheet"-->
+<#--            rel="stylesheet2"-->
+<#--            type="text/css"-->
 <#--            href="style.css"-->
 <#--    />-->
 </head>

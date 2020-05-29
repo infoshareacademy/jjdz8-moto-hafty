@@ -8,11 +8,12 @@
         </p>
     </div>
 </header>
-
 <main role="main">
     <div class="container">
-        <div class="table-container">
-            <div class="table">
+        <div class="card bg-dark text-white">
+            <div class="card-body">Użytkownik ${user.login} (${user.name} ${user.surname}) przekazał te książki do wypożyczenia innym użytkownikom</div>
+        </div>
+            <div class="table" id="tableHeaders">
                 <div class="table-header">
                     <div class="mainAuthorName header__item">
                         GŁÓWNY AUTOR
@@ -21,7 +22,7 @@
                         TYTUŁ KSIĄŻKI
                     </div>
                     <div class="options header__item">
-                        OPCJE
+                        USUŃ
                     </div>
                 </div>
                 <div class="table-content">
@@ -31,7 +32,7 @@
                                 <div class="mainAuthorName table-data">${bookValue.mainAuthorName}</div>
                                 <div class="title table-data">${bookValue.title}</div>
                                 <div class="options table-data">
-                                    <button class="delete-book-from-shelf" id="${bookKey}" type="submit" value="${bookKey}">Usuń z półki</button>
+                                    <button class="delete-book-from-shelf" type="submit" value="${bookKey}">Usuń z półki</button>
                                 </div>
                             </div>
                         </#items>

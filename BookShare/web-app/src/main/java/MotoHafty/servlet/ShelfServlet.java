@@ -2,6 +2,7 @@ package MotoHafty.servlet;
 
 import MotoHafty.freemarker.TemplateProvider;
 import MotoHafty.repository.BookRepository;
+import MotoHafty.storage.UserDb;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -25,6 +26,9 @@ public class ShelfServlet extends HttpServlet {
     @Inject
     private BookRepository bookRepository;
 
+    @Inject
+    private UserDb userDb;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 
@@ -33,6 +37,7 @@ public class ShelfServlet extends HttpServlet {
         dataModel.put("pageDescription","To jest strona półki do wypożyczeń");
         dataModel.put("pageTitle","Półka do wypożyczeń");
         dataModel.put("shelfBooks", bookRepository.readShelfBooks(1));
+        dataModel.put("user", userDb.getAllUsers().get(1));
 
         Template template = templateProvider.getTemplate(getServletContext(),"shelf.ftlh");
 

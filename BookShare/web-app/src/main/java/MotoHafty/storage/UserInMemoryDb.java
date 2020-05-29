@@ -19,6 +19,7 @@ public class UserInMemoryDb implements UserDb {
 
     @Override
     public Map<Integer, User> getAllUsers() {
+        new UserInMemoryDb();
         return users;
     }
 

@@ -26,12 +26,13 @@
             $.ajax({
                 "url": '/shelf?id=' + id,
                 "method": 'DELETE',
-                "success": function () {
-                    alert('Książka została usunięta z półki');
+                "success": function (){
+                    alert("Książka została usunięta z półki.");
                     location.reload();
                 },
-                "error": function (error) {
-                    alert(error);
+                "error": function() {
+                    alert("Coś poszło nie tak.");
+                    location.reload();
                 }
             })
         });
