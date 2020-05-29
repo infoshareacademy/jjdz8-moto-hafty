@@ -23,6 +23,11 @@ public class JsonService {
             Book[] books = mapper.readValue(file, Book[].class);
             Integer id = 1;
             for (Book book : books) {
+                if (book.getImgUrl().isBlank()){
+                    book.setImgUrl("https://dictionary.cambridge.org/pl/images/thumb/book_noun_001_01679.jpg?version=5.0.97");
+                }
+                String fixedIsbn = book.getIsbn().replaceAll("\\D","");
+                book.setIsbn(fixedIsbn);
                 booksMap.put(id, book);
                 id++;
             }
