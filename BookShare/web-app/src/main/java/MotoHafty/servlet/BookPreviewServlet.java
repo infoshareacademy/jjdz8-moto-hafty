@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/book")
-public class BookPreview extends HttpServlet {
+public class BookPreviewServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
@@ -36,6 +36,7 @@ public class BookPreview extends HttpServlet {
         dataModel.put("pageDescription","To jest strona podglądu pojedynczej książki");
         dataModel.put("pageTitle","BookShare podgląd pojedynczej książki");
         dataModel.put("book", bookRepository.readBooks().get(Integer.valueOf(idParameter)));
+        dataModel.put("authors", bookRepository.readBooks().get(Integer.valueOf(idParameter)).getAuthors());
 
         Template template = templateProvider.getTemplate(getServletContext(),"book.ftlh");
 
