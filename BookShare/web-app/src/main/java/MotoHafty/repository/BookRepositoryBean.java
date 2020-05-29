@@ -7,9 +7,6 @@ import MotoHafty.storage.UserDb;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Stateless
 public class BookRepositoryBean implements BookRepository {
@@ -32,8 +29,7 @@ public class BookRepositoryBean implements BookRepository {
 
     @Override
     public Map<Integer, Book> readBooks() {
-        return bookFromJsonDb.getAllBooks();
-        }
+        return bookFromJsonDb.getAllBooks();}
 
     @Override
     public void addBookToShelf(Integer bookId) {

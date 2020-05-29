@@ -14,8 +14,6 @@ public class BookFromJsonDb implements BookDb {
 
     @EJB
     private JsonService jsonService;
-    private Integer id = 1;
-    private Map<Integer, Book> books = new LinkedHashMap<>();
 
     @Override
     public Map<Integer, Book> getAllBooks() {
@@ -24,6 +22,4 @@ public class BookFromJsonDb implements BookDb {
 
     @Override
     public void addBook(Book book) { }
-
-
 }
