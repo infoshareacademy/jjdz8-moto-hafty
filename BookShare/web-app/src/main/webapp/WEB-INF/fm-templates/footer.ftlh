@@ -22,7 +22,6 @@
     $(".delete-book-from-shelf").each(function () {
         $(this).on('click', function () {
             let id = $(this).val();
-            console.log(id);
             $.ajax({
                 "url": '/shelf?id=' + id,
                 "method": 'DELETE',
@@ -42,7 +41,6 @@
     $(".clear-shelf").on('click', function () {
         let id = $(this).val();
         const r = confirm("Czy na pewno chcesz usunąć wszystkie książki z półki?");
-        console.log(id);
         if (r === true){
         $.ajax({
             "url": '/shelf?id=' + id,
