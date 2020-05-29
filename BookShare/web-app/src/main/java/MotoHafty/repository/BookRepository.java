@@ -14,4 +14,5 @@ public interface BookRepository {
     void addBookToShelf(Integer id);
     void removeBookFromShelf(Integer id);
     Map<Integer, Book> readShelfBooks(Integer userId);
+    void clearShelf(Integer userId);
 }

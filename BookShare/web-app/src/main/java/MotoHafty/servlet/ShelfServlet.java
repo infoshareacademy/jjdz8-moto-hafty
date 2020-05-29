@@ -47,7 +47,6 @@ public class ShelfServlet extends HttpServlet {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -56,5 +55,9 @@ public class ShelfServlet extends HttpServlet {
         bookRepository.removeBookFromShelf(Integer.valueOf(idParameter));
     }
 
-
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userIdParameter = req.getParameter("id");
+        bookRepository.clearShelf(Integer.valueOf(userIdParameter));
+    }
 }

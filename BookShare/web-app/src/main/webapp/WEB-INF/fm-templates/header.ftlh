@@ -36,7 +36,6 @@
 
         .table-header {
             font-weight:  bold;
-            font-size:130%;
             display:flex;
             width:100%;
             background:#000;

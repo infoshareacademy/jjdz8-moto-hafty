@@ -55,5 +55,10 @@ public class BookRepositoryBean implements BookRepository {
         }
         return  booksFromUserShelf;
     }
+
+    @Override
+    public void clearShelf(Integer userId) {
+        userDb.getAllUsers().get(userId).getUserShelf().clear();
+    }
 }
 

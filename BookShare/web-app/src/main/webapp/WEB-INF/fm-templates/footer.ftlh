@@ -26,17 +26,37 @@
             $.ajax({
                 "url": '/shelf?id=' + id,
                 "method": 'DELETE',
-                "success": function (){
+                "success": function () {
                     alert("Książka została usunięta z półki.");
                     location.reload();
                 },
-                "error": function() {
+                "error": function () {
                     alert("Coś poszło nie tak.");
                     location.reload();
                 }
             })
         });
     })
+</script>
+<script>
+    $(".clear-shelf").on('click', function () {
+        let id = $(this).val();
+        const r = confirm("Czy na pewno chcesz usunąć wszystkie książki z półki?");
+        console.log(id);
+        if (r === true){
+        $.ajax({
+            "url": '/shelf?id=' + id,
+            "method": 'POST',
+            "success": function () {
+                alert("Półka została wyczyszczona");
+                location.reload();
+            },
+            "error": function () {
+                alert("Nie wprowadzono żadnych zmian");
+                location.reload();
+            }
+        })
+    }})
 </script>
 </body>
 </html>

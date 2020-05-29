@@ -22,7 +22,7 @@
                         TYTUŁ KSIĄŻKI
                     </div>
                     <div class="options header__item">
-                        USUŃ
+                        <button class="clear-shelf" type="submit" value="1">USUŃ WSZYSTKIE</button>
                     </div>
                 </div>
                 <div class="table-content">
