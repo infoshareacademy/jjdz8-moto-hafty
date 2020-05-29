@@ -26,6 +26,7 @@ public class JsonService {
                 if (book.getImgUrl().isBlank()){
                     book.setImgUrl("https://dictionary.cambridge.org/pl/images/thumb/book_noun_001_01679.jpg?version=5.0.97");
                 }
+                book.setIsbn(book.getIsbn().replaceAll("^\\D+$" ,""));
                 booksMap.put(id, book);
                 id++;
             }
