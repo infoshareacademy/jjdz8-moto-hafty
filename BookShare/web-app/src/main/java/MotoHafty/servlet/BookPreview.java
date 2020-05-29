@@ -28,6 +28,9 @@ public class BookPreview extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 
         String idParameter = req.getParameter("id");
+        if (bookRepository.readBooks().get(Integer.valueOf(idParameter)).getImgUrl().isBlank()){
+            bookRepository.readBooks().get(Integer.valueOf(idParameter)).setImgUrl("https://dictionary.cambridge.org/pl/images/thumb/book_noun_001_01679.jpg?version=5.0.97");
+        }
         resp.setContentType("text/html;charset=UTF-8");
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona podglądu pojedynczej książki");
