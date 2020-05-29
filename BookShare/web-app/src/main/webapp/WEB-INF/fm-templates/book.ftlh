@@ -11,43 +11,45 @@
 <main role="main">
     <div class="d-flex flex-row">
         <div class="p-3">
-            <img class="img-fluid" src="${book.imgUrl}" alt="bookCover">
+            <img class="book-cover" src="${book.imgUrl}" alt="bookCover" height="256" width="160">
         </div>
-        <div class="d-flex flex-column ">
+        <div class="d-flex flex-column">
             <div class="p-2">
-                <h1 class="book_title ">${book.title}
-                </h1>
+                <h2 class="book_title">${book.title}
+                </h2>
             </div>
             <div class="p-2">
-                <h2 class="d-flex flex-column">${book.mainAuthorName}
-                </h2>
+                <h3 class="d-flex flex-column">${book.mainAuthorName}
+                </h3>
             </div>
             <div class="p-2">
                 <#list authors>
                     <#items as author>
-                        <h2 class="d-flex flex-column">${author}</h2>
+                        <#if author == book.mainAuthorName>
+                        <#else><h4 class="d-flex flex-column">${author}</h4>
+                        </#if>
                     </#items>
                 </#list>
             </div>
             <div class="p-2">
-                <h2 class="d-flex flex-column">${book.category}
-                </h2>
+                <h4 class="d-flex flex-column">${book.category}
+                </h4>
             </div>
             <div class="p-2">
-                <h2 class="d-flex flex-column">${book.isbn}
-                </h2>
+                <h4 class="d-flex flex-column">${book.isbn}
+                </h4>
             </div>
             <div class="p-2">
-                <h2 class="d-flex flex-column">${book.inputDate}
-                </h2>
+                <h4 class="d-flex flex-column">${book.inputDate}
+                </h4>
             </div>
             <div class="p-2">
-                <#if book.read><h2>Książka przeczytana</h2>
-                <#else><h2>Książka nieprzeczytana</h2> </#if>
+                <#if book.read><h4>Książka przeczytana</h4>
+                <#else><h4>Książka nieprzeczytana</h4> </#if>
             </div>
             <div class="p-2">
-                <h2 class="d-flex flex-column">${book.description}
-                </h2>
+                <h4 class="d-flex flex-column">${book.description}
+                </h4>
             </div>
         </div>
     </div>
