@@ -14,7 +14,7 @@
             Czy przeczytana: <input type="text" name="isRead"/><br/><br/>
             Opis: <input type="text" name="description"/><br/><br/>
 
-            <input type="submit" name="addNewBooK" value="Zapisz"/><br/><br/>
+            <button class="addNewBook" type="submit" value="Zapisz">Dodaj książkę</button>
         </form>
     </div>
 </header>
