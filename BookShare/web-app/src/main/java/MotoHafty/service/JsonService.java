@@ -6,10 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 @LocalBean
 @Stateful
@@ -36,5 +35,17 @@ public class JsonService {
             return Collections.emptyMap();
         }
         return booksMap;
+    }
+
+    public void exportBooksToJsonFile(Map<Integer, Book> books) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Book> booksList = new ArrayList<>();
+        books.forEach((key, value) -> booksList.add(value));
+        try {
+            objectMapper.writeValue(
+                    new FileOutputStream(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath()), booksList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -19,14 +19,14 @@
         crossorigin="anonymous"
 ></script>
 <script>
-    $(".delete-book-from-shelf").each(function () {
+    $(".addNewBook").each(function () {
         $(this).on('click', function () {
             let id = $(this).val();
             $.ajax({
-                "url": '/shelf?id=' + id,
-                "method": 'DELETE',
+                "url": '/books?id=' + id,
+                "method": 'POST',
                 "success": function () {
-                    alert("Książka została usunięta z półki.");
+                    alert("Książka została dodana do biblioteczki.");
                     location.reload();
                 },
                 "error": function () {
@@ -55,6 +55,25 @@
             }
         })
     }})
+</script>
+<script>
+    $(".delete-book-from-shelf").each(function () {
+        $(this).on('click', function () {
+            let id = $(this).val();
+            $.ajax({
+                "url": '/shelf?id=' + id,
+                "method": 'DELETE',
+                "success": function () {
+                    alert("Książka została usunięta z półki.");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Coś poszło nie tak.");
+                    location.reload();
+                }
+            })
+        });
+    })
 </script>
 </body>
 </html>
