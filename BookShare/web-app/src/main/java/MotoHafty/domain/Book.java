@@ -14,10 +14,11 @@ public class Book {
     private String inputDate;
     private Boolean isRead;
     private String description;
+    private String imgUrl;
 
     public Book(){}
 
-    public Book(String title, String mainAuthorName, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description) {
+    public Book(String title, String mainAuthorName, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description, String imgUrl) {
         this.title = title;
         this.mainAuthorName = mainAuthorName;
         this.authors = authors;
@@ -26,9 +27,8 @@ public class Book {
         this.inputDate = inputDate;
         this.isRead = isRead;
         this.description = description;
+        this.imgUrl = imgUrl;
     }
-
-    Scanner scanner = new Scanner(System.in);
 
     public String getTitle() {
         return title;
@@ -88,6 +88,14 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public void setDescription(String description) {
