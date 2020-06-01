@@ -73,5 +73,22 @@
         });
     })
 </script>
+<script>
+    $(".addToShelfButton").on('click', function () {
+        let id = $(this).val();
+            $.ajax({
+                "url": '/shelf?id=' + id,
+                "method": 'PUT',
+                "success": function () {
+                    alert("Książka została dodana do wypożyczalni");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Nie wprowadzono żadnych zmian");
+                    location.reload();
+                }
+            })
+        })
+</script>
 </body>
 </html>

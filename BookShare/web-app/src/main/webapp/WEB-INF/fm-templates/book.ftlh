@@ -44,6 +44,11 @@
                 </h4>
             </div>
             <div class="p-1">
+                <h4 class="d-flex flex-column">
+                    <button class ="addToShelfButton" type="submit" value="${bookId}">Dodaj do wypożyczalni</button>
+                </h4>
+            </div>
+            <div class="p-1">
                 <#if book.read><h4>Książka przeczytana</h4>
                 <#else><h4>Książka nieprzeczytana</h4> </#if>
             </div>
