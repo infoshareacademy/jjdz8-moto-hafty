@@ -19,8 +19,7 @@
         crossorigin="anonymous"
 ></script>
 <script>
-    $(".addNewBook").each(function () {
-        $(this).on('click', function () {
+    $(".addNewBook").on('click', function () {
             let id = $(this).val();
             $.ajax({
                 "url": '/books?id=' + id,
@@ -34,8 +33,7 @@
                     location.reload();
                 }
             })
-        });
-    })
+        })
 </script>
 <script>
     $(".clear-shelf").on('click', function () {
