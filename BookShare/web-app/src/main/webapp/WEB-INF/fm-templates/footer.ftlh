@@ -19,8 +19,7 @@
         crossorigin="anonymous"
 ></script>
 <script>
-    $(".addNewBook").each(function () {
-        $(this).on('click', function () {
+    $(".addNewBook").on('click', function () {
             let id = $(this).val();
             $.ajax({
                 "url": '/books?id=' + id,
@@ -34,8 +33,7 @@
                     location.reload();
                 }
             })
-        });
-    })
+        })
 </script>
 <script>
     $(".clear-shelf").on('click', function () {
@@ -74,6 +72,23 @@
             })
         });
     })
+</script>
+<script>
+    $(".addToShelfButton").on('click', function () {
+        let id = $(this).val();
+            $.ajax({
+                "url": '/shelf?id=' + id,
+                "method": 'PUT',
+                "success": function () {
+                    alert("Książka została dodana do wypożyczalni");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Nie wprowadzono żadnych zmian");
+                    location.reload();
+                }
+            })
+        })
 </script>
 </body>
 </html>

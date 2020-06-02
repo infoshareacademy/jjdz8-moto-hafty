@@ -2,7 +2,7 @@
 <#include "menu.ftlh">
 <header class="jumbotron">
     <div class="container">
-        <h1 class="display-3">BookShare</h1>
+        <h1 class="display-5">BookShare</h1>
         <p>
             Tutaj możesz zarządzać książkami przekazanymi do wypożyczenia
         </p>
@@ -41,6 +41,11 @@
             </div>
             <div class="p-1">
                 <h4 class="d-flex flex-column">${book.inputDate}
+                </h4>
+            </div>
+            <div class="p-1">
+                <h4 class="d-flex flex-column">
+                    <button class ="addToShelfButton" type="submit" value="${bookId}">Dodaj do wypożyczalni</button>
                 </h4>
             </div>
             <div class="p-1">

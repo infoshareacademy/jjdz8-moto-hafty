@@ -18,9 +18,6 @@
                 <a class="nav-link" href="/find-book">Wyszukaj książkę</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/book-add">Dodaj książkę</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/shelf">Wypożyczalnia</a>
             </li>
             <li class="nav-item">

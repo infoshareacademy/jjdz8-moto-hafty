@@ -17,14 +17,12 @@ public class BookFromJsonDb implements BookDb {
 
     @Override
     public Map<Integer, Book> getAllBooks() {
-        books = jsonService.importUserJsonFileBooks(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath());
-        id = books.size();
-        return books;
+        return jsonService.importUserJsonFileBooks(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath());
     }
 
     @Override
     public void addBook(Book book) {
-        books.put(++id, book);
-        jsonService.exportBooksToJsonFile(books);
+        getAllBooks().put(getAllBooks().keySet().size() +1, book);
+        jsonService.exportBooksToJsonFile(getAllBooks());
     }
 }

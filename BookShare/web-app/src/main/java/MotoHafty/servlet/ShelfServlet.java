@@ -60,4 +60,10 @@ public class ShelfServlet extends HttpServlet {
         String userIdParameter = req.getParameter("id");
         bookRepository.clearShelf(Integer.valueOf(userIdParameter));
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userIdParameter = req.getParameter("id");
+        bookRepository.addBookToShelf(Integer.valueOf(userIdParameter));
+    }
 }

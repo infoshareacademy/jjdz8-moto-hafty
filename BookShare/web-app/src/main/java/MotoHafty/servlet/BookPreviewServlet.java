@@ -34,6 +34,7 @@ public class BookPreviewServlet extends HttpServlet {
         dataModel.put("pageTitle","BookShare podgląd pojedynczej książki");
         dataModel.put("book", bookRepository.readBooks().get(Integer.valueOf(idParameter)));
         dataModel.put("authors", bookRepository.readBooks().get(Integer.valueOf(idParameter)).getAuthors());
+        dataModel.put("bookId", Integer.valueOf(idParameter));
 
         Template template = templateProvider.getTemplate(getServletContext(),"book.ftlh");
 
