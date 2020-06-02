@@ -14,7 +14,7 @@ import java.util.*;
 @Stateful
 public class JsonService {
 
-    public Map<Integer, Book> importUserJsonFileBooks(String fileName) {
+    public Map<Integer, Book> importBooksJsonFile(String fileName) {
         Map<Integer, Book> booksMap = new LinkedHashMap<>();
         try {
             ObjectMapper mapper = new ObjectMapper();

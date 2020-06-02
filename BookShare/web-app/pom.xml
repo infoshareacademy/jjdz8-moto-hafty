@@ -42,18 +42,6 @@
 
     <build>
         <finalName>bookshare-web</finalName>
-        <pluginManagement>
-            <plugins>
-            </plugins>
-        </pluginManagement>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>Books.json</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
 </project>
