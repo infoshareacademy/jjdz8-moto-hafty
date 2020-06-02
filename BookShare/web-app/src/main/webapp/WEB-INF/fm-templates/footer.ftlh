@@ -19,14 +19,13 @@
         crossorigin="anonymous"
 ></script>
 <script>
-    $(".delete-book-from-shelf").each(function () {
-        $(this).on('click', function () {
+    $(".addNewBook").on('click', function () {
             let id = $(this).val();
             $.ajax({
-                "url": '/shelf?id=' + id,
-                "method": 'DELETE',
+                "url": '/books?id=' + id,
+                "method": 'POST',
                 "success": function () {
-                    alert("Książka została usunięta z półki.");
+                    alert("Książka została dodana do biblioteczki.");
                     location.reload();
                 },
                 "error": function () {
@@ -34,8 +33,7 @@
                     location.reload();
                 }
             })
-        });
-    })
+        })
 </script>
 <script>
     $(".clear-shelf").on('click', function () {
@@ -55,6 +53,42 @@
             }
         })
     }})
+</script>
+<script>
+    $(".delete-book-from-shelf").each(function () {
+        $(this).on('click', function () {
+            let id = $(this).val();
+            $.ajax({
+                "url": '/shelf?id=' + id,
+                "method": 'DELETE',
+                "success": function () {
+                    alert("Książka została usunięta z półki.");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Coś poszło nie tak.");
+                    location.reload();
+                }
+            })
+        });
+    })
+</script>
+<script>
+    $(".addToShelfButton").on('click', function () {
+        let id = $(this).val();
+            $.ajax({
+                "url": '/shelf?id=' + id,
+                "method": 'PUT',
+                "success": function () {
+                    alert("Książka została dodana do wypożyczalni");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Nie wprowadzono żadnych zmian");
+                    location.reload();
+                }
+            })
+        })
 </script>
 </body>
 </html>

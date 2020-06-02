@@ -2,7 +2,7 @@
 <#include "menu.ftlh">
 <header class="jumbotron">
     <div class="container">
-        <h1 class="display-3">BookShare</h1>
+        <h1 class="display-5">BookShare</h1>
         <p>
             Aplikacja BookShare pozwala na zarządzanie twoja domową biblioteką książek.
         </p>

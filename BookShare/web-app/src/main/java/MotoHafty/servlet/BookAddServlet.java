@@ -1,6 +1,7 @@
 package MotoHafty.servlet;
 
 import MotoHafty.freemarker.TemplateProvider;
+import MotoHafty.repository.BookRepository;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -14,21 +15,25 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/book-add")
+@WebServlet("/add-book")
 public class BookAddServlet extends HttpServlet {
 
     @Inject
     private TemplateProvider templateProvider;
 
+    @Inject
+    private BookRepository bookRepository;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 
         resp.setContentType("text/html;charset=UTF-8");
+        Template template = templateProvider.getTemplate(getServletContext(),"add-book.ftlh");
+
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona dodawania nowej ksiażki");
         dataModel.put("pageTitle","Dodawanie nowej książki");
-
-        Template template = templateProvider.getTemplate(getServletContext(),"book-add.ftlh");
+        dataModel.put("bookId", bookRepository.readBooks().keySet().size()+1);
 
         PrintWriter printWriter = resp.getWriter();
         try {
