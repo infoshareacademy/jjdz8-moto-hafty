@@ -2,22 +2,28 @@ package MotoHafty.storage;
 
 import MotoHafty.domain.Book;
 import MotoHafty.service.JsonService;
+import MotoHafty.servlet.config.WebInfPathResolver;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import javax.inject.Inject;
+import java.util.Map;
 
 
 @Stateless
 public class BookFromJsonDb implements BookDb {
 
-    @EJB
+    private static final String BOOKS_FILE_NAME = "Books.json";
+
+    @Inject
     private JsonService jsonService;
+
+    @Inject
+    private WebInfPathResolver webInfPathResolver;
 
     @Override
     public Map<Integer, Book> getAllBooks() {
-        return jsonService.importUserJsonFileBooks(Objects.requireNonNull(getClass().getClassLoader().getResource("Books.json")).getPath());
+        String booksJsonPath = webInfPathResolver.getFilePath(BOOKS_FILE_NAME);
+        return jsonService.importBooksJsonFile(booksJsonPath);
     }
 
     @Override
