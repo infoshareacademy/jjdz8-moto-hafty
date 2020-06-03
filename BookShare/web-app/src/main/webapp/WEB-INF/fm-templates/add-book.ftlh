@@ -29,6 +29,19 @@
             </div>
             <div class="form-group row" id="anotherAuthor"></div>
             <div class="form-group row">
+                <label for="inputCategory" class="col-sm-2 col-form-label">Kategoria</label>
+                <div class="col-sm-10">
+                    <select class="custom-select">
+                        <option selected>Wybierz Kategorię</option>
+                        <#list categoryList>
+                            <#items as category>
+                        <option value="${category}">${category}</option>
+                            </#items>
+                        </#list>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-10">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gridCheck1">

@@ -2,6 +2,7 @@ package MotoHafty.servlet;
 
 import MotoHafty.freemarker.TemplateProvider;
 import MotoHafty.repository.BookRepository;
+import MotoHafty.service.Utils;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -34,6 +35,7 @@ public class BookAddServlet extends HttpServlet {
         dataModel.put("pageDescription","To jest strona dodawania nowej ksiażki");
         dataModel.put("pageTitle","Dodawanie nowej książki");
         dataModel.put("bookId", bookRepository.readBooks().keySet().size()+1);
+        dataModel.put("categoryList", Utils.getCategoryList());
 
         PrintWriter printWriter = resp.getWriter();
         try {
