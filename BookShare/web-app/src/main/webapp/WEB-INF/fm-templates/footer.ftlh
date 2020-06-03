@@ -20,39 +20,40 @@
 ></script>
 <script>
     $(".addNewBook").on('click', function () {
-            let id = $(this).val();
-            $.ajax({
-                "url": '/books?id=' + id,
-                "method": 'POST',
-                "success": function () {
-                    alert("Książka została dodana do biblioteczki.");
-                    location.reload();
-                },
-                "error": function () {
-                    alert("Coś poszło nie tak.");
-                    location.reload();
-                }
-            })
+        let id = $(this).val();
+        $.ajax({
+            "url": '/books?id=' + id,
+            "method": 'POST',
+            "success": function () {
+                alert("Książka została dodana do biblioteczki.");
+                location.reload();
+            },
+            "error": function () {
+                alert("Coś poszło nie tak.");
+                location.reload();
+            }
         })
+    })
 </script>
 <script>
     $(".clear-shelf").on('click', function () {
         let id = $(this).val();
         const r = confirm("Czy na pewno chcesz usunąć wszystkie książki z półki?");
-        if (r === true){
-        $.ajax({
-            "url": '/shelf?id=' + id,
-            "method": 'POST',
-            "success": function () {
-                alert("Półka została wyczyszczona");
-                location.reload();
-            },
-            "error": function () {
-                alert("Nie wprowadzono żadnych zmian");
-                location.reload();
-            }
-        })
-    }})
+        if (r === true) {
+            $.ajax({
+                "url": '/shelf?id=' + id,
+                "method": 'POST',
+                "success": function () {
+                    alert("Półka została wyczyszczona");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Nie wprowadzono żadnych zmian");
+                    location.reload();
+                }
+            })
+        }
+    })
 </script>
 <script>
     $(".delete-book-from-shelf").each(function () {
@@ -76,19 +77,26 @@
 <script>
     $(".addToShelfButton").on('click', function () {
         let id = $(this).val();
-            $.ajax({
-                "url": '/shelf?id=' + id,
-                "method": 'PUT',
-                "success": function () {
-                    alert("Książka została dodana do wypożyczalni");
-                    location.reload();
-                },
-                "error": function () {
-                    alert("Nie wprowadzono żadnych zmian");
-                    location.reload();
-                }
-            })
+        $.ajax({
+            "url": '/shelf?id=' + id,
+            "method": 'PUT',
+            "success": function () {
+                alert("Książka została dodana do wypożyczalni");
+                location.reload();
+            },
+            "error": function () {
+                alert("Nie wprowadzono żadnych zmian");
+                location.reload();
+            }
         })
+    })
+</script>
+<script>
+    $("#button_add_input_Another_Author").on('click', function () {
+        const textArea = '<label for="anotherAuthor" class="col-sm-2 col-form-label" id="anotherAuthorField">Kolejny Autor</label> ' +
+            '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Kolejny Autor"></div>'
+        $("#anotherAuthor").append(textArea);
+    });
 </script>
 </body>
 </html>
