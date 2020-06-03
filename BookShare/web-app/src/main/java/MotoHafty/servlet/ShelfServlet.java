@@ -36,6 +36,8 @@ public class ShelfServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona półki do wypożyczeń");
         dataModel.put("pageTitle","Półka do wypożyczeń");
+        dataModel.put("jumbotronText", "Na półce z ksiażkami znajdują się książki przekazane do wypożyczenia innym użytkownikom.");
+        dataModel.put("jumbotronTitle", "Wypożyczalnia");
         dataModel.put("shelfBooks", bookRepository.readShelfBooks(1));
         dataModel.put("user", userDb.getAllUsers().get(1));
 

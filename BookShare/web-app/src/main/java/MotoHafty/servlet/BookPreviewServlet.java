@@ -32,6 +32,8 @@ public class BookPreviewServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona podglądu pojedynczej książki");
         dataModel.put("pageTitle","BookShare podgląd pojedynczej książki");
+        dataModel.put("jumbotronText", "Szczegółowe informacje na temat książki");
+        dataModel.put("jumbotronTitle", "Szczegóły książki");
         dataModel.put("book", bookRepository.readBooks().get(Integer.valueOf(idParameter)));
         dataModel.put("authors", bookRepository.readBooks().get(Integer.valueOf(idParameter)).getAuthors());
         dataModel.put("bookId", Integer.valueOf(idParameter));

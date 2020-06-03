@@ -34,6 +34,8 @@ public class BookAddServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona dodawania nowej ksiażki");
         dataModel.put("pageTitle","Dodawanie nowej książki");
+        dataModel.put("jumbotronText", "Wypełnij formularz aby dodać nową książkę");
+        dataModel.put("jumbotronTitle", "Dodaj nową książkę");
         dataModel.put("bookId", bookRepository.readBooks().keySet().size()+1);
         dataModel.put("categoryList", Utils.getCategoryList());
 

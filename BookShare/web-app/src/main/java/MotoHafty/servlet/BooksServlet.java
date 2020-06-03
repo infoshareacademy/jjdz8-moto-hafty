@@ -54,6 +54,8 @@ public class BooksServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription", "Wszystkie książki w BookShare");
         dataModel.put("pageTitle", "BookShare Lista książek");
+        dataModel.put("jumbotronText", "W biblioteczce znajdują się wszystkie wprowadzone w system książki.");
+        dataModel.put("jumbotronTitle", "Moja biblioteczka");
         dataModel.put("books", bookRepository.readBooks());
 
         Template template = templateProvider.getTemplate(getServletContext(), "books.ftlh");

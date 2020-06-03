@@ -27,6 +27,8 @@ public class FindBookServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona z wyszukiwarką książek");
         dataModel.put("pageTitle","Wyszukiwarka książek");
+        dataModel.put("jumbotronText", "Już wkrótce będziesz mógł wyszukać konkretną książkę z biblioteczki");
+        dataModel.put("jumbotronTitle", "Wyszukaj książkę");
 
         Template template = templateProvider.getTemplate(getServletContext(),"find-book.ftlh");
 

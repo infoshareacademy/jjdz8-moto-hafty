@@ -1,12 +1,6 @@
 <#include "header.ftlh">
 <#include "menu.ftlh">
-<header class="jumbotron">
-    <div class="container">
-        <h1 class="display-5">BookShare</h1>
-        <p>Dodaj nową książkę</p>
-    </div>
-</header>
-
+<#include "jumbotron.ftlh">
 <main role="main">
     <div class="container">
         <form class="needs-validation" novalidate>

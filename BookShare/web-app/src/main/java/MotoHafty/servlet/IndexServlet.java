@@ -27,6 +27,8 @@ public class IndexServlet extends HttpServlet {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription","To jest strona główna BookShare");
         dataModel.put("pageTitle","BookShare Strona główna");
+        dataModel.put("jumbotronText", "Uporządkuj swoją domową biblioteczkę");
+        dataModel.put("jumbotronTitle", "BookShare");
 
         Template template = templateProvider.getTemplate(getServletContext(),"index.ftlh");
 
