@@ -94,7 +94,7 @@
 <script>
     $("#button_add_input_Another_Author").on('click', function () {
         const textArea = '<label for="anotherAuthor" class="col-sm-2 col-form-label" id="anotherAuthorField">Kolejny Autor</label> ' +
-            '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Kolejny Autor"></div>'
+            '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Podaj kolejnego autora"></div>'
         $("#anotherAuthor").append(textArea);
     });
 </script>
