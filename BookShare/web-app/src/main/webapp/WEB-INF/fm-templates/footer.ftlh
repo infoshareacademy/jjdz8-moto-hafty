@@ -18,7 +18,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"
 ></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+
 <script>
     $(".addNewBook").on('click', function () {
         let id = $(this).val();
@@ -97,33 +97,6 @@
         const textArea = '<label for="anotherAuthor" class="col-sm-2 col-form-label" id="anotherAuthorField">Kolejny Autor</label> ' +
             '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Podaj kolejnego autora"></div>'
         $("#anotherAuthor").append(textArea);
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#addNewBookForm').bootstrapValidator({
-            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                inputTitle: {
-                    message: 'Tytuł jest nieprawidłowy',
-                    validators: {
-                        notEmpty: {
-                            message: 'Tytuł jest wymagany i nie może być pusty'
-                        },
-                        stringLength: {
-                            min: 1,
-                            max: 150,
-                            message: 'Tytuł musi mieć minimalnie jeden i maksymalnie 150 znaków'
-                        },
-                    }
-                },
-            }
-        });
     });
 </script>
 </body>
