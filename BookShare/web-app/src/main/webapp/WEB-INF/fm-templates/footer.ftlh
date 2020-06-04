@@ -18,6 +18,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"
 ></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 <script>
     $(".addNewBook").on('click', function () {
         let id = $(this).val();
@@ -96,6 +97,26 @@
         const textArea = '<label for="anotherAuthor" class="col-sm-2 col-form-label" id="anotherAuthorField">Kolejny Autor</label> ' +
             '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Podaj kolejnego autora"></div>'
         $("#anotherAuthor").append(textArea);
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#inputIsbn').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                isbn: {
+                    validators: {
+                        isbn: {
+                            message: 'The value is not valid ISBN'
+                        }
+                    }
+                }
+            }
+        });
     });
 </script>
 </body>
