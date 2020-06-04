@@ -101,20 +101,27 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#inputIsbn').bootstrapValidator({
+        $('#addNewBookForm').bootstrapValidator({
+            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                isbn: {
+                inputTitle: {
+                    message: 'Tytuł jest nieprawidłowy',
                     validators: {
-                        isbn: {
-                            message: 'The value is not valid ISBN'
-                        }
+                        notEmpty: {
+                            message: 'Tytuł jest wymagany i nie może być pusty'
+                        },
+                        stringLength: {
+                            min: 1,
+                            max: 150,
+                            message: 'Tytuł musi mieć minimalnie jeden i maksymalnie 150 znaków'
+                        },
                     }
-                }
+                },
             }
         });
     });

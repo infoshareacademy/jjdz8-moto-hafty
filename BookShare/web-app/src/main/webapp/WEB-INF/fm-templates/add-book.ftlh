@@ -3,11 +3,11 @@
 <#include "jumbotron.ftlh">
 <main role="main">
     <div class="container">
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" id="addNewBookForm">
             <div class="form-group row">
                 <label for="inputTitle" class="col-sm-2 col-form-label">Tytuł</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputTitle" placeholder="Podaj tytuł">
+                    <input type="text" class="form-control" id="inputTitle" name="inputTitle" placeholder="Podaj tytuł">
                 </div>
             </div>
 
