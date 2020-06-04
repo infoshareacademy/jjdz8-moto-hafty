@@ -18,6 +18,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"
 ></script>
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
 
 <script>
     $(".addNewBook").on('click', function () {
@@ -97,6 +98,10 @@
         const textArea = '<label for="anotherAuthor" class="col-sm-2 col-form-label" id="anotherAuthorField">Kolejny Autor</label> ' +
             '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Podaj kolejnego autora"></div>'
         $("#anotherAuthor").append(textArea);
+    });
+</script>
+<script>
+    bootstrapValidate('#inputTitle', 'min:1:Tytuł nie może być pusty|max:150:Tytuł nie może mieć więcej niż 150 znaków|required:Tytuł jest wymagany', function (isValid) {
     });
 </script>
 </body>
