@@ -21,8 +21,11 @@
 <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
 
 <script>
-    $(".addNewBookButton").on('click', function () {
-        let id = $(this).val();
+    $("#addNewBookButton").on('click', function () {
+        let id = $("#addNewBookButton").val()
+        let isValid = $("#addNewBookForm").reportValidity()
+        if (isValid) {
+            $("#addNewBookButton").attr("disabled", false)
         $.ajax({
             "url": '/books?id=' + id,
             "method": 'POST',
@@ -34,7 +37,7 @@
                 alert("Coś poszło nie tak.");
                 location.reload();
             }
-        })
+        })}
     })
 </script>
 <script>

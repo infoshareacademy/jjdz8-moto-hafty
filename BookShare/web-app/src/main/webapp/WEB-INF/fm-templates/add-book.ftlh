@@ -65,7 +65,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary btn-lg" id="addNewBookButton">Dodaj książkę</button>
+                    <button type="submit" class="btn btn-primary btn-lg" id="addNewBookButton" value="${bookId}" disabled>Dodaj książkę</button>
                 </div>
             </div>
         </form>
