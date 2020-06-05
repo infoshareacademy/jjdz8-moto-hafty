@@ -14,7 +14,7 @@
             <div class="form-group row">
                 <label for="inputMainAuthor" class="col-sm-2 col-form-label">Autor</label>
                 <div class="input-group col-sm-10">
-                    <input type="text" class="form-control" placeholder="Podaj autora">
+                    <input type="text" class="form-control" id="inputMainAuthor" placeholder="Podaj autora">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" id="button_add_input_Another_Author" type="button">
                             Dodaj kolejnego autora
@@ -26,8 +26,8 @@
             <div class="form-group row">
                 <label for="inputCategory" class="col-sm-2 col-form-label">Kategoria</label>
                 <div class="col-sm-10">
-                    <select class="custom-select">
-                        <option selected>Wybierz Kategorię</option>
+                    <select class="custom-select" id="inputCategory" required>
+                        <option selected disabled>Wybierz Kategorię</option>
                         <#list categoryList>
                             <#items as category>
                                 <option value="${category}">${category}</option>
@@ -65,7 +65,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary btn-lg">Dodaj książkę</button>
+                    <button type="submit" class="btn btn-primary btn-lg" id="addNewBookButton">Dodaj książkę</button>
                 </div>
             </div>
         </form>

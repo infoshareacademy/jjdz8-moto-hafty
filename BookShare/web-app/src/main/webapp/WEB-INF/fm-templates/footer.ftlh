@@ -21,7 +21,7 @@
 <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
 
 <script>
-    $(".addNewBook").on('click', function () {
+    $(".addNewBookButton").on('click', function () {
         let id = $(this).val();
         $.ajax({
             "url": '/books?id=' + id,
@@ -95,13 +95,17 @@
 </script>
 <script>
     $("#button_add_input_Another_Author").on('click', function () {
-        const textArea = '<label for="anotherAuthor" class="col-sm-2 col-form-label" id="anotherAuthorField">Kolejny Autor</label> ' +
+        const textArea = '<label for="anotherAuthorField" class="col-sm-2 col-form-label">Kolejny Autor</label> ' +
             '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Podaj kolejnego autora"></div>'
         $("#anotherAuthor").append(textArea);
     });
 </script>
 <script>
-    bootstrapValidate('#inputTitle', 'min:1:Tytuł nie może być pusty|max:150:Tytuł nie może mieć więcej niż 150 znaków|required:Tytuł jest wymagany', function (isValid) {
+    bootstrapValidate(['#inputTitle', '#inputMainAuthor'], 'max:150:Maksymalnie 150 znaków|required:Pole jest wymagane', function (isValid) {
+    });
+</script>
+<script>
+    bootstrapValidate('#inputIsbn', 'required:Pole jest wymagane|regex:^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)[\\d-]+$:Wprowadź prawidłowy ISBN', function (isValid) {
     });
 </script>
 </body>
