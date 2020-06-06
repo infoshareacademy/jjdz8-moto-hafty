@@ -1,13 +1,6 @@
 <#include "header.ftlh">
 <#include "menu.ftlh">
-<header class="jumbotron">
-    <div class="container">
-        <h1 class="display-5">BookShare</h1>
-        <p>
-            Tutaj możesz zarządzać książkami przekazanymi do wypożyczenia
-        </p>
-    </div>
-</header>
+<#include "jumbotron.ftlh">
 <main role="main">
     <div class="d-flex flex-row">
         <div class="p-3">
