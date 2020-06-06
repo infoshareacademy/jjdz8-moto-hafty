@@ -24,8 +24,8 @@
                         <div class="title table-data">${bookValue.title}</div>
                         <div class="options table-data">
                             <a href="/book?id=${bookKey}">Szczegóły</a>
-                            <a href="/book-edit?book=${bookKey}">Edytuj</a>
-                            <a href="/book-delete?book=${bookKey}">Usuń</a>
+                            <a href="/edit-book?id=${bookKey}">Edytuj</a>
+                            <a href="/book-delete?id=${bookKey}">Usuń</a>
                         </div>
                     </div>
                     </#items>

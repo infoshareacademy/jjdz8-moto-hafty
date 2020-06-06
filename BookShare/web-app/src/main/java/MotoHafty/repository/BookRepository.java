@@ -10,6 +10,7 @@ public interface BookRepository {
 
     void addNewBooK(Book book);
     void updateBook(Integer id, Book editedBook);
+    void deleteBook(Integer id);
     Map<Integer, Book> readBooks();
     void addBookToShelf(Integer id);
     void removeBookFromShelf(Integer id);

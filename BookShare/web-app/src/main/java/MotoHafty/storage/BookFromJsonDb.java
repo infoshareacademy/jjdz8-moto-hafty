@@ -28,7 +28,22 @@ public class BookFromJsonDb implements BookDb {
 
     @Override
     public void addBook(Book book) {
-        getAllBooks().put(getAllBooks().keySet().size() +1, book);
-        jsonService.exportBooksToJsonFile(getAllBooks());
+        Map<Integer, Book> newBooks = getAllBooks();
+        newBooks.put(getAllBooks().keySet().size() +1, book);
+        jsonService.exportBooksToJsonFile(newBooks);
+    }
+
+    @Override
+    public void updateBook(Integer id, Book book) {
+        Map<Integer, Book> newBooks = getAllBooks();
+        newBooks.replace(id, book);
+        jsonService.exportBooksToJsonFile(newBooks);
+    }
+
+    @Override
+    public void deleteBook(Integer id) {
+        Map<Integer, Book> newBooks = getAllBooks();
+        newBooks.remove(id);
+        jsonService.exportBooksToJsonFile(newBooks);
     }
 }
