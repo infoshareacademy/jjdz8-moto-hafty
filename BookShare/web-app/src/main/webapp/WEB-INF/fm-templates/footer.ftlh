@@ -19,7 +19,6 @@
         crossorigin="anonymous"
 ></script>
 <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
-
 <script>
     $("#addNewBookButton").on('click', function () {
         let id = $("#addNewBookButton").val()
@@ -38,6 +37,27 @@
                 location.reload();
             }
         })}
+    })
+</script>
+<script>
+    $("#editBookButton").on('click', function () {
+        let id = $("#editBookButton").val()
+        let isValid = $("#editBookForm").reportValidity()
+        if (isValid) {
+            $("#editBookButton").attr("disabled", false)
+            $.ajax({
+                "url": '/edit-book?id=' + id,
+                "method": 'POST',
+                "content-type": 'text/html;charset=UTF-8',
+                "success": function () {
+                    alert("Książka została edytowana");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Coś poszło nie tak.");
+                    location.reload();
+                }
+            })}
     })
 </script>
 <script>
@@ -97,14 +117,30 @@
     })
 </script>
 <script>
-    $("#button_add_input_Another_Author").on('click', function () {
-        const textArea = '<label for="anotherAuthorField" class="col-sm-2 col-form-label">Kolejny Autor</label> ' +
-            '<div class="col-sm-10"><input type="text" class="form-control" id="anotherAuthorField" placeholder="Podaj kolejnego autora"></div>'
-        $("#anotherAuthor").append(textArea);
+    $("#button_add_input_Another_Author").on('click', function (e) {
+        e.preventDefault();
+        const textArea = '<div class="form-group row anotherAuthor" id="author">\n' +
+                '<label for="anotherAuthorField" class="col-sm-2 col-form-label">Kolejny Autor</label>\n' +
+                '<div class="input-group col-sm-10">\n' +
+                '<input type="text" class="form-control" id="anotherAuthorField" name="author" placeholder="Podaj kolejnego autora">\n' +
+                '<div class="input-group-append remove_button">\n' +
+                '<button class="btn btn-outline-secondary remove_additional_author" type="button">\n' +
+                'Usuń autora\n' +
+                '</button>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>\n'
+        $("#authors").append(textArea);
     });
 </script>
 <script>
-    bootstrapValidate(['#inputTitle', '#inputMainAuthor'], 'max:150:Maksymalnie 150 znaków|required:Pole jest wymagane', function (isValid) {
+        $("#authors").on('click','.remove_additional_author', function (e) {
+            e.preventDefault();
+            $(this).parent().parent().parent().remove();
+        });
+</script>
+<script>
+    bootstrapValidate(['#inputTitle', '#inputMainAuthor', '.anotherAuthorField'], 'max:150:Maksymalnie 150 znaków|required:Pole jest wymagane', function (isValid) {
     });
 </script>
 <script>

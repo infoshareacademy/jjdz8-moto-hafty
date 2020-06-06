@@ -24,7 +24,12 @@ public class BookRepositoryBean implements BookRepository {
 
     @Override
     public void updateBook(Integer id, Book editedBook) {
-        bookFromJsonDb.getAllBooks().put(id, editedBook);
+        bookFromJsonDb.updateBook(id, editedBook);
+    }
+
+    @Override
+    public void deleteBook(Integer id) {
+        bookFromJsonDb.deleteBook(id);
     }
 
     @Override
