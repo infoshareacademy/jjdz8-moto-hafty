@@ -61,6 +61,26 @@
     })
 </script>
 <script>
+    $("#findBookButton").on('click', function () {
+        let id = $("#findBookButton").val()
+        let isValid = $("#findBookForm").reportValidity()
+        if (isValid) {
+            $("#findBookButton").attr("disabled", false)
+            $.ajax({
+                "url": '/find-book,
+                "method": 'POST',
+                "success": function () {
+                    alert("Wyszukiwanie zostało przeprowadzone");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Coś poszło nie tak.");
+                    location.reload();
+                }
+            })}
+    })
+</script>
+<script>
     $(".clear-shelf").on('click', function () {
         let id = $(this).val();
         const r = confirm("Czy na pewno chcesz usunąć wszystkie książki z półki?");
