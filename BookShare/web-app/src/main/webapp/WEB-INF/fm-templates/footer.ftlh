@@ -101,8 +101,7 @@
 <script>
     $("#books").on('click','.deleteBookButton', function (e) {
         e.preventDefault();
-        // $(this).on('click', function () {
-            let id = $(this).attr("href");
+            let id = $(this).parent().parent().attr("id");
             $.ajax({
                 "url": '/books?id=' + id,
                 "method": 'DELETE',
@@ -115,7 +114,6 @@
                     location.reload();
                 }
             })
-        // });
     });
 </script>
 <script>
@@ -156,17 +154,14 @@
     $("#button_add_input_Another_Author").on('click', function (e) {
         e.preventDefault();
         const textArea = `<div class="form-group row anotherAuthor" id="author">
-<label for="anotherAuthorField" class="col-sm-2 col-form-label">Kolejny Autor</label>
-<div class="input-group col-sm-10">
-<input type="text" class="form-control" id="anotherAuthorField" name="author" placeholder="Podaj kolejnego autora">
-<div class="input-group-append remove_button">
-<button class="btn btn-outline-secondary remove_additional_author" type="button">
-Usuń autora
-</button>
-</div>
-</div>
-</div>
-`
+                            <label for="author" class="col-sm-2 col-form-label">Kolejny Autor</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" class="form-control" id="author" name="author" placeholder="Podaj kolejnego autora">
+                                <div class="input-group-append remove_button">
+                                    <button class="btn btn-outline-secondary remove_additional_author" type="button">Usuń autora</button>
+                                </div>
+                            </div>
+                        </div>`
         $("#authors").append(textArea);
     });
 </script>

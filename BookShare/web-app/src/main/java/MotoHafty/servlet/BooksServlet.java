@@ -28,27 +28,30 @@ public class BooksServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //TODO dodaj pattern dla pola imgurl w add-book.ftlh na adres kończący się .jpg/.jpeg/.png/.gif
+
         req.setCharacterEncoding("UTF-8");
+
         Book newBook = new Book();
-        newBook.setTitle(Optional.ofNullable(req.getParameter("newTitle")).orElse("").toString());
+
+        newBook.setTitle(Optional.ofNullable(req.getParameter("title")).orElse("").toString());
         newBook.setAuthors(Optional.ofNullable(Arrays.asList(req.getParameterValues("author"))).orElse(new ArrayList<>()));
         newBook.setMainAuthorName(Optional.ofNullable(req.getParameterValues("author")[0]).orElse("").toString());
-        newBook.setCategory(Optional.ofNullable(req.getParameter("newCategory")).orElse("").toString());
-        newBook.setIsbn(Optional.ofNullable(req.getParameter("newIsbn")).orElse("").toString());
-        newBook.setDescription(Optional.ofNullable(req.getParameter("newDescription")).orElse("").toString());
-        newBook.setImgUrl(Optional.ofNullable(req.getParameter("newImgUrl")).orElse("").toString());
+        newBook.setCategory(Optional.ofNullable(req.getParameter("category")).orElse("").toString());
+        newBook.setIsbn(Optional.ofNullable(req.getParameter("isbn")).orElse("").toString());
+        newBook.setImgUrl(Optional.ofNullable(req.getParameter("imgUrl")).orElse("").toString());
+        newBook.setDescription(Optional.ofNullable(req.getParameter("description")).orElse("").toString());
         Boolean isRead = false;
-        if (req.getParameter("newRead") != null && req.getParameter("newRead").equals("on")) { isRead = true; }
+        if (req.getParameter("read") != null && req.getParameter("read").equals("on")) { isRead = true; }
         newBook.setRead(isRead);
         newBook.setInputDate(Utils.generateDateInStringNow());
+
         bookRepository.addNewBooK(newBook);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
         resp.setContentType("text/html;charset=UTF-8");
-
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("pageDescription", "Wszystkie książki w BookShare");
         dataModel.put("pageTitle", "BookShare Lista książek");
