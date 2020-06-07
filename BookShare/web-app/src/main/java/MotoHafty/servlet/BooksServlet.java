@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet("/books")
 public class BooksServlet extends HttpServlet {
@@ -31,36 +28,20 @@ public class BooksServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
-        Book book = new Book();
-
-        if (req.getParameter("title")==null) book.setTitle(" ");
-        else book.setTitle(req.getParameter("title"));
-
-        if (req.getParameter("mainAuthorName")==null) book.setMainAuthorName(" ");
-        else book.setMainAuthorName(req.getParameter("mainAuthorName"));
-
-        book.setCategory(req.getParameter("category"));
-
-        if (req.getParameter("isbn")==null) book.setIsbn(" ");
-        else book.setIsbn(req.getParameter("isbn"));
-
-        if (req.getParameter("description")==null) book.setDescription(" ");
-        else book.setDescription(req.getParameter("description"));
-
-        book.setRead(req.getParameter("isRead").equals("on"));
-
-        if (req.getParameter("imgUrl") == null) book.setImgUrl(" ");
-        else book.setImgUrl(req.getParameter("imgUrl"));
-
-        book.setInputDate(Utils.generateDateInStringNow());
-
-        List<String> authorList = new ArrayList<>();
-        String anotherAuthor = req.getParameter("anotherAuthor");
-        authorList.add(book.getMainAuthorName());
-        authorList.add(anotherAuthor);
-        book.setAuthors(authorList);
-        bookRepository.addNewBooK(book);
+        req.setCharacterEncoding("UTF-8");
+        Book newBook = new Book();
+        newBook.setTitle(Optional.ofNullable(req.getParameter("newTitle")).orElse("").toString());
+        newBook.setAuthors(Optional.ofNullable(Arrays.asList(req.getParameterValues("author"))).orElse(new ArrayList<>()));
+        newBook.setMainAuthorName(Optional.ofNullable(req.getParameterValues("author")[0]).orElse("").toString());
+        newBook.setCategory(Optional.ofNullable(req.getParameter("newCategory")).orElse("").toString());
+        newBook.setIsbn(Optional.ofNullable(req.getParameter("newIsbn")).orElse("").toString());
+        newBook.setDescription(Optional.ofNullable(req.getParameter("newDescription")).orElse("").toString());
+        newBook.setImgUrl(Optional.ofNullable(req.getParameter("newImgUrl")).orElse("").toString());
+        Boolean isRead = false;
+        if (req.getParameter("newRead") != null && req.getParameter("newRead").equals("on")) { isRead = true; }
+        newBook.setRead(isRead);
+        newBook.setInputDate(Utils.generateDateInStringNow());
+        bookRepository.addNewBooK(newBook);
     }
 
     @Override

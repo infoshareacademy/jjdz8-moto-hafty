@@ -63,6 +63,7 @@ public class BookEditServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 
+        req.setCharacterEncoding("UTF-8");
         Integer bookId = Integer.valueOf(req.getParameter("id"));
 
         Book editedBook = bookRepository.readBooks().get(bookId);

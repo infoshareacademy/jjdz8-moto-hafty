@@ -30,7 +30,7 @@
                 "content-type": 'text/html;charset=UTF-8',
                 "success": function () {
                     alert("Książka została edytowana");
-                    location.reload();
+                    window.location.href = "/books"
                 },
                 "error": function () {
                     alert("Coś poszło nie tak.");
@@ -99,9 +99,10 @@
     })
 </script>
 <script>
-    $("#deleteBookButton").each(function () {
-        $("#deleteBookButton").on('click', function () {
-            let id = $("#deleteBookButton").val();
+    $("#books").on('click','.deleteBookButton', function (e) {
+        e.preventDefault();
+        // $(this).on('click', function () {
+            let id = $(this).attr("href");
             $.ajax({
                 "url": '/books?id=' + id,
                 "method": 'DELETE',
@@ -114,8 +115,8 @@
                     location.reload();
                 }
             })
-        });
-    })
+        // });
+    });
 </script>
 <script>
     (function() {
@@ -157,7 +158,7 @@
         const textArea = `<div class="form-group row anotherAuthor" id="author">
 <label for="anotherAuthorField" class="col-sm-2 col-form-label">Kolejny Autor</label>
 <div class="input-group col-sm-10">
-<input type="text" class="form-control" id="anotherAuthorField" name="anotherAuthor" placeholder="Podaj kolejnego autora">
+<input type="text" class="form-control" id="anotherAuthorField" name="author" placeholder="Podaj kolejnego autora">
 <div class="input-group-append remove_button">
 <button class="btn btn-outline-secondary remove_additional_author" type="button">
 Usuń autora

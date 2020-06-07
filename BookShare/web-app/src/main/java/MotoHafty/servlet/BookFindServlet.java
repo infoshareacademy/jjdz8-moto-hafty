@@ -49,7 +49,7 @@ public class BookFindServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-
+        req.setCharacterEncoding("UTF-8");
         String anyToFind = req.getParameter("findAny").toLowerCase();
         String titleToFind = req.getParameter("findTitle").toLowerCase();
         String authorToFind = req.getParameter("findAuthor").toLowerCase();
