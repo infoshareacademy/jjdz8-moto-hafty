@@ -120,6 +120,25 @@
     })
 </script>
 <script>
+    $("#deleteBookButton").each(function () {
+        $("#deleteBookButton").on('click', function () {
+            let id = $("#deleteBookButton").val();
+            $.ajax({
+                "url": '/books?id=' + id,
+                "method": 'DELETE',
+                "success": function () {
+                    alert("Książka została usunięta");
+                    location.reload();
+                },
+                "error": function () {
+                    alert("Coś poszło nie tak.");
+                    location.reload();
+                }
+            })
+        });
+    })
+</script>
+<script>
     $(".addToShelfButton").on('click', function () {
         let id = $(this).val();
         $.ajax({

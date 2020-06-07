@@ -25,7 +25,7 @@
                         <div class="options table-data">
                             <a href="/book?id=${bookKey}">Szczegóły</a>
                             <a href="/edit-book?id=${bookKey}">Edytuj</a>
-                            <a href="/book-delete?id=${bookKey}">Usuń</a>
+                            <button id="deleteBookButton" type="submit" value="${bookKey}" >Usuń</button>
                         </div>
                     </div>
                     </#items>
