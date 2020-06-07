@@ -16,16 +16,16 @@
                         OPCJE
                     </div>
                 </div>
-                <div class="table-content">
+                <div id="books" class="table-content">
                     <#list books>
                     <#items as bookKey, bookValue>
-                    <div class="table-row">
+                    <div id="${bookKey}" class="table-row book">
                         <div class="mainAuthorName table-data">${bookValue.mainAuthorName}</div>
                         <div class="title table-data">${bookValue.title}</div>
                         <div class="options table-data">
                             <a href="/book?id=${bookKey}">Szczegóły</a>
                             <a href="/edit-book?id=${bookKey}">Edytuj</a>
-                            <a href="/book-delete?id=${bookKey}">Usuń</a>
+                            <a class="deleteBookButton" href="/books">Usuń</a>
                         </div>
                     </div>
                     </#items>

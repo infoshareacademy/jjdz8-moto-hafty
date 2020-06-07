@@ -42,15 +42,8 @@ public class BookEditServlet extends HttpServlet {
         dataModel.put("jumbotronTitle", "Edytuj książkę");
         dataModel.put("categoryList", Utils.getCategoryList());
         dataModel.put("bookId", idToEdit);
-        dataModel.put("bookTitle", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getTitle());
-        dataModel.put("bookAuthors", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getAuthors());
-        dataModel.put("bookCategory", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getCategory());
-        dataModel.put("bookISBN", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getIsbn());
-        dataModel.put("bookImgURL", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getImgUrl());
-        dataModel.put("bookDescription", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getDescription());
+        dataModel.put("book", bookRepository.readBooks().get(Integer.valueOf(idToEdit)));
         dataModel.put("bookRead", bookRepository.readBooks().get(Integer.valueOf(idToEdit)).getRead());
-
-
 
         PrintWriter printWriter = resp.getWriter();
         try {
@@ -62,24 +55,28 @@ public class BookEditServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+        //TODO dodaj pattern dla pola inputIsbn w find-book.ftlh na tylko cyfry, maksymalnie 13
+        //TODO dodaj pattern dla pola imgurl w find-book.ftlh na adres kończący się .jpg/.jpeg/.png/.gif
+
+        req.setCharacterEncoding("UTF-8");
 
         Integer bookId = Integer.valueOf(req.getParameter("id"));
-
         Book editedBook = bookRepository.readBooks().get(bookId);
-        editedBook.setTitle(req.getParameter("editTitle"));
+
+        editedBook.setTitle(req.getParameter("title"));
         editedBook.setAuthors(Arrays.asList(req.getParameterValues("author")));
         editedBook.setMainAuthorName(req.getParameterValues("author")[0]);
-        editedBook.setCategory(req.getParameter("editCategory"));
-        editedBook.setIsbn(req.getParameter("editIsbn"));
-        editedBook.setDescription(req.getParameter("editDescription"));
+        editedBook.setCategory(req.getParameter("category"));
+        editedBook.setIsbn(req.getParameter("isbn"));
+        editedBook.setImgUrl(req.getParameter("imgUrl"));
+        editedBook.setDescription(req.getParameter("description"));
         Boolean isRead = false;
-        if (req.getParameter("editRead") != null && req.getParameter("editRead").equals("on")) { isRead = true; }
+        if (req.getParameter("read") != null && req.getParameter("read").equals("on")) { isRead = true; }
         editedBook.setRead(isRead);
 
         bookRepository.updateBook(Integer.valueOf(bookId), editedBook);
 
         resp.setContentType("text/html;charset=UTF-8");
-
 
         Template template = templateProvider.getTemplate(getServletContext(),"edit-book.ftlh");
 
@@ -90,14 +87,8 @@ public class BookEditServlet extends HttpServlet {
         dataModel.put("jumbotronTitle", "Edytuj książkę");
         dataModel.put("categoryList", Utils.getCategoryList());
         dataModel.put("bookId", bookId);
-        dataModel.put("bookTitle", bookRepository.readBooks().get(Integer.valueOf(bookId)).getTitle());
-        dataModel.put("bookAuthors", bookRepository.readBooks().get(Integer.valueOf(bookId)).getAuthors());
-        dataModel.put("bookCategory", bookRepository.readBooks().get(Integer.valueOf(bookId)).getCategory());
-        dataModel.put("bookISBN", bookRepository.readBooks().get(Integer.valueOf(bookId)).getIsbn());
-        dataModel.put("bookImgURL", bookRepository.readBooks().get(Integer.valueOf(bookId)).getImgUrl());
-        dataModel.put("bookDescription", bookRepository.readBooks().get(Integer.valueOf(bookId)).getDescription());
+        dataModel.put("book", bookRepository.readBooks().get(Integer.valueOf(bookId)));
         dataModel.put("bookRead", bookRepository.readBooks().get(Integer.valueOf(bookId)).getRead());
-
 
 
         PrintWriter printWriter = resp.getWriter();
