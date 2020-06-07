@@ -33,17 +33,33 @@ public class BooksServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         Book book = new Book();
-        book.setTitle(req.getParameter("title"));
-        book.setMainAuthorName(req.getParameter("mainAuthorName"));
+
+        if (req.getParameter("title")==null) book.setTitle(" ");
+        else book.setTitle(req.getParameter("title"));
+
+        if (req.getParameter("mainAuthorName")==null) book.setMainAuthorName(" ");
+        else book.setMainAuthorName(req.getParameter("mainAuthorName"));
+
         book.setCategory(req.getParameter("category"));
-        book.setIsbn(req.getParameter("isbn"));
-        book.setDescription(req.getParameter("descritpion"));
-        book.setRead(Boolean.valueOf(req.getParameter("isRead")));
-        book.setImgUrl("");
+
+        if (req.getParameter("isbn")==null) book.setIsbn(" ");
+        else book.setIsbn(req.getParameter("isbn"));
+
+        if (req.getParameter("description")==null) book.setDescription(" ");
+        else book.setDescription(req.getParameter("description"));
+
+        book.setRead(req.getParameter("isRead").equals("on"));
+
+        if (req.getParameter("imgUrl") == null) book.setImgUrl(" ");
+        else book.setImgUrl(req.getParameter("imgUrl"));
+
         book.setInputDate(Utils.generateDateInStringNow());
-        List<String> authors = new ArrayList<>();
-        authors.add(book.getMainAuthorName());
-        book.setAuthors(authors);
+
+        List<String> authorList = new ArrayList<>();
+        String anotherAuthor = req.getParameter("anotherAuthor");
+        authorList.add(book.getMainAuthorName());
+        authorList.add(anotherAuthor);
+        book.setAuthors(authorList);
         bookRepository.addNewBooK(book);
     }
 
