@@ -35,8 +35,8 @@ public class BooksServlet extends HttpServlet {
         Book newBook = new Book();
 
         newBook.setTitle(Optional.ofNullable(req.getParameter("title")).orElse("").toString());
-        newBook.setAuthors(Optional.ofNullable(Arrays.asList(req.getParameterValues("author"))).orElse(new ArrayList<>()));
-        newBook.setMainAuthorName(Optional.ofNullable(req.getParameterValues("author")[0]).orElse("").toString());
+        newBook.setAuthorsFromList(Optional.ofNullable(Arrays.asList(req.getParameterValues("author"))).orElse(new ArrayList<>()));
+        newBook.setMainAuthorNameFromString(Optional.ofNullable(req.getParameterValues("author")[0]).orElse("").toString());
         newBook.setCategory(Optional.ofNullable(req.getParameter("category")).orElse("").toString());
         newBook.setIsbn(Optional.ofNullable(req.getParameter("isbn")).orElse("").toString());
         newBook.setImgUrl(Optional.ofNullable(req.getParameter("imgUrl")).orElse("").toString());

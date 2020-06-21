@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,8 +63,8 @@ public class BookEditServlet extends HttpServlet {
         Book editedBook = bookRepository.readBooks().get(bookId);
 
         editedBook.setTitle(req.getParameter("title"));
-        editedBook.setAuthors(Arrays.asList(req.getParameterValues("author")));
-        editedBook.setMainAuthorName(req.getParameterValues("author")[0]);
+        editedBook.setAuthorsFromList(Arrays.asList(req.getParameterValues("author")));
+        editedBook.setMainAuthorNameFromString(req.getParameterValues("author")[0]);
         editedBook.setCategory(req.getParameter("category"));
         editedBook.setIsbn(req.getParameter("isbn"));
         editedBook.setImgUrl(req.getParameter("imgUrl"));

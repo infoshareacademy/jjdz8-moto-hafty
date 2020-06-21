@@ -36,12 +36,12 @@ public class BookRepositoryBean implements BookRepository {
     @Override
     public Map<Integer, Book> findBook(String anyToFind, String titleToFind, String authorToFind, String categoryToFind, String isbnToFind, String descriptionToFind) {
         return readBooks().entrySet().stream()
-                .filter(e -> (e.getValue().getAuthors().toString().toLowerCase().contains(anyToFind)
+                .filter(e -> (e.getValue().getAuthorsNamesInList().toString().toLowerCase().contains(anyToFind)
                         || e.getValue().getTitle().toLowerCase().contains(anyToFind)
                         || e.getValue().getIsbn().toLowerCase().replaceAll("[^0-9]","").contains(anyToFind)
                         || e.getValue().getDescription().toLowerCase().contains(anyToFind))
                         && e.getValue().getTitle().toLowerCase().contains(titleToFind)
-                        && e.getValue().getAuthors().toString().toLowerCase().contains(authorToFind)
+                        && e.getValue().getAuthorsNamesInList().toString().toLowerCase().contains(authorToFind)
                         && e.getValue().getCategory().toLowerCase().contains(categoryToFind)
                         && e.getValue().getIsbn().toLowerCase().replaceAll("[^0-9]", "").contains(isbnToFind)
                         && e.getValue().getDescription().toLowerCase().contains(descriptionToFind))
