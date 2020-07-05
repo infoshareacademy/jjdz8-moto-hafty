@@ -1,26 +1,39 @@
 package MotoHafty.domain;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "Users")
 public class User {
 
+    @Basic
     private String login;
+    @Basic
     private String name;
+    @Basic
     private String surname;
+    @Basic
     private String email;
+    @Basic
     private String password;
-    private Adress adress;
+    @Basic
     private boolean isActive;
+    @Transient
     private Set<Integer> userLibrary;
+    @Transient
     private Set<Integer> userShelf;
+    @Id
+    private Long id;
 
-    public User(String login, String name, String surname, String email, String password, Adress adress, boolean isActive, Set<Integer> userLibrary, Set<Integer> userShelf) {
+    public User(){}
+
+    public User(String login, String name, String surname, String email, String password, boolean isActive, Set<Integer> userLibrary, Set<Integer> userShelf) {
         this.login = login;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.adress = adress;
         this.isActive = isActive;
         this.userLibrary = userLibrary;
         this.userShelf = userShelf;
@@ -66,14 +79,6 @@ public class User {
         this.password = password;
     }
 
-    public Adress getAdress() {
-        return adress;
-    }
-
-    public void setAdress(Adress adress) {
-        this.adress = adress;
-    }
-
     public boolean isActive() {
         return isActive;
     }
@@ -96,5 +101,13 @@ public class User {
 
     public void setUserShelf(Set<Integer> userShelf) {
         this.userShelf = userShelf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

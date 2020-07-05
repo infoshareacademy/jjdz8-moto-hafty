@@ -14,7 +14,7 @@ public class WebInfPathResolver {
 
     public String getFilePath(String fileName) {
         return !webInfPath.isEmpty() ? webInfPath + "/classes/" + fileName : Objects.requireNonNull(getClass().getClassLoader()
-                                                                                                              .getResource(fileName))
-                                                                                    .getPath();
+                .getResource(fileName))
+                .getPath();
     }
 }
