@@ -1,20 +1,35 @@
 package MotoHafty.domain;
 
+import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+@Entity
+@Table (name = "Books")
 public class Book {
 
+    @Basic
     private String title;
+    @Basic
     private String mainAuthorName;
+    @Transient
     private List<String> authors = new LinkedList<>();
+    @Basic
     private String category;
+    @Basic
     private String isbn;
+    @Basic
     private String inputDate;
+    @Basic
     private Boolean isRead;
+    @Basic
     private String description;
+    @Basic
     private String imgUrl;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Book(){}
 
@@ -100,5 +115,13 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

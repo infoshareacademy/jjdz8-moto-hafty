@@ -1,8 +1,15 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
+<!--<!DOCTYPE web-app PUBLIC-->
+<!-- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"-->
+<!-- "http://java.sun.com/dtd/web-app_2_3.dtd" >-->
 <web-app>
+  <data-source>
+    <name>java:ds/companyDS</name>
+    <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+    <url>jdbc:mysql://0.0.0.0:3307/company?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+    <user>root</user>
+    <password>root</password>
+  </data-source>
+  <request-character-encoding>UTF-8</request-character-encoding>
   <display-name>Archetype Created Web Application</display-name>
 </web-app>
-<request-character-encoding>UTF-8</request-character-encoding>
+
