@@ -7,6 +7,9 @@ import java.util.Set;
 @Table(name = "Users")
 public class User {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     @Basic
     private String login;
     @Basic
@@ -19,16 +22,20 @@ public class User {
     private String password;
     @Basic
     private boolean isActive;
-    @Transient
-    private Set<Integer> userLibrary;
-    @Transient
-    private Set<Integer> userShelf;
-    @Id
-    private Long id;
+    @ManyToMany
+    @JoinTable(name = "Users_Books_Library",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")})
+    private Set<Book> userLibrary;
+    @ManyToMany
+    @JoinTable(name = "Users_Books_Shelf",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")})
+    private Set<Book> userShelf;
 
     public User(){}
 
-    public User(String login, String name, String surname, String email, String password, boolean isActive, Set<Integer> userLibrary, Set<Integer> userShelf) {
+    public User(String login, String name, String surname, String email, String password, boolean isActive, Set<Book> userLibrary, Set<Book> userShelf) {
         this.login = login;
         this.name = name;
         this.surname = surname;
@@ -87,19 +94,19 @@ public class User {
         isActive = active;
     }
 
-    public Set<Integer> getUserLibrary() {
+    public Set<Book> getUserLibrary() {
         return userLibrary;
     }
 
-    public void setUserLibrary(Set<Integer> userLibrary) {
+    public void setUserLibrary(Set<Book> userLibrary) {
         this.userLibrary = userLibrary;
     }
 
-    public Set<Integer> getUserShelf() {
+    public Set<Book> getUserShelf() {
         return userShelf;
     }
 
-    public void setUserShelf(Set<Integer> userShelf) {
+    public void setUserShelf(Set<Book> userShelf) {
         this.userShelf = userShelf;
     }
 

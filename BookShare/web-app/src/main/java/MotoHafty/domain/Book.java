@@ -4,17 +4,24 @@ import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 @Entity
-@Table (name = "Books")
+@Table(name = "Books")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Basic
     private String title;
     @Basic
     private String mainAuthorName;
-    @Transient
-    private List<String> authors = new LinkedList<>();
+    @ManyToMany
+    @JoinTable(name = "Authors_Books",
+            joinColumns = {@JoinColumn(name = "author_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")})
+    private List<Author> authors = new LinkedList<>();
     @Basic
     private String category;
     @Basic
@@ -27,13 +34,15 @@ public class Book {
     private String description;
     @Basic
     private String imgUrl;
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    @ManyToMany (mappedBy = "userLibrary")
+    private Set<User> libraries;
+    @ManyToMany (mappedBy = "userShelf")
+    private Set<User> shelfs;
 
-    public Book(){}
+    public Book() {
+    }
 
-    public Book(String title, String mainAuthorName, List<String> authors, String category, String isbn, String inputDate, Boolean isRead, String description, String imgUrl) {
+    public Book(String title, String mainAuthorName, List<Author> authors, String category, String isbn, String inputDate, Boolean isRead, String description, String imgUrl) {
         this.title = title;
         this.mainAuthorName = mainAuthorName;
         this.authors = authors;
@@ -61,11 +70,11 @@ public class Book {
         this.mainAuthorName = mainAuthorName;
     }
 
-    public List<String> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 
